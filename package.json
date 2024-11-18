@@ -1,0 +1,16 @@
+{
+  "name": "core-css",
+  "version": "1.0.0",
+  "description": "Core CSS framework for my personal projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "css",
+    "css3",
+    "framework"
+  ],
+  "author": "Chris Johnson",
+  "license": "MIT"
+}
