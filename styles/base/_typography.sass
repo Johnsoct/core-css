@@ -31,11 +31,12 @@ input,
 label,
 li,
 p,
+pre,
 span,
 textarea,
 time
   +font-family
-  font-weight: map-get($font-weights, "normal")
+  font-weight: map.get($font-weights, "normal")
   margin: 0
   padding: 0
 
@@ -61,23 +62,23 @@ a
     text-decoration: none
 
 button
-  font-size: map-get($font-sizes, "text-md")
-  line-height: rems(map-get($font-sizes, "text-md") * $ratio)
+  font-size: map.get($font-sizes, "text-md")
+  line-height: rems(map.get($font-sizes, "text-md") * $ratio)
 
 @each $map in $fonts
-  $lg: map-get($map, "lg")
-  $mixin: map-get($map, "mixin")
-  $selector: map-get($map, "selector")
-  $sm: map-get($map, "sm")
-  $weight: map-get($map, "weight")
+  $lg: map.get($map, "lg")
+  $mixin: map.get($map, "mixin")
+  $selector: map.get($map, "selector")
+  $sm: map.get($map, "sm")
+  $weight: map.get($map, "weight")
 
   @if $sm == null
     $sm: $lg
 
   @if $weight == null
-    $weight: map-get($font-weights, "normal")
+    $weight: map.get($font-weights, "normal")
 
-  @debug "MAP VALUES MAP VALUES #{$selector}, #{$lg}, #{$sm}, #{$weight}"
+  // @debug "MAP VALUES MAP VALUES #{$selector}, #{$lg}, #{$sm}, #{$weight}"
 
   #{$selector}
     font-size: rems($lg)
@@ -85,25 +86,26 @@ button
     @if list.index($letter-spaced-elements, $selector)
       letter-spacing: $letter-spacing-percent
     line-height: rems($lg * $ratio)
-    margin: rems($lg * $ratio) auto rems($lg)
+    margin: 0 auto
+    padding: rems($lg * $ratio) rems($lg)
 
     @media #{$tablet-large-and-down}
       font-size: rems($sm)
       line-height: rems($sm * $ratio)
-      margin: rems($sm * $ratio) auto rems($sm)
+      padding: rems($sm * $ratio) rems($sm)
 
 // Font-weights
 .fw-bold
-  font-weight: map-get($font-weights, "bold")
+  font-weight: map.get($font-weights, "bold")
 
 .fw-med
-  font-weight: map-get($font-weights, "medium")
+  font-weight: map.get($font-weights, "medium")
 
 .fw-reg
-  font-weight: map-get($font-weights, "normal")
+  font-weight: map.get($font-weights, "normal")
 
 .fw-semi-bold
-  font-weight: map-get($font-weights, "semi-bold")
+  font-weight: map.get($font-weights, "semi-bold")
 
 // Font modifiers
 .capitalize
