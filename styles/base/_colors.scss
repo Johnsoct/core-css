@@ -1,0 +1,126 @@
+@use 'sass:map';
+
+$app-bg: #EDEEF1;
+$base-white: #FFF;
+$base-black: #000;
+$border: #D0D5DD;
+
+$colors-error: (
+  "25": ("background": #FFFBFA, "color": #B42318),
+  "50": ("background": #FEF3F2, "color": #B42318),
+  "100": ("background": #FEE4E2, "color": #B42318), 
+  "200": ("background": #FECDCA, "color": #B42318), 
+  "300": ("background": #FDA29B, "color": #FFFFFF), 
+  "400": ("background": #F97066, "color": #FFFFFF), 
+  "500": ("background": #F04438, "color": #FFFFFF), 
+  "600": ("background": #D92D20, "color": #FFFFFF), 
+  "700": ("background": #B42318, "color": #FFFFFF), 
+  "800": ("background": #912D17, "color": #FFFFFF), 
+  "900": ("background": #7A271A, "color": #FFFFFF), 
+);
+
+@each $level in $colors-error {
+  $bg: map.get($level, "background");
+  $color: map.get($level, "color");
+
+  @mixin error-#{$level} {
+    background-color: $bg;
+    color: $color;
+  }
+}
+
+$colors-primary: (
+  "25": ("background": #e6eeee, "color": #024742),
+  "50": ("background": #e6eeee, "color": #024742),
+  "100": ("background": #e6eeee, "color": #024742), 
+  "200": ("background": #cddebb, "color": #024742), 
+  "300": ("background": #b3cdcb, "color": #024742), 
+  "400": ("background": #9abdba, "color": #024742), 
+  "500": ("background": #689b98, "color": #FFFFFF), 
+  "600": ("background": #035953, "color": #FFFFFF), 
+  "700": ("background": #024742, "color": #FFFFFF), 
+  "800": ("background": #024742, "color": #FFFFFF), 
+  "900": ("background": #012421, "color": #FFFFFF), 
+);
+
+@each $level in $colors-primary {
+  $bg: map.get($level, "background");
+  $color: map.get($level, "color");
+
+  @mixin primary-#{$level} {
+    background-color: $bg;
+    color: $color;
+  }
+}
+
+$colors-secondary: (
+  "25": ("background": #fcfcfd, "color": #667085),
+  "50": ("background": #f9fafb, "color": #667085),
+  "100": ("background": #f2f4f7, "color": #667085), 
+  "200": ("background": #eaecf0, "color": #667085), 
+  "300": ("background": #d0d5dd, "color": #024742), 
+  "400": ("background": #98a2b3, "color": #024742), 
+  "500": ("background": #667085, "color": #FFFFFF), 
+  "600": ("background": #475467, "color": #FFFFFF), 
+  "700": ("background": #344054, "color": #FFFFFF), 
+  "800": ("background": #1d2939, "color": #FFFFFF), 
+  "900": ("background": #101828, "color": #FFFFFF), 
+);
+
+@each $level in $colors-secondary {
+  $bg: map.get($level, "background");
+  $color: map.get($level, "color");
+
+  @mixin secondary-#{$level} {
+    background-color: $bg;
+    color: $color;
+  }
+}
+
+$colors-success: (
+  "25": ("background": #f6fef9, "color": #027A48),
+  "50": ("background": #ecfdf3, "color": #027A48),
+  "100": ("background": #d1fadf, "color": #027A48), 
+  "200": ("background": #a6f4c5, "color": #027A48), 
+  "300": ("background": #6ce9a6, "color": #FFFFFF), 
+  "400": ("background": #32d583, "color": #FFFFFF), 
+  "500": ("background": #12b76a, "color": #FFFFFF), 
+  "600": ("background": #039855, "color": #FFFFFF), 
+  "700": ("background": #027a4b, "color": #FFFFFF), 
+  "800": ("background": #05603a, "color": #FFFFFF), 
+  "900": ("background": #054f31, "color": #FFFFFF), 
+);
+
+@each $level in $colors-success {
+  $bg: map.get($level, "background");
+  $color: map.get($level, "color");
+
+  @mixin success-#{$level} {
+    background-color: $bg;
+    color: $color;
+  }
+}
+
+$colors-warning: (
+  "25": ("background": #fffcf5, "color": #B54708),
+  "50": ("background": #fffaeb, "color": #B54708),
+  "100": ("background": #fef0c7, "color": #B54708), 
+  "200": ("background": #fedf89, "color": #B54708), 
+  "300": ("background": #fec84b, "color": #FFFFFF), 
+  "400": ("background": #fdb022, "color": #FFFFFF), 
+  "500": ("background": #f7a326, "color": #FFFFFF), 
+  "600": ("background": #dc6803, "color": #FFFFFF), 
+  "700": ("background": #b54708, "color": #FFFFFF), 
+  "800": ("background": #93370d, "color": #FFFFFF), 
+  "900": ("background": #7a2e0e, "color": #FFFFFF), 
+);
+
+@each $level in $colors-warning {
+  $bg: map.get($level, "background");
+  $color: map.get($level, "color");
+
+  @mixin warning-#{$level} {
+    background-color: $bg;
+    color: $color;
+  }
+}
