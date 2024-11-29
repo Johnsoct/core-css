@@ -1,16 +1,26 @@
 {
-  "name": "core-css",
-  "version": "1.0.0",
-  "description": "Core CSS framework for my personal projects",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "css",
-    "css3",
-    "framework"
-  ],
-  "author": "Chris Johnson",
-  "license": "MIT"
+    "name": "core-css",
+    "version": "1.0.0",
+    "author": "Chris Johnson",
+    "description": "Core CSS framework for my personal projects",
+    "type": "module",
+    "main": "index.js",
+    "keywords": [
+        "css",
+        "css3",
+        "framework"
+    ],
+    "license": "MIT",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "@types/node": "^22.10.1",
+        "sass": "^1.81.0",
+        "sass-embedded": "^1.81.0",
+        "typescript": "~5.6.2",
+        "vite": "^6.0.1"
+    }
 }
