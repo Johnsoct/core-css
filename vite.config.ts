@@ -33,4 +33,6 @@ export default defineConfig({
                         '@styles': path.resolve(__dirname, './styles'),
                 },
         },
+
+        root: 'src',
 });

@@ -150,7 +150,7 @@ $colors: (
     $level: map.get($map, "level");
     $type: map.get($map, "type");
 
-    // @debug "MAP VALUES MAP VALUES  #{$type}, #{$level}, #{$bg}, #{$color}";
+    @debug "MAP VALUES MAP VALUES  #{$type}, #{$level}, #{$bg}, #{$color}";
 
     .#{$type}-#{$level} {
       background-color: $bg;
