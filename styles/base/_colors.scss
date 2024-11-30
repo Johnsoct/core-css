@@ -1,0 +1,160 @@
+@use 'sass:map';
+
+$app-bg: #EDEEF1;
+$base-white: #FFF;
+$base-black: #000;
+$border: #D0D5DD;
+
+$error-25:  ( "type": "error", "level": "25", "background": #FFFBFA, "color": #B42318);
+$error-50:  ( "type": "error", "level": "50", "background": #FEF3F2, "color": #B42318);
+$error-100: ( "type": "error", "level": "100", "background": #FEE4E2, "color": #B42318); 
+$error-200: ( "type": "error", "level": "200", "background": #FECDCA, "color": #B42318); 
+$error-300: ( "type": "error", "level": "300", "background": #FDA29B, "color": #FFFFFF); 
+$error-400: ( "type": "error", "level": "400", "background": #F97066, "color": #FFFFFF); 
+$error-500: ( "type": "error", "level": "500", "background": #F04438, "color": #FFFFFF); 
+$error-600: ( "type": "error", "level": "600", "background": #D92D20, "color": #FFFFFF); 
+$error-700: ( "type": "error", "level": "700", "background": #B42318, "color": #FFFFFF); 
+$error-800: ( "type": "error", "level": "800", "background": #912D17, "color": #FFFFFF); 
+$error-900: ( "type": "error", "level": "900", "background": #7A271A, "color": #FFFFFF); 
+
+$errors: (
+  $error-25,
+  $error-50,
+  $error-100,
+  $error-200,
+  $error-300,
+  $error-400,
+  $error-500,
+  $error-600,
+  $error-700,
+  $error-800,
+  $error-900,
+);
+
+$primary-25: ( "type": "primary", "level": "25", "background": #e6eeee, "color": #024742);
+$primary-50: ( "type": "primary", "level": "50", "background": #e6eeee, "color": #024742);
+$primary-100: ( "type": "primary", "level": "100", "background": #e6eeee, "color": #024742);
+$primary-200: ( "type": "primary", "level": "200", "background": #cddebb, "color": #024742);
+$primary-300: ( "type": "primary", "level": "300", "background": #b3cdcb, "color": #024742);
+$primary-400: ( "type": "primary", "level": "400", "background": #9abdba, "color": #024742);
+$primary-500: ( "type": "primary", "level": "500", "background": #689b98, "color": #FFFFFF);
+$primary-600: ( "type": "primary", "level": "600", "background": #035953, "color": #FFFFFF);
+$primary-700: ( "type": "primary", "level": "700", "background": #024742, "color": #FFFFFF);
+$primary-800: ( "type": "primary", "level": "800", "background": #024742, "color": #FFFFFF);
+$primary-900: ( "type": "primary", "level": "900", "background": #012421, "color": #FFFFFF);
+
+$primary: (
+  $primary-25,
+  $primary-50,
+  $primary-100,
+  $primary-200,
+  $primary-300,
+  $primary-400,
+  $primary-500,
+  $primary-600,
+  $primary-700,
+  $primary-800,
+  $primary-900,
+);
+
+$secondary-25: ( "type": "secondary", "level": "25", "background": #fcfcfd, "color": #667085);
+$secondary-50: ( "type": "secondary", "level": "50", "background": #f9fafb, "color": #667085);
+$secondary-100: ( "type": "secondary", "level": "100", "background": #f2f4f7, "color": #667085);
+$secondary-200: ( "type": "secondary", "level": "200", "background": #eaecf0, "color": #667085);
+$secondary-300: ( "type": "secondary", "level": "300", "background": #d0d5dd, "color": #024742);
+$secondary-400: ( "type": "secondary", "level": "400", "background": #98a2b3, "color": #024742);
+$secondary-500: ( "type": "secondary", "level": "500", "background": #667085, "color": #FFFFFF);
+$secondary-600: ( "type": "secondary", "level": "600", "background": #475467, "color": #FFFFFF);
+$secondary-700: ( "type": "secondary", "level": "700", "background": #344054, "color": #FFFFFF);
+$secondary-800: ( "type": "secondary", "level": "800", "background": #1d2939, "color": #FFFFFF);
+$secondary-900: ( "type": "secondary", "level": "900", "background": #101828, "color": #FFFFFF);
+
+$secondary: (
+  $secondary-25,
+  $secondary-50,
+  $secondary-100,
+  $secondary-200,
+  $secondary-300,
+  $secondary-400,
+  $secondary-500,
+  $secondary-600,
+  $secondary-700,
+  $secondary-800,
+  $secondary-900,
+);
+
+$success-25: ( "type": "success", "level": "25", "background": #f6fef9, "color": #027A48);
+$success-50: ( "type": "success", "level": "50", "background": #ecfdf3, "color": #027A48);
+$success-100: ( "type": "success", "level": "100", "background": #d1fadf, "color": #027A48);
+$success-200: ( "type": "success", "level": "200", "background": #a6f4c5, "color": #027A48);
+$success-300: ( "type": "success", "level": "300", "background": #6ce9a6, "color": #FFFFFF);
+$success-400: ( "type": "success", "level": "400", "background": #32d583, "color": #FFFFFF);
+$success-500: ( "type": "success", "level": "500", "background": #12b76a, "color": #FFFFFF);
+$success-600: ( "type": "success", "level": "600", "background": #039855, "color": #FFFFFF);
+$success-700: ( "type": "success", "level": "700", "background": #027a4b, "color": #FFFFFF);
+$success-800: ( "type": "success", "level": "800", "background": #05603a, "color": #FFFFFF);
+$success-900: ( "type": "success", "level": "900", "background": #054f31, "color": #FFFFFF);
+  
+$success: (
+  $success-25,
+  $success-50,
+  $success-100,
+  $success-200,
+  $success-300,
+  $success-400,
+  $success-500,
+  $success-600,
+  $success-700,
+  $success-800,
+  $success-900,
+);
+
+$warning-25: ( "type": "warning", "level": "25", "background": #fffcf5, "color": #B54708);
+$warning-50: ( "type": "warning", "level": "50", "background": #fffaeb, "color": #B54708);
+$warning-100: ( "type": "warning", "level": "100", "background": #fef0c7, "color": #B54708);
+$warning-200: ( "type": "warning", "level": "200", "background": #fedf89, "color": #B54708);
+$warning-300: ( "type": "warning", "level": "300", "background": #fec84b, "color": #FFFFFF);
+$warning-400: ( "type": "warning", "level": "400", "background": #fdb022, "color": #FFFFFF);
+$warning-500: ( "type": "warning", "level": "500", "background": #f7a326, "color": #FFFFFF);
+$warning-600: ( "type": "warning", "level": "600", "background": #dc6803, "color": #FFFFFF);
+$warning-700: ( "type": "warning", "level": "700", "background": #b54708, "color": #FFFFFF);
+$warning-800: ( "type": "warning", "level": "800", "background": #93370d, "color": #FFFFFF);
+$warning-900: ( "type": "warning", "level": "900", "background": #7a2e0e, "color": #FFFFFF);
+
+$warning: (
+  $warning-25,
+  $warning-50,
+  $warning-100,
+  $warning-200,
+  $warning-300,
+  $warning-400,
+  $warning-500,
+  $warning-600,
+  $warning-700,
+  $warning-800,
+  $warning-900,
+);
+
+$colors: (
+  $errors,
+  $primary,
+  $secondary,
+  $success,
+  $warning,
+);
+
+@each $color in $colors {
+  @each $map in $color {
+    $bg: map.get($map, "background");
+    $color: map.get($map, "color");
+    $level: map.get($map, "level");
+    $type: map.get($map, "type");
+
+    // @debug "MAP VALUES MAP VALUES  #{$type}, #{$level}, #{$bg}, #{$color}";
+
+    .#{$type}-#{$level} {
+      background-color: $bg;
+      color: $color;
+    }
+  }
+}
