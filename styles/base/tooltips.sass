@@ -1,10 +1,13 @@
 @use 'sass:map'
-@use 'base/constants/typography' as *
+@use 'colors' as *
+@use 'constants' as *
+@use 'mixins' as *
+@use 'spacing' as *
 
 .tooltip
   $block: &
   $spaceFromParent: $spacing-5
-  +flex($justify: center, $align: center)
+  @include flex($justify: center, $align: center)
   border-bottom: rems(1px) dashed $border
   position: relative
 

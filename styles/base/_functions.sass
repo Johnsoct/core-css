@@ -1,5 +1,7 @@
+@use 'sass:list'
 @use 'sass:map'
 @use 'sass:math'
+@use 'sass:meta'
 
 $rem-baseline: 14px !default // Must match _typography/$base
 
@@ -16,19 +18,19 @@ $rem-baseline: 14px !default // Must match _typography/$base
 
 @function rems($values...)
   $result: ()
-  $separator: list-separator($values)
+  $separator: list.separator($values)
   @each $value in $values
-    @if type-of($value) == 'number'
-      @if unit($value) == 'px'
+    @if meta.type-of($value) == 'number'
+      @if math.unit($value) == 'px'
         $value: math.div(strip-unit($value), strip-unit($rem-baseline)) * 1rem
-      @else if unit($value) != 'rem' and $value != 0
+      @else if math.unit($value) != 'rem' and $value != 0
         @warn 'Cannot convert number `#{$value}` to rem units'
-    @else if type-of($value) == 'list'
+    @else if meta.type-of($value) == 'list'
       $value: rems($value...)
     @else
       @warn 'Cannot convert value `#{$value}` to rem units'
-    $result: append($result, $value, $separator)
-  @return if(length($result) == 1, nth($result, 1), $result)
+    $result: list.append($result, $value, $separator)
+  @return if(list.length($result) == 1, list.nth($result, 1), $result)
 
 @function strip-unit($num)
   @return math.div($num, ($num * 0 + 1))
