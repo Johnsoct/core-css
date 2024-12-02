@@ -1,3 +1,5 @@
+![core-css](https://github.com/user-attachments/assets/8ace120d-b93c-4809-9bff-c70aad0ffdbf)
+
 # Core CSS (SASS, ftw)
 I've spent the last decade building user interfaces on the web and these are the core styles I have found critical for
 beginning greenfield projects.  It is intentionally not all-inclusive. It's not Bootstrap. It's definitely not Tailwind.
