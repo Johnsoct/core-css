@@ -1,0 +1,29 @@
+{
+        "extends": [
+                "stylelint-config-standard"
+        ],
+        "rules": {
+            "selector-class-pattern": null 
+        },
+        "overrides": [
+                {
+                        "files": [
+                                "*.scss",
+                                "**/*.scss"
+                        ],
+                        "extends": [
+                                "stylelint-config-standard-scss"
+                        ]
+                },
+                {
+                        "files": [
+                                "*.vue",
+                                "**/*.vue"
+                        ],
+                        "extends": [
+                                "stylelint-config-standard-scss",
+                                "stylelint-config-recommended-vue/scss"
+                        ]
+                }
+        ]
+}

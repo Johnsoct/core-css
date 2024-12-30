@@ -1,16 +1,17 @@
-@use 'sass:list'
-@use 'sass:map'
-@use 'sass:meta'
+@use "sass:list"
+@use "sass:map"
+@use "sass:meta"
 @use "constants" as *
 @use "functions" as *
 
 // Typography functions and mixins
-@import url('https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap')
+@import url("https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap")
 
-// TODO: add variables for line-heights if we aren't going to follow a fixed ratio between size and line-height
+// TODO: add variables for line-heights if we aren't 
+// going to follow a fixed ratio between size and line-height
 
 @mixin font-family
-  font-family: 'Inter', sans-serif
+  font-family: "Inter", sans-serif
 
 body
   font-size: $base
