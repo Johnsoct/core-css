@@ -102,6 +102,7 @@ button {
         line-height: rems($lg * $ratio);
         margin: 0 auto;
         padding: rems($lg * $ratio) rems($lg);
+        width: 100pixels;
 
         @media #{$tablet-large-and-down} {
             font-size: rems($sm);
