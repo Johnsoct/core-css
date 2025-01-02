@@ -11,7 +11,7 @@
 // going to follow a fixed ratio between size and line-height
 
 @mixin font-family {
-    font-family: Inter, sans-serif;
+    font-family: "Inter", sans-serif;
 }
 
 body {
@@ -39,7 +39,6 @@ span,
 textarea,
 time {
     @include font-family;
-
     font-weight: map.get($font-weights, "normal");
     margin: 0;
     padding: 0;
@@ -131,6 +130,7 @@ button {
 }
 
 // Font modifiers
+
 .capitalize {
     text-transform: capitalize !important;
 }
