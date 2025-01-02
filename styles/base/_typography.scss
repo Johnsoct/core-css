@@ -5,13 +5,13 @@
 @use "functions" as *;
 
 // Typography functions and mixins
-@import url("https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap");
+@import "https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap";
 
 // TODO: add variables for line-heights if we aren't
 // going to follow a fixed ratio between size and line-height
 
 @mixin font-family {
-    font-family: "Inter", sans-serif;
+    font-family: Inter, sans-serif;
 }
 
 body {
@@ -39,6 +39,7 @@ span,
 textarea,
 time {
     @include font-family;
+
     font-weight: map.get($font-weights, "normal");
     margin: 0;
     padding: 0;
@@ -81,11 +82,13 @@ button {
     $sm: map.get($map, "sm");
     $weight: map.get($map, "weight");
 
-    @if $sm ==null {
+    width: 100pixels;
+
+    @if not $sm {
         $sm: $lg;
     }
 
-    @if $weight ==null {
+    @if not $weight {
         $weight: map.get($font-weights, "normal");
     }
 
@@ -102,7 +105,6 @@ button {
         line-height: rems($lg * $ratio);
         margin: 0 auto;
         padding: rems($lg * $ratio) rems($lg);
-        width: 100pixels;
 
         @media #{$tablet-large-and-down} {
             font-size: rems($sm);
