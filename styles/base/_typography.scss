@@ -82,8 +82,6 @@ button {
     $sm: map.get($map, "sm");
     $weight: map.get($map, "weight");
 
-    width: 100pixels;
-
     @if not $sm {
         $sm: $lg;
     }
