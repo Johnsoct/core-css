@@ -22,7 +22,8 @@ $rem-baseline: 14px !default; // Must match _typography/$base
 }
 
 @function rems($values) {
-    $result: ();
+    $result: (
+    );
     $separator: list.separator($values);
 
     @each $value in $values {
@@ -41,7 +42,7 @@ $rem-baseline: 14px !default; // Must match _typography/$base
             @warn "Cannot convert value `#{$value}` to rem units";
         }
 
-        /* stylelint-disable-next-line */
+        /* stylelint-disable-next-line scss/dollar-variable-first-in-block */
         $result: list.append($result, $value, $separator);
     }
 

@@ -1,4 +1,12 @@
-@mixin flex($direction: row, $align: flex-start, $basis: auto, $justify: flex-start, $wrap: nowrap, $grow: unset, $shrink: unset) {
+@mixin flex(
+    $direction: row,
+    $align: flex-start,
+    $basis: auto,
+    $justify: flex-start,
+    $wrap: nowrap,
+    $grow: unset,
+    $shrink: unset
+) {
     align-items: $align;
     display: flex;
     flex-basis: $basis;
@@ -9,7 +17,11 @@
     justify-content: $justify;
 }
 
-@mixin overflow-ellipsis($line-count: 1, $line-height: null, $hyphens: false) {
+@mixin overflow-ellipsis(
+    $line-count: 1,
+    $line-height: null,
+    $hyphens: false
+) {
     line-height: $line-height;
     max-height: ($line-height * $line-count);
     overflow: hidden;
