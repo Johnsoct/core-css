@@ -12,7 +12,7 @@ $rem-baseline: 14px !default; // Must match _typography/$base
 @function pow($number, $exponent) {
     $value: 1;
 
-    @if $exponent >0 {
+    @if $exponent > 0 {
         @for $i from 1 through $exponent {
             $value: $value * $number;
         }
@@ -22,34 +22,30 @@ $rem-baseline: 14px !default; // Must match _typography/$base
 }
 
 @function rems($values) {
-    // $result: () leads to formatting issues because cssls doesn't handle empty map variables
-    // $result: ();
-    $result: map.remove((x:x), x);
+    $result: ();
     $separator: list.separator($values);
 
     @each $value in $values {
-        @if meta.type-of($value)=="number" {
-            @if math.unit($value)=="px" {
+        @if meta.type-of($value) == "number" {
+            @if math.unit($value) == "px" {
                 $value: math.div(strip-unit($value), strip-unit($rem-baseline)) * 1rem;
             }
-
-            @else if math.unit($value) !="rem" and $value !=0 {
-                @warn 'Cannot convert number `#{$value}` to rem units';
+            @else if math.unit($value) != "rem" and $value != 0 {
+                @warn "Cannot convert number `#{$value}` to rem units";
             }
         }
-
-        @else if meta.type-of($value)=="list" {
+        @else if meta.type-of($value) == "list" {
             $value: rems($value);
         }
-
         @else {
-            @warn 'Cannot convert value `#{$value}` to rem units';
+            @warn "Cannot convert value `#{$value}` to rem units";
         }
 
+        /* stylelint-disable-next-line */
         $result: list.append($result, $value, $separator);
     }
 
-    @return if(list.length($result)==1, list.nth($result, 1), $result);
+    @return if(list.length($result) == 1, list.nth($result, 1), $result);
 }
 
 @function strip-unit($num) {

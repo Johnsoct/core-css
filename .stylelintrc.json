@@ -2,9 +2,13 @@
     "cache": true,
     "defaultSeverity": "warning",
     "extends": [
-        "stylelint-config-standard"
+        "stylelint-config-standard",
+        "@stylistic/stylelint-config"
     ],
     "fix": true,
+    "plugins": [
+        "@stylistic/stylelint-plugin"
+    ],
     "rules": {
         "color-function-notation": "modern",
         "color-hex-length": "long",
@@ -22,6 +26,7 @@
         "font-weight-notation": "numeric",
         "function-name-case": "lower",
         "function-url-quotes": "always",
+        "@stylistic/indentation": 4,
         "import-notation": "string",
         "max-nesting-depth": 2,
         "media-feature-range-notation": "prefix",
@@ -44,6 +49,10 @@
                 "stylelint-config-standard-scss"
             ],
             "rules": {
+                "scss/at-if-closing-brace-newline-after": null,
+                "scss/at-if-closing-brace-space-after": null,
+                "scss/at-else-closing-brace-newline-after": null,
+                "scss/at-else-closing-brace-space-after": null,
                 "scss/at-mixin-named-arguments": "always",
                 "scss/dollar-variable-empty-line-after": [
                     "always",
