@@ -1,0 +1,167 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use "constants" as *;
+@use "functions" as *;
+
+// Typography functions and mixins
+@import "https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap";
+
+// TODO: add variables for line-heights if we aren't
+// going to follow a fixed ratio between size and line-height
+
+@mixin font-family {
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    font-size: $base;
+}
+
+a,
+blockquote,
+button,
+div,
+figcaption,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+label,
+li,
+p,
+pre,
+span,
+textarea,
+time {
+    @include font-family;
+    font-weight: map.get($font-weights, "normal");
+    margin: 0;
+    padding: 0;
+}
+
+p,
+a,
+li,
+figcaption,
+label,
+blockquote,
+hr,
+span {
+    text-align: left;
+}
+
+a {
+    text-decoration: none;
+    user-select: none;
+
+    &:hover,
+    &:focus {
+        cursor: pointer;
+    }
+
+    &:visited {
+        text-decoration: none;
+    }
+}
+
+button {
+    font-size: map.get($font-sizes, "text-md");
+    line-height: rems(map.get($font-sizes, "text-md") * $ratio);
+}
+
+@each $map in $fonts {
+    $lg: map.get($map, "lg");
+    $mixin: map.get($map, "mixin");
+    $selector: map.get($map, "selector");
+    $sm: map.get($map, "sm");
+    $weight: map.get($map, "weight");
+
+    @if not $sm {
+        $sm: $lg;
+    }
+
+    @if not $weight {
+        $weight: map.get($font-weights, "normal");
+    }
+
+    // @debug "MAP VALUES MAP VALUES #{$selector}, #{$lg}, #{$sm}, #{$weight}"
+
+    #{$selector} {
+        font-size: rems($lg);
+        font-weight: $weight;
+
+        @if list.index($letter-spaced-elements, $selector) {
+            letter-spacing: $letter-spacing-percent;
+        }
+        line-height: rems($lg * $ratio);
+        margin: 0 auto;
+        padding: rems($lg * $ratio) rems($lg);
+
+        @media #{$tablet-large-and-down} {
+            font-size: rems($sm);
+            line-height: rems($sm * $ratio);
+            padding: rems($sm * $ratio) rems($sm);
+        }
+    }
+
+    // Font-weights
+}
+
+.fw-bold {
+    font-weight: map.get($font-weights, "bold");
+}
+
+.fw-med {
+    font-weight: map.get($font-weights, "medium");
+}
+
+.fw-reg {
+    font-weight: map.get($font-weights, "normal");
+}
+
+.fw-semi-bold {
+    font-weight: map.get($font-weights, "semi-bold");
+}
+
+// Font modifiers .capitalize { text-transform: capitalize !important; }
+
+.center {
+    text-align: center !important;
+}
+
+.def-lh {
+    line-height: 1;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.no-cap {
+    text-transform: none !important;
+}
+
+.no-select {
+    user-select: none;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.right {
+    text-align: right !important;
+}
+
+.underline {
+    text-decoration: underline !important;
+}
+
+.uppercase {
+    text-transform: uppercase !important;
+}
