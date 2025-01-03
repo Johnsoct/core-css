@@ -1,13 +1,12 @@
 // Constants files are .SCSS to allow multi-line map syntax
 // https://github.com/sass/sass/issues/216
 
-@use 'sass:map';
+@use "sass:map";
 
 $base: 14px;
 $letter-spacing-percent: 0.02rem;
 $mobile: 16px;
 $ratio: 1.25;
-
 $font-sizes: (
     "display-2xl": 72px,
     "display-xl": 60px,
@@ -21,78 +20,66 @@ $font-sizes: (
     "text-sm": 14px,
     "text-xs": 12px
 );
-
 $font-weights: (
     "normal": 400,
     "medium": 500,
     "semi-bold": 600,
     "bold": 700
 );
-
 $h1: (
     selector: ".h1",
     lg: map.get($font-sizes, "display-2xl"),
     sm: map.get($font-sizes, "display-lg"),
     weight: map.get($font-weights, "bold")
 );
-
 $h2: (
     selector: ".h2",
     lg: map.get($font-sizes, "display-xl"),
     sm: map.get($font-sizes, "display-md"),
     weight: map.get($font-weights, "bold")
 );
-
 $h3: (
     selector: ".h3",
     lg: map.get($font-sizes, "display-lg"),
     sm: map.get($font-sizes, "display-sm"),
     weight: map.get($font-weights, "bold")
 );
-
 $h4: (
     selector: ".h4",
     lg: map.get($font-sizes, "display-md"),
     sm: map.get($font-sizes, "display-xs"),
     weight: map.get($font-weights, "semi-bold")
 );
-
 $h5: (
     selector: ".h5",
     lg: map.get($font-sizes, "display-sm"),
     sm: map.get($font-sizes, "text-xl"),
     weight: map.get($font-weights, "semi-bold")
 );
-
 $h6: (
     selector: ".h6",
     lg: map.get($font-sizes, "display-xs"),
     sm: map.get($font-sizes, "text-lg"),
     weight: map.get($font-weights, "semi-bold")
 );
-
 $subtitle1: (
     selector: ".subtitle-1",
     lg: map.get($font-sizes, "text-xl"),
     sm: map.get($font-sizes, "text-md")
 );
-
 $subtitle2: (
     selector: ".subtitle-2",
     lg: map.get($font-sizes, "text-lg"),
     sm: map.get($font-sizes, "text-sm")
 );
-
 $body1: (
     selector: ".body-1",
     lg: map.get($font-sizes, "text-sm")
 );
-
 $body2: (
     selector: ".body-2",
     lg: map.get($font-sizes, "text-xs")
 );
-
 $fonts: (
     $h1,
     $h2,
@@ -105,7 +92,6 @@ $fonts: (
     $body1,
     $body2
 );
-
 $letter-spaced-elements: (
     "h1" "h2" "h3" "h4"
 );

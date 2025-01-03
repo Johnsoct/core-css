@@ -98,7 +98,6 @@ button {
         @if list.index($letter-spaced-elements, $selector) {
             letter-spacing: $letter-spacing-percent;
         }
-
         line-height: rems($lg * $ratio);
         margin: 0 auto;
         padding: rems($lg * $ratio) rems($lg);
@@ -129,11 +128,7 @@ button {
     font-weight: map.get($font-weights, "semi-bold");
 }
 
-// Font modifiers
-
-.capitalize {
-    text-transform: capitalize !important;
-}
+// Font modifiers .capitalize { text-transform: capitalize !important; }
 
 .center {
     text-align: center !important;
