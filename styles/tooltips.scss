@@ -1,11 +1,12 @@
 .tooltip {
     $block: &;
-    $spaceFromParent: $spacing-5;
+    $space-from-parent: $spacing-5;
+
     @include flex($justify: center, $align: center);
     border-bottom: rems(1px) dashed $border;
     position: relative;
 
-    &:after {
+    &::after {
         border: rems(8px) solid $primary-400-bg;
         content: "";
         display: none;
@@ -14,55 +15,48 @@
         transition: 0.3s opacity;
     }
 
-    &.bottom:after {
+    &.bottom::after {
+        /* reset defaults */
+        left: initial;
+        margin: initial;
+        right: initial;
+        top: initial;
+        bottom: -$space-from-parent;
+        margin-top: $space-from-parent;
+    }
+
+    &.left::after {
+        /* reset defaults */
+        bottom: initial;
+        margin: initial;
+        right: initial;
+        top: initial;
+        left: -$space-from-parent;
+        margin-right: $space-from-parent;
+    }
+
+    &.right::after {
+        /* reset defaults */
+        bottom: initial;
+        left: initial;
+        margin: initial;
+        top: initial;
+        right: -$space-from-parent;
+        margin-left: $space-from-parent;
+    }
+
+    &.top::after {
         /* reset defaults */
         bottom: initial;
         left: initial;
         margin: initial;
         right: initial;
         top: initial;
-
-        bottom: -$spaceFromParent;
-        margin-top: $spaceFromParent;
+        top: -$space-from-parent;
+        margin-bottom: $space-from-parent;
     }
 
-    &.left:after {
-        /* reset defaults */
-        bottom: initial;
-        left: initial;
-        margin: initial;
-        right: initial;
-        top: initial;
-
-        left: -$spaceFromParent;
-        margin-right: $spaceFromParent;
-    }
-
-    &.right:after {
-        /* reset defaults */
-        bottom: initial;
-        left: initial;
-        margin: initial;
-        right: initial;
-        top: initial;
-
-        right: -$spaceFromParent;
-        margin-left: $spaceFromParent;
-    }
-
-    &.top:after {
-        /* reset defaults */
-        bottom: initial;
-        left: initial;
-        margin: initial;
-        right: initial;
-        top: initial;
-
-        top: -$spaceFromParent;
-        margin-bottom: $spaceFromParent;
-    }
-
-    &:before {
+    &::before {
         border-radius: $border-radius;
         content: attr(data-tooltip);
         display: none;
@@ -74,101 +68,96 @@
         z-index: 4;
     }
 
-    &:hover:before,
-    &:hover:after {
+    &:hover::before,
+    &:hover::after {
         display: flex;
         opacity: 1;
     }
 
-    &.bottom:before {
+    &.bottom::before {
         /* reset defaults */
         bottom: initial;
         left: initial;
         margin: initial;
         right: initial;
         top: initial;
-
         top: 100%;
-        margin-top: $spaceFromParent;
+        margin-top: $space-from-parent;
     }
 
-    &.left:before {
+    &.left::before {
         /* reset defaults */
         bottom: initial;
         left: initial;
         margin: initial;
-        right: initial;
         top: initial;
-
         right: 100%;
-        margin-right: $spaceFromParent;
+        margin-right: $space-from-parent;
     }
 
-    &.right:before {
+    &.right::before {
         /* reset defaults */
         bottom: initial;
-        left: initial;
         margin: initial;
         right: initial;
         top: initial;
-
         left: 100%;
-        margin-left: $spaceFromParent;
+        margin-left: $space-from-parent;
     }
 
-    &.top:before {
+    &.top::before {
         /* reset defaults */
-        bottom: initial;
         left: initial;
         margin: initial;
         right: initial;
         top: initial;
-
         bottom: 100%;
-        margin-bottom: $spaceFromParent;
+        margin-bottom: $space-from-parent;
     }
 
     &--dark {
-        &.bottom:after {
+
+        &.bottom::after {
             border-color: transparent transparent $secondary-900-bg transparent;
         }
 
-        &.left:after {
+        &.left::after {
             border-color: transparent transparent transparent $secondary-900-bg;
         }
 
-        &.right:after {
+        &.right::after {
             border-color: transparent $secondary-900-bg transparent transparent;
         }
 
-        &.top:after {
+        &.top::after {
             border-color: $secondary-900-bg transparent transparent transparent;
         }
 
-        &:before {
+        &::before {
             background-color: $secondary-900-bg;
             color: $base-white;
         }
     }
 
     &--light {
-        &.bottom:after {
+
+        &.bottom::after {
             border-color: transparent transparent $secondary-200-bg transparent;
         }
 
-        &.left:after {
+        &.left::after {
             border-color: transparent transparent transparent $secondary-200-bg;
         }
 
-        &.right:after {
+        &.right::after {
             border-color: transparent $secondary-200-bg transparent transparent;
         }
 
-        &.top:after {
+        &.top::after {
             border-color: $secondary-200-bg transparent transparent transparent;
         }
 
-        &:before {
+        &::before {
             background-color: $secondary-200-bg;
             color: $secondary-800-bg;
         }

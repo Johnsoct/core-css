@@ -43,7 +43,35 @@
             "extends": [
                 "stylelint-config-standard-scss"
             ],
-            "rules": {}
+            "rules": {
+                "scss/at-mixin-named-arguments": "always",
+                "scss/dollar-variable-empty-line-after": [
+                    "always",
+                    {
+                        "expect": [
+                            "last-nested",
+                            "before-dollar-variable"
+                        ],
+                        "ignore": [
+                            "inside-single-line-block"
+                        ]
+                    }
+                ],
+                "scss/dollar-variable-first-in-block": [
+                    true,
+                    {
+                        "except": [
+                            "root"
+                        ],
+                        "ignore": [
+                            "comments",
+                            "imports"
+                        ]
+                    }
+                ],
+                "scss/dollar-variable-no-missing-interpolation": true,
+                "scss/operator-no-unspaced": true
+            }
         }
     ]
 }

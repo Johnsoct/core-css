@@ -18,20 +18,18 @@
     word-wrap: break-word; // Non-standard Microsoft extension
     text-overflow: ellipsis;
 
-    @if $line-count ==1 {
+    @if $line-count == 1 {
         white-space: nowrap;
-    }
-
-    @else {
+    } @else {
         white-space: normal;
     }
 
 
     @if $hypens {
+        /* stylelint-disable-next-line */
         hypens: auto; // Webkit-specific hack for ellipsifying multi-line text
-    }
-
-    @else {
+    } @else {
+        /* stylelint-disable-next-line */
         hypens: none;
     }
 }
