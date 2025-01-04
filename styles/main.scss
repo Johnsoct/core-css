@@ -1,3 +1,2 @@
-@import 'base/index';
-@import './tooltips';
-@import './shortcuts';
+@use "base/index";
+@use "./shortcuts";

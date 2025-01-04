@@ -1,5 +1,7 @@
+@use "sass:list";
 @use "sass:map";
 @use "sass:math";
+@use "sass:meta";
 
 $rem-baseline: 14px !default; // Must match _typography/$base
 
@@ -22,8 +24,7 @@ $rem-baseline: 14px !default; // Must match _typography/$base
 }
 
 @function rems($values) {
-    $result: (
-    );
+    $result: ();
     $separator: list.separator($values);
 
     @each $value in $values {

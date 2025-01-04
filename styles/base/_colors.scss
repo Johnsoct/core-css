@@ -1,29 +1,56 @@
-$app-bg: #edeef1;
+@use "sass:color";
+@use "sass:map";
+
 $base-white: #ffffff;
-$base-black: #000000;
+$base-black: #222222;
+$body: #edeef1;
 $border: #d0d5dd;
-$error-25-bg: #fffbfa;
-$error-25-color: #b42318;
-$error-50-bg: #fef3f2;
-$error-50-color: #b42318;
-$error-100-bg: #fee4e2;
-$error-100-color: #b42318;
-$error-200-bg: #fecdca;
-$error-200-color: #b42318;
-$error-300-bg: #fda29b;
-$error-300-color: #ffffff;
-$error-400-bg: #f97066;
-$error-400-color: #ffffff;
-$error-500-bg: #f04438;
-$error-500-color: #ffffff;
-$error-600-bg: #d92d20;
-$error-600-color: #ffffff;
-$error-700-bg: #b42318;
-$error-700-color: #ffffff;
-$error-800-bg: #912d17;
-$error-800-color: #ffffff;
-$error-900-bg: #7a271a;
-$error-900-color: #ffffff;
+$backgrounds: (
+    "error": (
+        "25" : #fffbfa,
+        "50" : #fef3f2,
+        "100": #fee4e2,
+        "200": #fecdca,
+        "300": #fda29b,
+        "400": #f97066,
+        "500": #f04438,
+        "600": #d92d20,
+        "700": #b42318,
+        "800": #912d17,
+        "900": #7a271a,
+    )
+);
+$colors: (
+    "error": (
+        "25" : #b42318,
+        "50" : #b42318,
+        "100": #b42318,
+        "200": #b42318,
+        "300": #ffffff,
+        "400": #ffffff,
+        "500": #ffffff,
+        "600": #ffffff,
+        "700": #ffffff,
+        "800": #ffffff,
+        "900": #ffffff,
+    )
+);
+
+@mixin color($color, $level) {
+    background-color: map.get($backgrounds, $color, $level);
+    color: map.get($colors, $color, $level);
+}
+
+// TODO: continue with the other colors
+
+$test-100: #b42318;
+$test-90: color.adjust($test-100, $alpha: 0.9);
+$test-50: $test-100;
+
+// https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix
+$test-80: color-mix(in srgb, $test-100, #ffffff 80%);
+$test-70: color-mix(in srgb, $test-100, #ffffff 70%);
+$test-60: color-mix(in srgb, $test-100, #ffffff 60%);
 
 @mixin error-25 {
     background-color: $error-25-bg;
