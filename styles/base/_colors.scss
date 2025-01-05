@@ -3,6 +3,8 @@
 
 $base: (
     "black": #222222,
+    "body": #edeef1,
+    "border": #d0d5dd,
     "danger": #b22222,
     "emphasis": #ef233c,
     "info": #7096c2,
@@ -13,12 +15,6 @@ $base: (
     "warning": #e6d80f,
     "white": #ffffff,
 );
-
-// https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix
-// $test-90: color.adjust($test-300, $alpha: 0.9);
-// $test-80: color-mix(in srgb, $test-300, #ffffff 80%);
-$body: #edeef1;
-$border: #d0d5dd;
 $color: (
     "black": (
         "100": (
@@ -225,19 +221,25 @@ $color: (
     color: map.get($color, $category, $level, "color");
 }
 
+/*******************
+DEBUG
+*******************/
 /* stylelint-disable scss/comment-no-empty */
-@each $category, $value in $color {
-    $levels: map.keys($value);
-
-    @each $level in $levels {
-        $b: map.get($color, $category, $level, "background");
-        $c: map.get($color, $category, $level, "color");
-
-        @debug "CATEGORY: #{$category}; BACKGROUND: #{$b}; COLOR: #{$c}";
-    }
-}
+// @each $category, $value in $color {
+//     $levels: map.keys($value);
+//
+//     @each $level in $levels {
+//         $b: map.get($color, $category, $level, "background");
+//         $c: map.get($color, $category, $level, "color");
+//
+//         @debug "CATEGORY: #{$category}; BACKGROUND: #{$b}; COLOR: #{$c}";
+//     }
+// }
 /* stylelint-enable scss/comment-no-empty */
 
+/*******************
+CLASS GENERATION
+*******************/
 @each $category, $value in $color {
     $levels: map.keys($value);
 
