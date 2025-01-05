@@ -1,78 +1,222 @@
 @use "sass:color";
 @use "sass:map";
 
+$base: (
+    "black": #222222,
+    "danger": #b22222,
+    "emphasis": #ef233c,
+    "info": #7096c2,
+    "primary": #2b2d42,
+    "secondary": #8d99ae,
+    "success": #66b367,
+    "tertiary": #edf2f4,
+    "warning": #e6d80f,
+    "white": #ffffff,
+);
+
 // https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix
-// $test-90: color.adjust($test-100, $alpha: 0.9);
-// $test-80: color-mix(in srgb, $test-100, #ffffff 80%);
-$base-white: #ffffff;
-$base-black: #222222;
+// $test-90: color.adjust($test-300, $alpha: 0.9);
+// $test-80: color-mix(in srgb, $test-300, #ffffff 80%);
 $body: #edeef1;
 $border: #d0d5dd;
 $color: (
+    "black": (
+        "100": (
+            "background": color.mix(white, map.get($base, "black"), $weight: 60%),
+            "color": map.get($base, "black"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "black"), $weight: 45%),
+            "color": map.get($base, "white"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "black"), $weight: 30%),
+            "color": map.get($base, "white"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "black"), $weight: 15%),
+            "color": map.get($base, "white"),
+        ),
+        "500": (
+            "background": map.get($base, "black"),
+            "color": map.get($base, "white"),
+        ),
+    ),
     "danger": (
-        "25" : ( "background": #fffbfa, "color": #b42318, ),
-        "50" : ( "background": #fef3f2, "color": #b42318, ),
-        "100": ( "background": #fee4e2, "color": #b42318, ),
-        "200": ( "background": #fecdca, "color": #b42318, ),
-        "300": ( "background": #fda29b, "color": #ffffff, ),
-        "400": ( "background": #f97066, "color": #ffffff, ),
-        "500": ( "background": #f04438, "color": #ffffff, ),
-        "600": ( "background": #d92d20, "color": #ffffff, ),
-        "700": ( "background": #b42318, "color": #ffffff, ),
-        "800": ( "background": #912d17, "color": #ffffff, ),
-        "900": ( "background": #7a271a, "color": #ffffff, ),
+        "100": (
+            "background": color.mix(white, map.get($base, "danger"), $weight: 80%),
+            "color": map.get($base, "black"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "danger"), $weight: 60%),
+            "color": map.get($base, "black"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "danger"), $weight: 40%),
+            "color": map.get($base, "black"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "danger"), $weight: 20%),
+            "color": map.get($base, "white"),
+        ),
+        "500": (
+            "background": map.get($base, "danger"),
+            "color": map.get($base, "white"),
+        ),
+    ),
+    "emphasis": (
+        "100": (
+            "background": color.mix(white, map.get($base, "emphasis"), $weight: 80%),
+            "color": map.get($base, "emphasis"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "emphasis"), $weight: 60%),
+            "color": map.get($base, "white"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "emphasis"), $weight: 40%),
+            "color": map.get($base, "white"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "emphasis"), $weight: 20%),
+            "color": map.get($base, "white"),
+        ),
+        "500": (
+            "background": map.get($base, "emphasis"),
+            "color": map.get($base, "white"),
+        ),
+    ),
+    "info": (
+        "100": (
+            "background": color.mix(white, map.get($base, "info"), $weight: 80%),
+            "color": map.get($base, "info"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "info"), $weight: 60%),
+            "color": map.get($base, "white"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "info"), $weight: 40%),
+            "color": map.get($base, "white"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "info"), $weight: 20%),
+            "color": map.get($base, "white"),
+        ),
+        "500": (
+            "background": map.get($base, "info"),
+            "color": map.get($base, "white"),
+        ),
     ),
     "primary": (
-        "25" : ( "background": #e6eeee, "color": #024742, ),
-        "50" : ( "background": #e6eeee, "color": #024742, ),
-        "100": ( "background": #e6eeee, "color": #024742, ),
-        "200": ( "background": #cddebb, "color": #024742, ),
-        "300": ( "background": #b3cdcb, "color": #024742, ),
-        "400": ( "background": #9abdba, "color": #024742, ),
-        "500": ( "background": #689b98, "color": #ffffff, ),
-        "600": ( "background": #035953, "color": #ffffff, ),
-        "700": ( "background": #024742, "color": #ffffff, ),
-        "800": ( "background": #024742, "color": #ffffff, ),
-        "900": ( "background": #012421, "color": #ffffff, ),
+        "100": (
+            "background": color.mix(white, map.get($base, "primary"), $weight: 80%),
+            "color": map.get($base, "primary"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "primary"), $weight: 60%),
+            "color": map.get($base, "white"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "primary"), $weight: 40%),
+            "color": map.get($base, "white"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "primary"), $weight: 20%),
+            "color": map.get($base, "white"),
+        ),
+        "500": (
+            "background": map.get($base, "primary"),
+            "color": map.get($base, "white"),
+        ),
     ),
     "secondary": (
-        "25" : ( "background": #fcfcfd, "color": #667085, ),
-        "50" : ( "background": #f9fafb, "color": #667085, ),
-        "100": ( "background": #f2f4f7, "color": #667085, ),
-        "200": ( "background": #eaecf0, "color": #667085, ),
-        "300": ( "background": #d0d5dd, "color": #ffffff, ),
-        "400": ( "background": #98a2b3, "color": #ffffff, ),
-        "500": ( "background": #667085, "color": #ffffff, ),
-        "600": ( "background": #475467, "color": #ffffff, ),
-        "700": ( "background": #344054, "color": #ffffff, ),
-        "800": ( "background": #1d2939, "color": #ffffff, ),
-        "900": ( "background": #101828, "color": #ffffff, ),
+        "100": (
+            "background": color.mix(white, map.get($base, "secondary"), $weight: 80%),
+            "color": map.get($base, "secondary"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "secondary"), $weight: 60%),
+            "color": map.get($base, "white"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "secondary"), $weight: 40%),
+            "color": map.get($base, "white"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "secondary"), $weight: 20%),
+            "color": map.get($base, "white"),
+        ),
+        "500": (
+            "background": map.get($base, "secondary"),
+            "color": map.get($base, "white"),
+        ),
     ),
     "success": (
-        "25" : ( "background": #f6fef9, "color": #027a48, ),
-        "50" : ( "background": #ecfdf3, "color": #027a48, ),
-        "100": ( "background": #d1fadf, "color": #027a48, ),
-        "200": ( "background": #a6f4c5, "color": #027a48, ),
-        "300": ( "background": #6ce9a6, "color": #ffffff, ),
-        "400": ( "background": #32d583, "color": #ffffff, ),
-        "500": ( "background": #12b76a, "color": #ffffff, ),
-        "600": ( "background": #039855, "color": #ffffff, ),
-        "700": ( "background": #027a4b, "color": #ffffff, ),
-        "800": ( "background": #05603a, "color": #ffffff, ),
-        "900": ( "background": #054f31, "color": #ffffff, ),
+        "100": (
+            "background": color.mix(white, map.get($base, "success"), $weight: 80%),
+            "color": map.get($base, "success"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "success"), $weight: 60%),
+            "color": map.get($base, "white"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "success"), $weight: 40%),
+            "color": map.get($base, "white"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "success"), $weight: 20%),
+            "color": map.get($base, "white"),
+        ),
+        "500": (
+            "background": map.get($base, "success"),
+            "color": map.get($base, "white"),
+        ),
+    ),
+    "tertiary": (
+        "100": (
+            "background": color.mix(white, map.get($base, "tertiary"), $weight: 80%),
+            "color": map.get($base, "tertiary"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "tertiary"), $weight: 60%),
+            "color": map.get($base, "white"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "tertiary"), $weight: 40%),
+            "color": map.get($base, "white"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "tertiary"), $weight: 20%),
+            "color": map.get($base, "white"),
+        ),
+        "500": (
+            "background": map.get($base, "tertiary"),
+            "color": map.get($base, "white"),
+        ),
     ),
     "warning": (
-        "25" : ( "background": #fffcf5, "color": #b54708, ),
-        "50" : ( "background": #fffaeb, "color": #b54708, ),
-        "100": ( "background": #fef0c7, "color": #b54708, ),
-        "200": ( "background": #fedf89, "color": #b54708, ),
-        "300": ( "background": #fec84b, "color": #ffffff, ),
-        "400": ( "background": #fdb022, "color": #ffffff, ),
-        "500": ( "background": #f7a326, "color": #ffffff, ),
-        "600": ( "background": #dc6803, "color": #ffffff, ),
-        "700": ( "background": #b54708, "color": #ffffff, ),
-        "800": ( "background": #93370d, "color": #ffffff, ),
-        "900": ( "background": #7a2e0e, "color": #ffffff, ),
+        "100": (
+            "background": color.mix(white, map.get($base, "warning"), $weight: 80%),
+            "color": map.get($base, "warning"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "warning"), $weight: 60%),
+            "color": map.get($base, "white"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "warning"), $weight: 40%),
+            "color": map.get($base, "white"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "warning"), $weight: 20%),
+            "color": map.get($base, "white"),
+        ),
+        "500": (
+            "background": map.get($base, "warning"),
+            "color": map.get($base, "white"),
+        ),
     ),
 );
 
@@ -89,7 +233,7 @@ $color: (
         $b: map.get($color, $category, $level, "background");
         $c: map.get($color, $category, $level, "color");
 
-        @debug "BACKGROUND: #{$b}; COLOR: #{$c}";
+        @debug "CATEGORY: #{$category}; BACKGROUND: #{$b}; COLOR: #{$c}";
     }
 }
 /* stylelint-enable scss/comment-no-empty */
@@ -99,22 +243,21 @@ $color: (
 
     @each $level in $levels {
         $b: map.get($color, $category, $level, "background");
-        $c: map.get($color, $category, $level, "color");
 
-        // .danger-25
-        .#{$category}-#{$level} {
-            background-color: $b;
-            color: $c;
-        }
+        // .danger-100
+        // .#{$category}-#{$level} {
+        //     background-color: $b;
+        //     color: $c;
+        // }
 
-        // .bg-danger-25
+        // .bg-danger-100
         .bg-#{$category}-#{$level} {
             background-color: $b;
         }
 
-        // .color-danger-25
-        .color-#{$category}-#{$level} {
-            color: $c;
-        }
+        // .color-danger-100
+        // .color-#{$category}-#{$level} {
+        //     color: $c;
+        // }
     }
 }
