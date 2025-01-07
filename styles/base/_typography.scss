@@ -71,12 +71,12 @@ a {
 
 button {
     font-size: map.get($font-sizes, "text-md");
-    line-height: rems(map.get($font-sizes, "text-md") * $ratio);
+    line-height: rems(map.get($font-sizes, "text-md") * $body-ratio);
 }
 
 @each $map in $fonts {
     $lg: map.get($map, "lg");
-    $mixin: map.get($map, "mixin");
+    $line-height-ratio: map.get($map, "ratio");
     $selector: map.get($map, "selector");
     $sm: map.get($map, "sm");
     $weight: map.get($map, "weight");
@@ -98,13 +98,13 @@ button {
         @if list.index($letter-spaced-elements, $selector) {
             letter-spacing: $letter-spacing-percent;
         }
-        line-height: rems($lg * $ratio);
+        line-height: rems($lg * $line-height-ratio);
         margin: 0 auto;
         padding: 0 auto;
 
         @media #{$tablet-large-and-down} {
             font-size: rems($sm);
-            line-height: rems($sm * $ratio);
+            line-height: rems($sm * $line-height-ratio);
         }
     }
 
