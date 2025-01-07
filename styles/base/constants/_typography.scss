@@ -6,18 +6,19 @@
 $base: 16px;
 $letter-spacing-percent: 0.02rem;
 $mobile: 14px;
-$ratio: 1.5;
+$body-ratio: 1.5;
+$heading-ratio: 1.2;
 $font-sizes: (
-    "display-xl": ms(7, $base, $ratio),
-    "display-lg": ms(6, $base, $ratio),
-    "display-md": ms(5, $base, $ratio),
-    "display-sm": ms(4, $base, $ratio),
-    "display-xs": ms(3, $base, $ratio),
-    "text-xl":    ms(2, $base, $ratio),
-    "text-lg":    ms(1, $base, $ratio),
+    "display-xl": ms(7, $base, $heading-ratio),
+    "display-lg": ms(6, $base, $heading-ratio),
+    "display-md": ms(5, $base, $heading-ratio),
+    "display-sm": ms(4, $base, $heading-ratio),
+    "display-xs": ms(3, $base, $heading-ratio),
+    "text-xl":    ms(2, $base, $heading-ratio),
+    "text-lg":    ms(1, $base, $heading-ratio),
     "text-md":    $base,
-    "text-sm":    ms(-1, $base, $ratio),
-    "text-xs":    ms(-2, $base, $ratio),
+    "text-sm":    ms(-1, $base, $body-ratio),
+    "text-xs":    ms(-2, $base, $body-ratio),
 );
 $font-weights: (
     "normal": 400,
@@ -29,35 +30,41 @@ $h1: (
     selector: ".h1",
     lg: map.get($font-sizes, "display-sm"),
     sm: map.get($font-sizes, "text-xl"),
-    weight: map.get($font-weights, "bold")
+    weight: map.get($font-weights, "bold"),
+    ratio: $heading-ratio,
 );
 $h2: (
     selector: ".h2",
     lg: map.get($font-sizes, "display-xs"),
     sm: map.get($font-sizes, "text-lg"),
-    weight: map.get($font-weights, "bold")
+    weight: map.get($font-weights, "bold"),
+    ratio: $heading-ratio,
 );
 $h3: (
     selector: ".h3",
     lg: map.get($font-sizes, "text-xl"),
     sm: map.get($font-sizes, "text-md"),
-    weight: map.get($font-weights, "bold")
+    weight: map.get($font-weights, "bold"),
+    ratio: $heading-ratio,
 );
 $h4: (
     selector: ".h4",
     lg: map.get($font-sizes, "text-lg"),
     sm: map.get($font-sizes, "text-sm"),
-    weight: map.get($font-weights, "semi-bold")
+    weight: map.get($font-weights, "semi-bold"),
+    ratio: $heading-ratio,
 );
 $body: (
     selector: ".body",
     lg: map.get($font-sizes, "text-md"),
     sm: map.get($font-sizes, "text-sm"),
+    ratio: $body-ratio,
 );
 $label: (
     selector: ".label",
     lg: map.get($font-sizes, "text-md"),
     sm: map.get($font-sizes, "text-sm"),
+    ratio: $body-ratio,
 );
 $fonts: (
     $h1,
