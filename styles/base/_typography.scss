@@ -100,12 +100,11 @@ button {
         }
         line-height: rems($lg * $ratio);
         margin: 0 auto;
-        padding: rems($lg * $ratio) rems($lg);
+        padding: 0 auto;
 
         @media #{$tablet-large-and-down} {
             font-size: rems($sm);
             line-height: rems($sm * $ratio);
-            padding: rems($sm * $ratio) rems($sm);
         }
     }
 

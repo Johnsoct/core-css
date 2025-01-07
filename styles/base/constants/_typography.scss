@@ -1,24 +1,23 @@
-// Constants files are .SCSS to allow multi-line map syntax
-// https://github.com/sass/sass/issues/216
-
 @use "sass:map";
+@use "../functions" as *;
 
-$base: 14px;
+// https://www.modularscale.com/?16=&px=&1.5=
+
+$base: 16px;
 $letter-spacing-percent: 0.02rem;
-$mobile: 16px;
-$ratio: 1.25;
+$mobile: 14px;
+$ratio: 1.5;
 $font-sizes: (
-    "display-2xl": 72px,
-    "display-xl": 60px,
-    "display-lg": 48px,
-    "display-md": 36px,
-    "display-sm": 30px,
-    "display-xs": 24px,
-    "text-xl": 20px,
-    "text-lg": 18px,
-    "text-md": 16px,
-    "text-sm": 14px,
-    "text-xs": 12px
+    "display-xl": ms(7, $base, $ratio),
+    "display-lg": ms(6, $base, $ratio),
+    "display-md": ms(5, $base, $ratio),
+    "display-sm": ms(4, $base, $ratio),
+    "display-xs": ms(3, $base, $ratio),
+    "text-xl":    ms(2, $base, $ratio),
+    "text-lg":    ms(1, $base, $ratio),
+    "text-md":    $base,
+    "text-sm":    ms(-1, $base, $ratio),
+    "text-xs":    ms(-2, $base, $ratio),
 );
 $font-weights: (
     "normal": 400,
@@ -28,69 +27,45 @@ $font-weights: (
 );
 $h1: (
     selector: ".h1",
-    lg: map.get($font-sizes, "display-2xl"),
-    sm: map.get($font-sizes, "display-lg"),
+    lg: map.get($font-sizes, "display-sm"),
+    sm: map.get($font-sizes, "text-xl"),
     weight: map.get($font-weights, "bold")
 );
 $h2: (
     selector: ".h2",
-    lg: map.get($font-sizes, "display-xl"),
-    sm: map.get($font-sizes, "display-md"),
+    lg: map.get($font-sizes, "display-xs"),
+    sm: map.get($font-sizes, "text-lg"),
     weight: map.get($font-weights, "bold")
 );
 $h3: (
     selector: ".h3",
-    lg: map.get($font-sizes, "display-lg"),
-    sm: map.get($font-sizes, "display-sm"),
+    lg: map.get($font-sizes, "text-xl"),
+    sm: map.get($font-sizes, "text-md"),
     weight: map.get($font-weights, "bold")
 );
 $h4: (
     selector: ".h4",
-    lg: map.get($font-sizes, "display-md"),
-    sm: map.get($font-sizes, "display-xs"),
-    weight: map.get($font-weights, "semi-bold")
-);
-$h5: (
-    selector: ".h5",
-    lg: map.get($font-sizes, "display-sm"),
-    sm: map.get($font-sizes, "text-xl"),
-    weight: map.get($font-weights, "semi-bold")
-);
-$h6: (
-    selector: ".h6",
-    lg: map.get($font-sizes, "display-xs"),
-    sm: map.get($font-sizes, "text-lg"),
-    weight: map.get($font-weights, "semi-bold")
-);
-$subtitle1: (
-    selector: ".subtitle-1",
-    lg: map.get($font-sizes, "text-xl"),
-    sm: map.get($font-sizes, "text-md")
-);
-$subtitle2: (
-    selector: ".subtitle-2",
     lg: map.get($font-sizes, "text-lg"),
-    sm: map.get($font-sizes, "text-sm")
+    sm: map.get($font-sizes, "text-sm"),
+    weight: map.get($font-weights, "semi-bold")
 );
-$body1: (
-    selector: ".body-1",
-    lg: map.get($font-sizes, "text-sm")
+$body: (
+    selector: ".body",
+    lg: map.get($font-sizes, "text-md"),
+    sm: map.get($font-sizes, "text-sm"),
 );
-$body2: (
-    selector: ".body-2",
-    lg: map.get($font-sizes, "text-xs")
+$label: (
+    selector: ".label",
+    lg: map.get($font-sizes, "text-md"),
+    sm: map.get($font-sizes, "text-sm"),
 );
 $fonts: (
     $h1,
     $h2,
     $h3,
     $h4,
-    $h5,
-    $h6,
-    $subtitle1,
-    $subtitle2,
-    $body1,
-    $body2
+    $body,
+    $label,
 );
 $letter-spaced-elements: (
     "h1" "h2" "h3" "h4"
