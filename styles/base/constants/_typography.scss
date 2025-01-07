@@ -1,70 +1,121 @@
+@use "sass:list";
 @use "sass:map";
+@use "sass:math";
+@use "sass:meta";
 @use "../functions" as *;
+
+$base: 16px;
+$body-ratio: 1.5;
+$heading-ratio: 1.2;
+$mobile: 14px;
+
+@function get-modular-scale($scale, $base: $base) {
+    $ratio: $heading-ratio;
+
+    @if $scale <= 0 {
+        $ratio: $body-ratio;
+    }
+
+    @return ms($scale, $base, $ratio);
+}
+
+@function ms($value, $ms-base: $base, $ms-ratio: $ratio) {
+    /* stylelint-disable-next-line scss/no-global-function-names */
+    @return round(
+        nearest,
+        rems(calc($ms-base * pow($ms-ratio, $value))),
+        0.001rem
+    );
+}
+
+@function rems($values) {
+    $result: ();
+    $separator: list.separator($values);
+
+    @each $value in $values {
+        $value: $value;
+
+        @if meta.type-of($value) == "number" {
+            @if math.unit($value) == "px" {
+                $value: math.div(strip-unit($value), strip-unit($base)) * 1rem;
+            }
+            @else if math.unit($value) != "rem" and $value != 0 {
+                @warn "Cannot convert number `#{$value}` to rem units";
+            }
+        }
+        @else if meta.type-of($value) == "list" {
+            $value: rems($value);
+        }
+        @else {
+            @warn "Cannot convert value `#{$value}` to rem units";
+        }
+
+        /* stylelint-disable-next-line scss/dollar-variable-first-in-block */
+        $result: list.append($result, $value, $separator);
+    }
+
+    @return if(list.length($result) == 1, list.nth($result, 1), $result);
+}
 
 // https://www.modularscale.com/?16=&px=&1.5=
 
-$base: 16px;
-$letter-spacing-percent: 0.02rem;
-$mobile: 14px;
-$body-ratio: 1.5;
-$heading-ratio: 1.2;
-$font-sizes: (
-    "display-xl": ms(7, $base, $heading-ratio),
-    "display-lg": ms(6, $base, $heading-ratio),
-    "display-md": ms(5, $base, $heading-ratio),
-    "display-sm": ms(4, $base, $heading-ratio),
-    "display-xs": ms(3, $base, $heading-ratio),
-    "text-xl":    ms(2, $base, $heading-ratio),
-    "text-lg":    ms(1, $base, $heading-ratio),
-    "text-md":    $base,
-    "text-sm":    ms(-1, $base, $body-ratio),
-    "text-xs":    ms(-2, $base, $body-ratio),
+$scales: (
+    "7": get-modular-scale(7),
+    "6": get-modular-scale(6),
+    "5": get-modular-scale(5),
+    "4": get-modular-scale(4),
+    "3": get-modular-scale(3),
+    "2": get-modular-scale(2),
+    "1": get-modular-scale(1),
+    "0": rems($base),
+    "-1": get-modular-scale(-1),
+    "-2": get-modular-scale(-2),
 );
-$font-weights: (
-    "normal": 400,
+$weights: (
+    "bold": 700,
     "medium": 500,
+    "normal": 400,
     "semi-bold": 600,
-    "bold": 700
 );
 $h1: (
-    selector: ".h1",
-    lg: map.get($font-sizes, "display-sm"),
-    sm: map.get($font-sizes, "text-xl"),
-    weight: map.get($font-weights, "bold"),
+    lg: map.get($scales, "4"),
     ratio: $heading-ratio,
+    selector: ".h1",
+    sm: map.get($scales, "2"),
+    weight: map.get($weights, "bold"),
 );
 $h2: (
-    selector: ".h2",
-    lg: map.get($font-sizes, "display-xs"),
-    sm: map.get($font-sizes, "text-lg"),
-    weight: map.get($font-weights, "bold"),
+    lg: map.get($scales, "3"),
     ratio: $heading-ratio,
+    selector: ".h2",
+    sm: map.get($scales, "1"),
+    weight: map.get($weights, "bold"),
 );
 $h3: (
-    selector: ".h3",
-    lg: map.get($font-sizes, "text-xl"),
-    sm: map.get($font-sizes, "text-md"),
-    weight: map.get($font-weights, "bold"),
+    lg: map.get($scales, "2"),
     ratio: $heading-ratio,
+    selector: ".h3",
+    sm: map.get($scales, "0"),
+    weight: map.get($weights, "bold"),
 );
 $h4: (
-    selector: ".h4",
-    lg: map.get($font-sizes, "text-lg"),
-    sm: map.get($font-sizes, "text-sm"),
-    weight: map.get($font-weights, "semi-bold"),
+    lg: map.get($scales, "1"),
     ratio: $heading-ratio,
+    selector: ".h4",
+    sm: map.get($scales, "-1"),
+    weight: map.get($weights, "semi-bold"),
 );
 $body: (
-    selector: ".body",
-    lg: map.get($font-sizes, "text-md"),
-    sm: map.get($font-sizes, "text-sm"),
+    lg: map.get($scales, "0"),
     ratio: $body-ratio,
+    selector: ".body",
+    sm: map.get($scales, "-1"),
 );
 $label: (
-    selector: ".label",
-    lg: map.get($font-sizes, "text-md"),
-    sm: map.get($font-sizes, "text-sm"),
+    lg: map.get($scales, "0"),
     ratio: $body-ratio,
+    selector: ".label",
+    sm: map.get($scales, "-1"),
 );
 $fonts: (
     $h1,
