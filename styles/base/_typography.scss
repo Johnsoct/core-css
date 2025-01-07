@@ -2,13 +2,7 @@
 @use "sass:map";
 @use "sass:meta";
 @use "constants" as *;
-@use "functions" as *;
-
-// Typography functions and mixins
 @import "https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap";
-
-// TODO: add variables for line-heights if we aren't
-// going to follow a fixed ratio between size and line-height
 
 @mixin font-family {
     font-family: "Inter", sans-serif;
@@ -39,7 +33,7 @@ span,
 textarea,
 time {
     @include font-family;
-    font-weight: map.get($font-weights, "normal");
+    font-weight: map.get($weights, "normal");
     margin: 0;
     padding: 0;
 }
@@ -70,13 +64,13 @@ a {
 }
 
 button {
-    font-size: map.get($font-sizes, "text-md");
-    line-height: rems(map.get($font-sizes, "text-md") * $ratio);
+    font-size: map.get($scales, "0");
+    line-height: rems(map.get($scales, "0") * $body-ratio);
 }
 
 @each $map in $fonts {
     $lg: map.get($map, "lg");
-    $mixin: map.get($map, "mixin");
+    $line-height-ratio: map.get($map, "ratio");
     $selector: map.get($map, "selector");
     $sm: map.get($map, "sm");
     $weight: map.get($map, "weight");
@@ -86,49 +80,52 @@ button {
     }
 
     @if not $weight {
-        $weight: map.get($font-weights, "normal");
+        $weight: map.get($weights, "normal");
     }
 
-    // @debug "MAP VALUES MAP VALUES #{$selector}, #{$lg}, #{$sm}, #{$weight}"
+    @debug "MAP VALUES MAP VALUES #{$selector}, #{$lg}, #{$sm}, #{$weight}, #{$line-height-ratio}";
 
     #{$selector} {
-        font-size: rems($lg);
+        font-size: $lg;
         font-weight: $weight;
-
-        @if list.index($letter-spaced-elements, $selector) {
-            letter-spacing: $letter-spacing-percent;
-        }
-        line-height: rems($lg * $ratio);
+        line-height: calc($lg * $line-height-ratio);
         margin: 0 auto;
-        padding: rems($lg * $ratio) rems($lg);
+        padding: 0 auto;
 
         @media #{$tablet-large-and-down} {
-            font-size: rems($sm);
-            line-height: rems($sm * $ratio);
-            padding: rems($sm * $ratio) rems($sm);
+            font-size: $sm;
+            line-height: calc($sm * $line-height-ratio);
         }
     }
-
-    // Font-weights
 }
 
+/*******************
+FONT WEIGHTS
+*******************/
+
 .fw-bold {
-    font-weight: map.get($font-weights, "bold");
+    font-weight: map.get($weights, "bold");
 }
 
 .fw-med {
-    font-weight: map.get($font-weights, "medium");
+    font-weight: map.get($weights, "medium");
 }
 
 .fw-reg {
-    font-weight: map.get($font-weights, "normal");
+    font-weight: map.get($weights, "normal");
 }
 
 .fw-semi-bold {
-    font-weight: map.get($font-weights, "semi-bold");
+    font-weight: map.get($weights, "semi-bold");
 }
 
-// Font modifiers .capitalize { text-transform: capitalize !important; }
+/*******************
+FONT MODIFIERS
+*******************/
+
+.capitalize {
+    text-transform: capitalize !important;
+}
 
 .center {
     text-align: center !important;

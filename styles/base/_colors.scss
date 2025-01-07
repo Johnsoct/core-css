@@ -1,393 +1,252 @@
-$app-bg: #edeef1;
-$base-white: #ffffff;
-$base-black: #000000;
-$border: #d0d5dd;
-$error-25-bg: #fffbfa;
-$error-25-color: #b42318;
-$error-50-bg: #fef3f2;
-$error-50-color: #b42318;
-$error-100-bg: #fee4e2;
-$error-100-color: #b42318;
-$error-200-bg: #fecdca;
-$error-200-color: #b42318;
-$error-300-bg: #fda29b;
-$error-300-color: #ffffff;
-$error-400-bg: #f97066;
-$error-400-color: #ffffff;
-$error-500-bg: #f04438;
-$error-500-color: #ffffff;
-$error-600-bg: #d92d20;
-$error-600-color: #ffffff;
-$error-700-bg: #b42318;
-$error-700-color: #ffffff;
-$error-800-bg: #912d17;
-$error-800-color: #ffffff;
-$error-900-bg: #7a271a;
-$error-900-color: #ffffff;
+@use "sass:color";
+@use "sass:map";
 
-@mixin error-25 {
-    background-color: $error-25-bg;
-    color: $error-25-color;
+$base: (
+    "black": #222222,
+    "body": #edeef1,
+    "border": #d0d5dd,
+    "danger": #b22222,
+    "emphasis": #ef233c,
+    "info": #7096c2,
+    "primary": #2b2d42,
+    "secondary": #8d99ae,
+    "success": #66b367,
+    "tertiary": #edf2f4,
+    "warning": #e6d80f,
+    "white": #ffffff,
+);
+$color: (
+    "black": (
+        "100": (
+            "background": color.mix(white, map.get($base, "black"), $weight: 60%),
+            "color": map.get($base, "black"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "black"), $weight: 45%),
+            "color": map.get($base, "black"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "black"), $weight: 30%),
+            "color": map.get($base, "white"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "black"), $weight: 15%),
+            "color": map.get($base, "white"),
+        ),
+        "500": (
+            "background": map.get($base, "black"),
+            "color": map.get($base, "white"),
+        ),
+    ),
+    "danger": (
+        "100": (
+            "background": color.mix(white, map.get($base, "danger"), $weight: 80%),
+            "color": map.get($base, "black"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "danger"), $weight: 60%),
+            "color": map.get($base, "black"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "danger"), $weight: 40%),
+            "color": map.get($base, "black"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "danger"), $weight: 20%),
+            "color": map.get($base, "white"),
+        ),
+        "500": (
+            "background": map.get($base, "danger"),
+            "color": map.get($base, "white"),
+        ),
+    ),
+    "emphasis": (
+        "100": (
+            "background": color.mix(white, map.get($base, "emphasis"), $weight: 80%),
+            "color": map.get($base, "black"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "emphasis"), $weight: 60%),
+            "color": map.get($base, "black"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "emphasis"), $weight: 40%),
+            "color": map.get($base, "black"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "emphasis"), $weight: 20%),
+            "color": map.get($base, "black"),
+        ),
+        "500": (
+            "background": map.get($base, "emphasis"),
+            "color": map.get($base, "white"),
+        ),
+    ),
+    "info": (
+        "100": (
+            "background": color.mix(white, map.get($base, "info"), $weight: 80%),
+            "color": map.get($base, "black"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "info"), $weight: 60%),
+            "color": map.get($base, "black"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "info"), $weight: 40%),
+            "color": map.get($base, "black"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "info"), $weight: 20%),
+            "color": map.get($base, "black"),
+        ),
+        "500": (
+            "background": map.get($base, "info"),
+            "color": map.get($base, "black"),
+        ),
+    ),
+    "primary": (
+        "100": (
+            "background": color.mix(white, map.get($base, "primary"), $weight: 80%),
+            "color": map.get($base, "black"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "primary"), $weight: 60%),
+            "color": map.get($base, "black"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "primary"), $weight: 40%),
+            "color": map.get($base, "black"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "primary"), $weight: 20%),
+            "color": map.get($base, "white"),
+        ),
+        "500": (
+            "background": map.get($base, "primary"),
+            "color": map.get($base, "white"),
+        ),
+    ),
+    "secondary": (
+        "100": (
+            "background": color.mix(white, map.get($base, "secondary"), $weight: 80%),
+            "color": map.get($base, "black"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "secondary"), $weight: 60%),
+            "color": map.get($base, "black"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "secondary"), $weight: 40%),
+            "color": map.get($base, "black"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "secondary"), $weight: 20%),
+            "color": map.get($base, "black"),
+        ),
+        "500": (
+            "background": map.get($base, "secondary"),
+            "color": map.get($base, "black"),
+        ),
+    ),
+    "success": (
+        "100": (
+            "background": color.mix(white, map.get($base, "success"), $weight: 80%),
+            "color": map.get($base, "black"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "success"), $weight: 60%),
+            "color": map.get($base, "black"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "success"), $weight: 40%),
+            "color": map.get($base, "black"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "success"), $weight: 20%),
+            "color": map.get($base, "black"),
+        ),
+        "500": (
+            "background": map.get($base, "success"),
+            "color": map.get($base, "black"),
+        ),
+    ),
+    "tertiary": (
+        "100": (
+            "background": color.mix(white, map.get($base, "tertiary"), $weight: 80%),
+            "color": map.get($base, "black"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "tertiary"), $weight: 60%),
+            "color": map.get($base, "black"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "tertiary"), $weight: 40%),
+            "color": map.get($base, "black"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "tertiary"), $weight: 20%),
+            "color": map.get($base, "black"),
+        ),
+        "500": (
+            "background": map.get($base, "tertiary"),
+            "color": map.get($base, "black"),
+        ),
+    ),
+    "warning": (
+        "100": (
+            "background": color.mix(white, map.get($base, "warning"), $weight: 80%),
+            "color": map.get($base, "black"),
+        ),
+        "200": (
+            "background": color.mix(white, map.get($base, "warning"), $weight: 60%),
+            "color": map.get($base, "black"),
+        ),
+        "300": (
+            "background": color.mix(white, map.get($base, "warning"), $weight: 40%),
+            "color": map.get($base, "black"),
+        ),
+        "400": (
+            "background": color.mix(white, map.get($base, "warning"), $weight: 20%),
+            "color": map.get($base, "black"),
+        ),
+        "500": (
+            "background": map.get($base, "warning"),
+            "color": map.get($base, "black"),
+        ),
+    ),
+);
+
+@mixin color($category, $level) {
+    background-color: map.get($color, $category, $level, "background");
+    color: map.get($color, $category, $level, "color");
 }
 
-@mixin error-50 {
-    background-color: $error-50-bg;
-    color: $error-50-color;
-}
+/*******************
+CLASS GENERATION
+*******************/
+@each $category, $value in $color {
+    $levels: map.keys($value);
 
-@mixin error-100 {
-    background-color: $error-100-bg;
-    color: $error-100-color;
-}
+    @each $level in $levels {
+        $b: map.get($color, $category, $level, "background");
+        $c: map.get($color, $category, $level, "color");
 
-@mixin error-200 {
-    background-color: $error-200-bg;
-    color: $error-200-color;
-}
+        /* @debug "CATEGORY: #{$category}; BACKGROUND: #{$b}; COLOR: #{$c}"; */
 
-@mixin error-300 {
-    background-color: $error-300-bg;
-    color: $error-300-color;
-}
+        // .danger-100
+        .#{$category}-#{$level} {
+            background-color: $b;
+            color: $c;
+        }
 
-@mixin error-400 {
-    background-color: $error-400-bg;
-    color: $error-400-color;
-}
+        // .bg-danger-100
+        .bg-#{$category}-#{$level} {
+            background-color: $b;
+        }
 
-@mixin error-500 {
-    background-color: $error-500-bg;
-    color: $error-500-color;
-}
-
-@mixin error-600 {
-    background-color: $error-600-bg;
-    color: $error-600-color;
-}
-
-@mixin error-700 {
-    background-color: $error-700-bg;
-    color: $error-700-color;
-}
-
-@mixin error-800 {
-    background-color: $error-800-bg;
-    color: $error-800-color;
-}
-
-@mixin error-900 {
-    background-color: $error-900-bg;
-    color: $error-900-color;
-}
-
-$primary-25-bg: #e6eeee;
-$primary-25-color: #024742;
-$primary-50-bg: #e6eeee;
-$primary-50-color: #024742;
-$primary-100-bg: #e6eeee;
-$primary-100-color: #024742;
-$primary-200-bg: #cddebb;
-$primary-200-color: #024742;
-$primary-300-bg: #b3cdcb;
-$primary-300-color: #024742;
-$primary-400-bg: #9abdba;
-$primary-400-color: #024742;
-$primary-500-bg: #689b98;
-$primary-500-color: #ffffff;
-$primary-600-bg: #035953;
-$primary-600-color: #ffffff;
-$primary-700-bg: #024742;
-$primary-700-color: #ffffff;
-$primary-800-bg: #024742;
-$primary-800-color: #ffffff;
-$primary-900-bg: #012421;
-$primary-900-color: #ffffff;
-
-@mixin primary-25 {
-    background-color: $primary-25-bg;
-    color: $primary-25-color;
-}
-
-@mixin primary-50 {
-    background-color: $primary-50-bg;
-    color: $primary-50-color;
-}
-
-@mixin primary-100 {
-    background-color: $primary-100-bg;
-    color: $primary-100-color;
-}
-
-@mixin primary-200 {
-    background-color: $primary-200-bg;
-    color: $primary-200-color;
-}
-
-@mixin primary-300 {
-    background-color: $primary-300-bg;
-    color: $primary-300-color;
-}
-
-@mixin primary-400 {
-    background-color: $primary-400-bg;
-    color: $primary-400-color;
-}
-
-@mixin primary-500 {
-    background-color: $primary-500-bg;
-    color: $primary-500-color;
-}
-
-@mixin primary-600 {
-    background-color: $primary-600-bg;
-    color: $primary-600-color;
-}
-
-@mixin primary-700 {
-    background-color: $primary-700-bg;
-    color: $primary-700-color;
-}
-
-@mixin primary-800 {
-    background-color: $primary-800-bg;
-    color: $primary-800-color;
-}
-
-@mixin primary-900 {
-    background-color: $primary-900-bg;
-    color: $primary-900-color;
-}
-
-$secondary-25-bg: #fcfcfd;
-$secondary-25-color: #667085;
-$secondary-50-bg: #f9fafb;
-$secondary-50-color: #667085;
-$secondary-100-bg: #f2f4f7;
-$secondary-100-color: #667085;
-$secondary-200-bg: #eaecf0;
-$secondary-200-color: #667085;
-$secondary-300-bg: #d0d5dd;
-$secondary-300-color: #ffffff;
-$secondary-400-bg: #98a2b3;
-$secondary-400-color: #ffffff;
-$secondary-500-bg: #667085;
-$secondary-500-color: #ffffff;
-$secondary-600-bg: #475467;
-$secondary-600-color: #ffffff;
-$secondary-700-bg: #344054;
-$secondary-700-color: #ffffff;
-$secondary-800-bg: #1d2939;
-$secondary-800-color: #ffffff;
-$secondary-900-bg: #101828;
-$secondary-900-color: #ffffff;
-
-@mixin secondary-25 {
-    background-color: $secondary-25-bg;
-    color: $secondary-25-color;
-}
-
-@mixin secondary-50 {
-    background-color: $secondary-50-bg;
-    color: $secondary-50-color;
-}
-
-@mixin secondary-100 {
-    background-color: $secondary-100-bg;
-    color: $secondary-100-color;
-}
-
-@mixin secondary-200 {
-    background-color: $secondary-200-bg;
-    color: $secondary-200-color;
-}
-
-@mixin secondary-300 {
-    background-color: $secondary-300-bg;
-    color: $secondary-300-color;
-}
-
-@mixin secondary-400 {
-    background-color: $secondary-400-bg;
-    color: $secondary-400-color;
-}
-
-@mixin secondary-500 {
-    background-color: $secondary-500-bg;
-    color: $secondary-500-color;
-}
-
-@mixin secondary-600 {
-    background-color: $secondary-600-bg;
-    color: $secondary-600-color;
-}
-
-@mixin secondary-700 {
-    background-color: $secondary-700-bg;
-    color: $secondary-700-color;
-}
-
-@mixin secondary-800 {
-    background-color: $secondary-800-bg;
-    color: $secondary-800-color;
-}
-
-@mixin secondary-900 {
-    background-color: $secondary-900-bg;
-    color: $secondary-900-color;
-}
-
-$success-25-bg: #f6fef9;
-$success-25-color: #027a48;
-$success-50-bg: #ecfdf3;
-$success-50-color: #027a48;
-$success-100-bg: #d1fadf;
-$success-100-color: #027a48;
-$success-200-bg: #a6f4c5;
-$success-200-color: #027a48;
-$success-300-bg: #6ce9a6;
-$success-300-color: #ffffff;
-$success-400-bg: #32d583;
-$success-400-color: #ffffff;
-$success-500-bg: #12b76a;
-$success-500-color: #ffffff;
-$success-600-bg: #039855;
-$success-600-color: #ffffff;
-$success-700-bg: #027a4b;
-$success-700-color: #ffffff;
-$success-800-bg: #05603a;
-$success-800-color: #ffffff;
-$success-900-bg: #054f31;
-$success-900-color: #ffffff;
-
-@mixin success-25 {
-    background-color: $success-25-bg;
-    color: $success-25-color;
-}
-
-@mixin success-50 {
-    background-color: $success-50-bg;
-    color: $success-50-color;
-}
-
-@mixin success-100 {
-    background-color: $success-100-bg;
-    color: $success-100-color;
-}
-
-@mixin success-200 {
-    background-color: $success-200-bg;
-    color: $success-200-color;
-}
-
-@mixin success-300 {
-    background-color: $success-300-bg;
-    color: $success-300-color;
-}
-
-@mixin success-400 {
-    background-color: $success-400-bg;
-    color: $success-400-color;
-}
-
-@mixin success-500 {
-    background-color: $success-500-bg;
-    color: $success-500-color;
-}
-
-@mixin success-600 {
-    background-color: $success-600-bg;
-    color: $success-600-color;
-}
-
-@mixin success-700 {
-    background-color: $success-700-bg;
-    color: $success-700-color;
-}
-
-@mixin success-800 {
-    background-color: $success-800-bg;
-    color: $success-800-color;
-}
-
-@mixin success-900 {
-    background-color: $success-900-bg;
-    color: $success-900-color;
-}
-
-$warning-25-bg: #fffcf5;
-$warning-25-color: #b54708;
-$warning-50-bg: #fffaeb;
-$warning-50-color: #b54708;
-$warning-100-bg: #fef0c7;
-$warning-100-color: #b54708;
-$warning-200-bg: #fedf89;
-$warning-200-color: #b54708;
-$warning-300-bg: #fec84b;
-$warning-300-color: #ffffff;
-$warning-400-bg: #fdb022;
-$warning-400-color: #ffffff;
-$warning-500-bg: #f7a326;
-$warning-500-color: #ffffff;
-$warning-600-bg: #dc6803;
-$warning-600-color: #ffffff;
-$warning-700-bg: #b54708;
-$warning-700-color: #ffffff;
-$warning-800-bg: #93370d;
-$warning-800-color: #ffffff;
-$warning-900-bg: #7a2e0e;
-$warning-900-color: #ffffff;
-
-@mixin warning-25 {
-    background-color: $warning-25-bg;
-    color: $warning-25-color;
-}
-
-@mixin warning-50 {
-    background-color: $warning-50-bg;
-    color: $warning-50-color;
-}
-
-@mixin warning-100 {
-    background-color: $warning-100-bg;
-    color: $warning-100-color;
-}
-
-@mixin warning-200 {
-    background-color: $warning-200-bg;
-    color: $warning-200-color;
-}
-
-@mixin warning-300 {
-    background-color: $warning-300-bg;
-    color: $warning-300-color;
-}
-
-@mixin warning-400 {
-    background-color: $warning-400-bg;
-    color: $warning-400-color;
-}
-
-@mixin warning-500 {
-    background-color: $warning-500-bg;
-    color: $warning-500-color;
-}
-
-@mixin warning-600 {
-    background-color: $warning-600-bg;
-    color: $warning-600-color;
-}
-
-@mixin warning-700 {
-    background-color: $warning-700-bg;
-    color: $warning-700-color;
-}
-
-@mixin warning-800 {
-    background-color: $warning-800-bg;
-    color: $warning-800-color;
-}
-
-@mixin warning-900 {
-    background-color: $warning-900-bg;
-    color: $warning-900-color;
+        // .color-danger-100
+        .color-#{$category}-#{$level} {
+            color: $c;
+        }
+    }
 }

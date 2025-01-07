@@ -1,3 +1,8 @@
+@use "./colors" as *;
+@use "./constants" as *;
+@use "./spacing" as *;
+@use "./mixins" as *;
+
 .tooltip {
     $block: &;
     $space-from-parent: $spacing-5;
