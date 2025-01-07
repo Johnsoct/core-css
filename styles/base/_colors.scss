@@ -222,22 +222,6 @@ $color: (
 }
 
 /*******************
-DEBUG
-*******************/
-/* stylelint-disable scss/comment-no-empty */
-// @each $category, $value in $color {
-//     $levels: map.keys($value);
-//
-//     @each $level in $levels {
-//         $b: map.get($color, $category, $level, "background");
-//         $c: map.get($color, $category, $level, "color");
-//
-//         @debug "CATEGORY: #{$category}; BACKGROUND: #{$b}; COLOR: #{$c}";
-//     }
-// }
-/* stylelint-enable scss/comment-no-empty */
-
-/*******************
 CLASS GENERATION
 *******************/
 @each $category, $value in $color {
@@ -246,6 +230,8 @@ CLASS GENERATION
     @each $level in $levels {
         $b: map.get($color, $category, $level, "background");
         $c: map.get($color, $category, $level, "color");
+
+        /* @debug "CATEGORY: #{$category}; BACKGROUND: #{$b}; COLOR: #{$c}"; */
 
         // .danger-100
         .#{$category}-#{$level} {
