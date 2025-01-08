@@ -4,12 +4,12 @@
 @use "sass:meta";
 @use "../functions" as *;
 
-$base: 16px;
+$desktop: 16px;
 $body-ratio: 1.5;
 $heading-ratio: 1.2;
 $mobile: 14px;
 
-@function get-modular-scale($scale, $base: $base) {
+@function get-modular-scale($scale, $base: $desktop) {
     $ratio: $heading-ratio;
 
     @if $scale <= 0 {
@@ -19,7 +19,7 @@ $mobile: 14px;
     @return ms($scale, $base, $ratio);
 }
 
-@function ms($value, $ms-base: $base, $ms-ratio: $ratio) {
+@function ms($value, $ms-base: $desktop, $ms-ratio: $ratio) {
     /* stylelint-disable-next-line scss/no-global-function-names */
     @return round(
         nearest,
@@ -37,7 +37,7 @@ $mobile: 14px;
 
         @if meta.type-of($value) == "number" {
             @if math.unit($value) == "px" {
-                $value: math.div(strip-unit($value), strip-unit($base)) * 1rem;
+                $value: math.div(strip-unit($value), strip-unit($desktop)) * 1rem;
             }
             @else if math.unit($value) != "rem" and $value != 0 {
                 @warn "Cannot convert number `#{$value}` to rem units";
@@ -67,7 +67,7 @@ $scales: (
     "3": get-modular-scale(3),
     "2": get-modular-scale(2),
     "1": get-modular-scale(1),
-    "0": rems($base),
+    "0": rems($desktop),
     "-1": get-modular-scale(-1),
     "-2": get-modular-scale(-2),
 );

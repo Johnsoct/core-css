@@ -9,7 +9,11 @@
 }
 
 body {
-    font-size: $base;
+    font-size: $desktop;
+
+    @media #{$tablet-large-and-down} {
+        font-size: $mobile;
+    }
 }
 
 a,
@@ -83,7 +87,7 @@ button {
         $weight: map.get($weights, "normal");
     }
 
-    @debug "MAP VALUES MAP VALUES #{$selector}, #{$lg}, #{$sm}, #{$weight}, #{$line-height-ratio}";
+    // @debug "MAP VALUES MAP VALUES #{$selector}, #{$lg}, #{$sm}, #{$weight}, #{$line-height-ratio}";
 
     #{$selector} {
         font-size: $lg;
