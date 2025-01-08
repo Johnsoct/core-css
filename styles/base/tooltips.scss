@@ -141,8 +141,7 @@
         }
 
         &::before {
-            background-color: map.get($base-color, "secondary");
-            color: map.get($base-color, "white");
+            @include color($category: "secondary", $level: "500");
         }
     }
 
@@ -165,8 +164,7 @@
         }
 
         &::before {
-            background-color: map.get($base-color-shades, "secondary", "200", "background");
-            color: map.get($base-color-shades, "secondary", "400", "background");
+            @include color($category: "secondary", $level: "200");
         }
     }
 }
