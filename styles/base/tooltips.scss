@@ -1,18 +1,20 @@
+@use "sass:map";
 @use "./colors" as *;
 @use "./constants" as *;
 @use "./spacing" as *;
 @use "./mixins" as *;
+@use "./constants/typography" as *;
 
 .tooltip {
     $block: &;
-    $space-from-parent: $spacing-5;
+    $space-from-parent: get-modular-scale(0);
 
     @include flex($justify: center, $align: center);
-    border-bottom: rems(1px) dashed $border;
+    border-bottom: rems(1px) dashed map.get($base-color, "border");
     position: relative;
 
     &::after {
-        border: rems(8px) solid $primary-400-bg;
+        border: rems(8px) solid map.get($base-color, "body");
         content: "";
         display: none;
         opacity: 0;
@@ -66,7 +68,7 @@
         content: attr(data-tooltip);
         display: none;
         opacity: 0;
-        padding: $spacing-2 $spacing-3;
+        padding: get-modular-scale(-2) get-modular-scale(-1);
         position: absolute;
         transition: 0.3s opacity;
         width: max-content;
@@ -123,48 +125,46 @@
     &--dark {
 
         &.bottom::after {
-            border-color: transparent transparent $secondary-900-bg transparent;
+            border-color: transparent transparent map.get($base-color, "secondary") transparent;
         }
 
         &.left::after {
-            border-color: transparent transparent transparent $secondary-900-bg;
+            border-color: transparent transparent transparent map.get($base-color, "secondary");
         }
 
         &.right::after {
-            border-color: transparent $secondary-900-bg transparent transparent;
+            border-color: transparent map.get($base-color, "secondary") transparent transparent;
         }
 
         &.top::after {
-            border-color: $secondary-900-bg transparent transparent transparent;
+            border-color: map.get($base-color, "secondary") transparent transparent transparent;
         }
 
         &::before {
-            background-color: $secondary-900-bg;
-            color: $base-white;
+            @include color($category: "secondary", $level: "500");
         }
     }
 
     &--light {
 
         &.bottom::after {
-            border-color: transparent transparent $secondary-200-bg transparent;
+            border-color: transparent transparent map.get($base-color-shades, "secondary", "200", "background") transparent;
         }
 
         &.left::after {
-            border-color: transparent transparent transparent $secondary-200-bg;
+            border-color: transparent transparent transparent map.get($base-color-shades, "secondary", "200", "background");
         }
 
         &.right::after {
-            border-color: transparent $secondary-200-bg transparent transparent;
+            border-color: transparent map.get($base-color-shades, "secondary", "200", "background") transparent transparent;
         }
 
         &.top::after {
-            border-color: $secondary-200-bg transparent transparent transparent;
+            border-color: map.get($base-color-shades, "secondary", "200", "background") transparent transparent transparent;
         }
 
         &::before {
-            background-color: $secondary-200-bg;
-            color: $secondary-800-bg;
+            @include color($category: "secondary", $level: "200");
         }
     }
 }
