@@ -3,15 +3,11 @@ import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    base: '/',
+    base: '/core-css/',
 
     build: {
         emptyOutDir: true,
-        lib: {
-            entry: path.resolve(__dirname, 'src/lib/main.ts'),
-            name: 'core-css',
-        },
-        outDir: 'dist/lib',
+        outDir: '../dist/site',
         minify: 'esbuild',
         rollupOptions: {
             external: [ '' ],
@@ -29,7 +25,11 @@ export default defineConfig({
 
     resolve: {
         alias: {
-            '@styles': path.resolve(__dirname, 'src/lib/styles'),
+            // This is needed to ensure main.ts' use of @styles from vite.config.lib.ts
+            // works when we're building site
+            '@styles': path.resolve(__dirname, 'src/lib/styles/'),
         },
     },
+
+    root: 'src',
 });
