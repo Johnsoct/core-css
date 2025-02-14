@@ -1,12 +1,21 @@
 {
-    "name": "core-css",
+    "name": "@chrisjohnsoct/core-css",
     "version": "1.0.0",
-    "description": "Core CSS framework for my personal projects",
+    "description": "Core CSS library for my personal projects",
+    "author": "Chris Johnson",
+    "license": "MIT",
     "type": "module",
-    "main": "./src/main.ts",
-    "exports": {
-        ".": "./dist/core-css.css"
+    "repository": "https://github.com/Johnsoct/core-css.git",
+    "publishConfig": {
+        "access": "public",
+        "@chrisjohnsoct:registry": "https://registry.npmjs.org"
     },
+    "exports": {
+        ".": "./dist/lib/core-css.css"
+    },
+    "files": [
+        "dist/lib"
+    ],
     "keywords": [
         "css",
         "css3",
@@ -15,13 +24,16 @@
         "libary",
         "framework"
     ],
-    "author": "Chris Johnson",
-    "license": "MIT",
+    "scripts": {
+        "build:lib": "vite build --config vite.config.lib.ts",
+        "build:site": "vite build --config vite.config.site.ts"
+    },
     "devDependencies": {
         "@eslint/js": "^9.17.0",
         "@types/node": "^22.10.5",
         "eslint": "^9.17.0",
         "globals": "^15.14.0",
+        "sass-embedded": "^1.83.4",
         "stylelint": "^16.12.0",
         "stylelint-config-standard": "^36.0.1",
         "typescript-eslint": "^8.19.0",
