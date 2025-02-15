@@ -2,7 +2,7 @@
 @use "sass:map";
 @use "sass:math";
 @use "sass:meta";
-@use "../functions" as *;
+@use "../utilities/functions" as *;
 
 $desktop: 16px;
 $body-ratio: 1.5;

@@ -1,7 +1,7 @@
 @use "sass:list";
 @use "sass:map";
 @use "sass:meta";
-@use "constants" as *;
+@use "../constants" as *;
 @import "https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap";
 
 @mixin font-family {

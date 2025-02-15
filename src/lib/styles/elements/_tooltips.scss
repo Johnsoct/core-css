@@ -1,9 +1,8 @@
 @use "sass:map";
-@use "./colors" as *;
-@use "./constants" as *;
-@use "./spacing" as *;
-@use "./mixins" as *;
-@use "./constants/typography" as *;
+@use "../constants/colors" as *;
+@use "../constants/radii" as *;
+@use "../layout" as *;
+@use "../utilities/mixins" as *;
 
 .tooltip {
     $block: &;
