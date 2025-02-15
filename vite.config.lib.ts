@@ -8,7 +8,7 @@ export default defineConfig({
     build: {
         emptyOutDir: true,
         lib: {
-            entry: path.resolve(__dirname, 'src/lib/main.ts'),
+            entry: path.resolve(__dirname, 'src/lib/main.scss'),
             name: 'core-css',
         },
         outDir: 'dist/lib',
