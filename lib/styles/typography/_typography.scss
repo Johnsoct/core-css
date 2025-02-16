@@ -3,7 +3,9 @@
 @use "sass:meta";
 @use "../constants/breakpoints.scss" as *;
 @use "../constants/typography.scss" as *;
-@import "https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap";
+
+// @import "https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap";
 
 @mixin font-family {
     font-family: "Inter", sans-serif;
