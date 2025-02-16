@@ -28,10 +28,10 @@
         "lib:build": "npm run lib:compile && npm run lib:minify",
         "lib:compile": "sass --style=expanded --source-map lib/index.scss:lib/index.css",
         "lib:minify": "postcss lib/index.css --no-map --use cssnano --output dist/lib/index.min.css",
-        "lib:minify-on-change": "chokidar 'dist/lib/index.css' -c 'npm run lib:minify'",
+        "lib:minify-on-change": "chokidar 'lib/index.css' -c 'npm run lib:minify'",
         "lib:watch": "sass --style=expanded --source-map --watch lib/index.scss:lib/index.css",
         "site:build": "vite build --config vite.config.site.ts",
-        "site:dev": "npm-run-all lib:watch lib:minify-on-change vite:dev",
+        "site:dev": "npm-run-all --parallel lib:watch lib:minify-on-change vite:dev",
         "site:preview": "npm run lib:build && npm run vite:preview",
         "vite:dev": "vite --config vite.config.site.ts",
         "vite:preview": "vite preview --config vite.config.site.ts"
