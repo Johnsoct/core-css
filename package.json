@@ -8,7 +8,7 @@
     "repository": "https://github.com/Johnsoct/core-css.git",
     "publishConfig": {
         "access": "public",
-        "@chrisjohnsoct:registry": "https://registry.npmjs.org"
+        "@registry:chrisjohnsoct": "https://registry.npmjs.org"
     },
     "exports": {
         ".": "./dist/lib/core-css.css"
@@ -25,11 +25,16 @@
         "framework"
     ],
     "scripts": {
-        "build:lib": "sass --style=expanded --no-source-map lib/main.scss dist/lib/index.css",
-        "build:site": "vite build --config vite.config.site.ts",
-        "dev:lib": "sass --style=expanded --source-map lib/main.scss src/index.css",
-        "dev:site": "npm run build:lib && npm run minify:lib && vite --config --config vite.config.site.ts",
-        "minify:lib": "postcss dist/lib/index.css --no-map --use cssnano --output dist/lib/index.min.css"
+        "lib:build": "npm run lib:compile && npm run lib:minify",
+        "lib:compile": "sass --style=expanded --source-map lib/index.scss:lib/index.css",
+        "lib:minify": "postcss lib/index.css --no-map --use cssnano --output dist/lib/index.min.css",
+        "lib:minify-on-change": "chokidar 'dist/lib/index.css' -c 'npm run lib:minify'",
+        "lib:watch": "sass --style=expanded --source-map --watch lib/index.scss:lib/index.css",
+        "site:build": "vite build --config vite.config.site.ts",
+        "site:dev": "npm-run-all lib:watch lib:minify-on-change vite:dev",
+        "site:preview": "npm run lib:build && npm run vite:preview",
+        "vite:dev": "vite --config vite.config.site.ts",
+        "vite:preview": "vite preview --config vite.config.site.ts"
     },
     "devDependencies": {
         "@eslint/js": "^9.17.0",
@@ -39,11 +44,15 @@
         "cssnano": "^7.0.6",
         "eslint": "^9.17.0",
         "globals": "^15.14.0",
+        "npm-run-all2": "^7.0.2",
         "postcss-cli": "^11.0.0",
         "sass-embedded": "^1.83.4",
         "stylelint": "^16.12.0",
         "stylelint-config-standard": "^36.0.1",
         "typescript-eslint": "^8.19.0",
         "vite": "^6.0.7"
+    },
+    "dependencies": {
+        "chokidar-cli": "^3.0.0"
     }
 }
