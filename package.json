@@ -25,6 +25,9 @@
         "framework"
     ],
     "scripts": {
+        "docs:dev": "vitepress dev site",
+        "docs:build": "vitepress build site",
+        "docs:preview": "vitepress preview site",
         "lib:build": "npm run lib:compile && npm run lib:minify",
         "lib:compile": "sass --style=expanded --source-map lib/index.scss:lib/index.css",
         "lib:minify": "postcss lib/index.css --no-map --use cssnano --output dist/lib/index.min.css",

@@ -6,7 +6,8 @@
 
 @mixin font-family {
     // Downloaded via <link>
-    font-family: "Inter", sans-serif;
+    // TODO: remove webdings
+    font-family: "Inter", "webdings", sans-serif;
 }
 
 body {

@@ -976,7 +976,7 @@ pre,
 span,
 textarea,
 time {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "webdings", sans-serif;
   font-weight: 400;
   margin: 0;
   padding: 0;
