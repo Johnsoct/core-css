@@ -25,16 +25,21 @@
         "framework"
     ],
     "scripts": {
-        "build:lib": "vite build --config vite.config.lib.ts",
+        "build:lib": "sass --style=expanded --no-source-map lib/main.scss dist/lib/index.css",
         "build:site": "vite build --config vite.config.site.ts",
-        "dev:lib": "vite --config --config vite.config.lib.ts",
-        "dev:site": "vite --config --config vite.config.site.ts"
+        "dev:lib": "sass --style=expanded --source-map lib/main.scss src/index.css",
+        "dev:site": "npm run build:lib && npm run minify:lib && vite --config --config vite.config.site.ts",
+        "minify:lib": "postcss dist/lib/index.css --no-map --use cssnano --output dist/lib/index.min.css"
     },
     "devDependencies": {
         "@eslint/js": "^9.17.0",
+        "@html-eslint/eslint-plugin": "^0.35.0",
+        "@html-eslint/parser": "^0.35.0",
         "@types/node": "^22.10.5",
+        "cssnano": "^7.0.6",
         "eslint": "^9.17.0",
         "globals": "^15.14.0",
+        "postcss-cli": "^11.0.0",
         "sass-embedded": "^1.83.4",
         "stylelint": "^16.12.0",
         "stylelint-config-standard": "^36.0.1",

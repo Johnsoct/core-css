@@ -7,7 +7,7 @@ export default defineConfig({
 
     build: {
         emptyOutDir: true,
-        outDir: '../dist/site',
+        outDir: 'dist/site',
         minify: 'esbuild',
         rollupOptions: {
             external: [ '' ],
@@ -27,9 +27,7 @@ export default defineConfig({
         alias: {
             // This is needed to ensure main.ts' use of @styles from vite.config.lib.ts
             // works when we're building site
-            '@styles': path.resolve(__dirname, 'src/lib/styles'),
+            '@styles': path.resolve(__dirname, 'lib/styles'),
         },
     },
-
-    root: 'src',
 });
