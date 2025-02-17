@@ -3,23 +3,19 @@
 layout: home
 
 hero:
-  name: "core-css"
-  text: "Documentation for Core-CSS"
-  tagline: My great project tagline
+  name: "Core-CSS"
+  tagline: Lightweight, typography-focused CSS library
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Documentation
+      link: /documentation
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Lightweight
+    details: Under 15kb; typography, animation, inputs, buttons, links, sass utility functions
+  - title: Typography-focused
+    details: Responsive, rhythmic typography built on defined, industry accepted ratios
+  - title: Visually-accessible styles
+    details: Inputs, buttons, and links designed to be as visually accessible as possible
 ---
 
