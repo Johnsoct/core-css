@@ -7,8 +7,8 @@ hero:
   tagline: Lightweight, typography-focused CSS library
   actions:
     - theme: brand
-      text: Documentation
-      link: /documentation
+      text: Getting Started
+      link: /documentation/getting-started
 
 features:
   - title: Lightweight
