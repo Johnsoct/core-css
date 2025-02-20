@@ -2,27 +2,22 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "core-css",
-  description: "Documentation for Core-CSS",
-  themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
-    ],
+    title: "Core-CSS",
+    description: "Documentation for Core-CSS",
+    themeConfig: {
+        // https://vitepress.dev/reference/default-theme-config
+        nav: [
+            { text: 'Getting Started', link: '/documentation/getting-started' },
+            { text: 'Core Concepts', link: '/documentation/core-concepts' },
+            { text: 'Typography', link: '/documentation/typography' },
+            { text: 'Spacing', link: '/documentation/spacing' },
+            { text: 'Layout', link: '/documentation/spacing' },
+            { text: 'Animations', link: '/documentation/animations' },
+            { text: 'Utilities', link: '/documentation/utilities' },
+        ],
 
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+        socialLinks: [
+            { icon: 'github', link: 'https://github.com/johnsoct/core-css' }
         ]
-      }
-    ],
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
-  }
+    }
 })
