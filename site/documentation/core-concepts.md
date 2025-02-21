@@ -77,6 +77,10 @@ Vertical rhythm impacts the readability of the text and establishes dichotomies 
 
 #### Horizontal
 
+##### Alignment
+
+Due to browsers' poor algorithms for justifying text and the increased difficulty of reading text with dyslexia, it is recommended to always left-align text on the web.
+
 ##### Letter spacing (tracking)
 
 Letter spacing lowercase text is not recommended (i.e. bodies of text); however, headings and uppercase text tend to benefit from slight decreases and increases, respectively, in letter spacing because of their larger, heavier appearance.
@@ -99,8 +103,74 @@ CSS provides a few options for fixing kerning, which this library does for its i
 
 However, most browsers default to `auto` for larger types and disabled for smaller, mostly because kerning isn't nearly as obvious on smaller type.
 
+##### Paragraph indentation
+
+Although indentation is often used to create visual separation between paragraphs, it is recommended to only indent paragraphs immediately following another paragraph (i.e. a paragraph following an image, header, etc., would not be indented).
+
+Luckily, CSS makes this very simple:
+
+```css
+p + p {
+  text-indent: 1em; // 0.5-3em, however, 1em or 1lh is standard
+}
+```
+
+Additionally, when we apply paragraph indentation we don't need to apply bottom margin-padding to paragraphs because the indentation serves the visual separation.
+
+##### Hanging punctuation
+
+Although a minor detail without a good CSS solution (and I'm not interested in solving typography problems with JavaScript), "hanging punctuation" is when punctuation marks, such as quotes or pull points, are displayed outside of the main body of text to avoid disrupting the horizontal flow; however, `hanging-punctuation` is only supported, somewhat, by Safari, so... we can use `text-indent`, somewhat.
+
+```css
+blockquote p {
+    text-indent: -0.5em; // May need to customize
+}
+```
+
+Regardless, both are imperfect solutions and probably not worth your time trying to perfect, especially if your usage of this library isn't primarily long-form text content.
+
+However, when it comes to bullet points, browsers can reliably style the bullets outside of the horizontal flow of text due to bullets being attach to specific HTML elements (`li`) and not within the paragraph.
+
+```css
+ul, ol {
+    list-style-position: outside;
+    padding-left: 0;
+}
+```
+
+#### Vertical rhythm
+
+Vertical rhythm, in typography, is based on the line-height of your body text, which we can use to create a "rhthymical unit." 
+
+**Note:** Utilizing line-height is very important because increasing line-height of text on the web adds an equal amount of space above and below the text. Unlike print and graphic design, browsers calculate line height from the middle of the text not the line it sits on.
+
+##### Headings
+
+After defining our body text line-height, or our "rhythmical unit," we use whole multiples to calculate the line-height and margin of our heading elements, with the top margin always being larger than the bottom margin.
+
+```css
+$lh: 24px;
+
+h3 {
+    // we use em/rems, but just for example...
+    font-size: 48px; 
+    line-height: calc(2 * $lh);
+    margin-bottom: calc(1 * $lh);
+    margin-top: calc(3 * $lh);
+}
+```
+
+##### Images
+
+Because this library can't predict the size and ratio of images, I recommend using the "rhythmical unit" as a guide, but strictly use it for the spacing around your image. This way, your text and page proportions still have rhythm.
+
+Typically, large, solid blocks of content do not break rhythm apart, even if it does break your grid (which is only a guide).
+
+
 ### Modular scales
 
 
 
 ## Spacing
+
+White space, horizontal or vertical, should not be arbitrary. It should be a even multiple of your "rhythmical unit" from your typography's baseline grid (based on line-height).
