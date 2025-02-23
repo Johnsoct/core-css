@@ -1,3 +1,10 @@
+---
+next:
+    text: Styleguide
+    link: /documentation/styleguide/
+outline: [1, 4]
+---
+
 # Introduction
 
 Core-CSS is intentionally lightweight. It was built by taking the multiple in-house SCSS frameworks I've built for various SaaS companies and stripping away the company-specific styles. The goal it's trying to accomplish is to serve as the foundation on which in-house, SaaS CSS frameworks can be built.

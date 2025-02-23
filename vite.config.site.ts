@@ -25,8 +25,6 @@ export default defineConfig({
 
     resolve: {
         alias: {
-            // This is needed to ensure main.ts' use of @styles from vite.config.lib.ts
-            // works when we're building site
             '@styles': path.resolve(__dirname, 'lib/styles'),
         },
     },

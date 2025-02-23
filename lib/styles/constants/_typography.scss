@@ -9,6 +9,25 @@ $body-ratio: 1.5;
 $heading-ratio: 1.2;
 $mobile: 14px;
 
+// TODO: evaluate from Better Web Type for automating choosing scales
+// (ratio^base) x base
+@function pow($number, $exponent) {
+    $value: 1;
+
+    @if $exponent > 0 {
+        @for $i from 1 through $exponent {
+            $value: $value * $number;
+        }
+    }
+    @else if $exponent < 0 {
+        @for $i from 1 through -$exponent {
+            $value: $value / $number;
+        }
+    }
+
+    @return $value;
+}
+
 @function get-modular-scale($scale, $base: $desktop) {
     $ratio: $heading-ratio;
 
