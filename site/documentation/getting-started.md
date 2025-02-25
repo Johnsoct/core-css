@@ -84,7 +84,10 @@ We all like utilities that make things easier and faster, right? Over time, I'll
 
 For now, here is a list of utilities currently in the library:
 
+- `pow` - Function to calculate the power of a base value
 - `strip-unit` - Function to strip the units from a numeric value, such as "4px"
 - `flex` - Mixin for creating robust flex elements
 - `overflow-ellipsis` - Mixin for creating robust text ellipsises with respect to hyphens and line count
+- `ms` - Function to get the relevant value associated with a specific scale of our modular scaling system
 - Normalize.css for resetting browser styles to a universal standard so our custom styles are applied equally
+- `rems` - Function to convert other values to rem units
