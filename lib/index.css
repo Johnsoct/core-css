@@ -947,19 +947,29 @@ CLASS GENERATION
   color: #222222;
 }
 
-body {
-  font-size: 16px;
+/****************************
+OVERWRITING BROWSER DEFAULTS
+****************************/
+* {
+  line-height: 21px;
+  margin-bottom: 21px;
+  margin-top: 0;
+  padding: 0;
 }
-@media only screen and (max-width: 1024px) {
-  body {
-    font-size: 14px;
-  }
+
+html {
+  font-size: 14px;
 }
 
 a,
+abbr,
 blockquote,
 button,
-div,
+caption,
+cite,
+code,
+dd,
+dt,
 figcaption,
 hr,
 h1,
@@ -968,31 +978,176 @@ h3,
 h4,
 h5,
 h6,
+i,
 input,
 label,
+legend,
 li,
+mark,
+option,
 p,
 pre,
+q,
+small,
 span,
+strong,
+td,
 textarea,
+th,
 time {
-  font-family: "Inter", "webdings", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 400;
-  margin: 0;
-  padding: 0;
-}
-
-p,
-a,
-li,
-figcaption,
-label,
-blockquote,
-hr,
-span {
   text-align: left;
 }
 
+/****************************
+LIBRARY-SPECIFIC TYPOGRAPHY STYLES
+****************************/
+h1 {
+  font-size: ms(4);
+  line-height: 1.2;
+  font-weight: 700;
+}
+@media only screen and (max-width: 1024px) {
+  h1 {
+    font-size: ms(2);
+  }
+}
+
+h2 {
+  font-size: ms(3);
+  line-height: 1.2;
+  font-weight: 700;
+}
+@media only screen and (max-width: 1024px) {
+  h2 {
+    font-size: ms(1);
+  }
+}
+
+h3 {
+  font-size: ms(2);
+  line-height: 1.2;
+  font-weight: 700;
+}
+@media only screen and (max-width: 1024px) {
+  h3 {
+    font-size: ms(0);
+  }
+}
+
+h4 {
+  font-size: ms(1);
+  line-height: 1.2;
+  font-weight: 700;
+}
+@media only screen and (max-width: 1024px) {
+  h4 {
+    font-size: ms(-1);
+  }
+}
+
+h5 {
+  font-size: ms(1);
+  line-height: 1.2;
+  font-weight: 700;
+}
+@media only screen and (max-width: 1024px) {
+  h5 {
+    font-size: ms(-1);
+  }
+}
+
+h6 {
+  font-size: ms(1);
+  line-height: 1.2;
+  font-weight: 700;
+}
+@media only screen and (max-width: 1024px) {
+  h6 {
+    font-size: ms(-1);
+  }
+}
+
+a,
+abbr,
+blockquote,
+button,
+caption,
+cite,
+code,
+dd,
+dt,
+figcaption,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+i,
+input,
+label,
+legend,
+li,
+mark,
+option,
+p,
+pre,
+q,
+small,
+span,
+strong,
+td,
+textarea,
+th,
+time {
+  font-size: ms(0);
+  line-height: 1.5;
+}
+@media only screen and (max-width: 1024px) {
+  a,
+  abbr,
+  blockquote,
+  button,
+  caption,
+  cite,
+  code,
+  dd,
+  dt,
+  figcaption,
+  hr,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  i,
+  input,
+  label,
+  legend,
+  li,
+  mark,
+  option,
+  p,
+  pre,
+  q,
+  small,
+  span,
+  strong,
+  td,
+  textarea,
+  th,
+  time {
+    font-size: ms(0);
+  }
+}
+
+/****************************
+TAG-SPECIFIC OVERWRITES
+****************************/
 a {
   text-decoration: none;
   user-select: none;
@@ -1002,95 +1157,6 @@ a:hover, a:focus {
 }
 a:visited {
   text-decoration: none;
-}
-
-button {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-.h1 {
-  font-size: 2.074rem;
-  font-weight: 700;
-  line-height: 2.4888rem;
-  margin: 0 auto;
-  padding: 0 auto;
-}
-@media only screen and (max-width: 1024px) {
-  .h1 {
-    font-size: 1.44rem;
-    line-height: 1.728rem;
-  }
-}
-
-.h2 {
-  font-size: 1.728rem;
-  font-weight: 700;
-  line-height: 2.0736rem;
-  margin: 0 auto;
-  padding: 0 auto;
-}
-@media only screen and (max-width: 1024px) {
-  .h2 {
-    font-size: 1.2rem;
-    line-height: 1.44rem;
-  }
-}
-
-.h3 {
-  font-size: 1.44rem;
-  font-weight: 700;
-  line-height: 1.728rem;
-  margin: 0 auto;
-  padding: 0 auto;
-}
-@media only screen and (max-width: 1024px) {
-  .h3 {
-    font-size: 1rem;
-    line-height: 1.2rem;
-  }
-}
-
-.h4 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1.44rem;
-  margin: 0 auto;
-  padding: 0 auto;
-}
-@media only screen and (max-width: 1024px) {
-  .h4 {
-    font-size: 0.667rem;
-    line-height: 0.8004rem;
-  }
-}
-
-.body {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  margin: 0 auto;
-  padding: 0 auto;
-}
-@media only screen and (max-width: 1024px) {
-  .body {
-    font-size: 0.667rem;
-    line-height: 1.0005rem;
-  }
-}
-
-.label {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  margin: 0 auto;
-  padding: 0 auto;
-}
-@media only screen and (max-width: 1024px) {
-  .label {
-    font-size: 0.667rem;
-    line-height: 1.0005rem;
-  }
 }
 
 /*******************
@@ -1158,324 +1224,388 @@ FONT MODIFIERS
 /*****************
 GENERATED CLASSES
 *****************/
-.mb-2 {
-  margin-bottom: 0.444rem;
+.mb--4 {
+  margin-bottom: round(nearest, rems(2.7654320988px), 0.001rem);
 }
 
-.ml-2 {
-  margin-left: 0.444rem;
+.ml--4 {
+  margin-left: round(nearest, rems(2.7654320988px), 0.001rem);
 }
 
-.mr-2 {
-  margin-right: 0.444rem;
+.mr--4 {
+  margin-right: round(nearest, rems(2.7654320988px), 0.001rem);
 }
 
-.mt-2 {
-  margin-top: 0.444rem;
+.mt--4 {
+  margin-top: round(nearest, rems(2.7654320988px), 0.001rem);
 }
 
-.pb-2 {
-  padding-bottom: 0.444rem;
+.pb--4 {
+  padding-bottom: round(nearest, rems(2.7654320988px), 0.001rem);
 }
 
-.pl-2 {
-  padding-left: 0.444rem;
+.pl--4 {
+  padding-left: round(nearest, rems(2.7654320988px), 0.001rem);
 }
 
-.pr-2 {
-  padding-right: 0.444rem;
+.pr--4 {
+  padding-right: round(nearest, rems(2.7654320988px), 0.001rem);
 }
 
-.pt-2 {
-  padding-top: 0.444rem;
+.pt--4 {
+  padding-top: round(nearest, rems(2.7654320988px), 0.001rem);
+}
+
+.mb--3 {
+  margin-bottom: round(nearest, rems(4.1481481481px), 0.001rem);
+}
+
+.ml--3 {
+  margin-left: round(nearest, rems(4.1481481481px), 0.001rem);
+}
+
+.mr--3 {
+  margin-right: round(nearest, rems(4.1481481481px), 0.001rem);
+}
+
+.mt--3 {
+  margin-top: round(nearest, rems(4.1481481481px), 0.001rem);
+}
+
+.pb--3 {
+  padding-bottom: round(nearest, rems(4.1481481481px), 0.001rem);
+}
+
+.pl--3 {
+  padding-left: round(nearest, rems(4.1481481481px), 0.001rem);
+}
+
+.pr--3 {
+  padding-right: round(nearest, rems(4.1481481481px), 0.001rem);
+}
+
+.pt--3 {
+  padding-top: round(nearest, rems(4.1481481481px), 0.001rem);
+}
+
+.mb--2 {
+  margin-bottom: round(nearest, rems(6.2222222222px), 0.001rem);
+}
+
+.ml--2 {
+  margin-left: round(nearest, rems(6.2222222222px), 0.001rem);
+}
+
+.mr--2 {
+  margin-right: round(nearest, rems(6.2222222222px), 0.001rem);
+}
+
+.mt--2 {
+  margin-top: round(nearest, rems(6.2222222222px), 0.001rem);
+}
+
+.pb--2 {
+  padding-bottom: round(nearest, rems(6.2222222222px), 0.001rem);
+}
+
+.pl--2 {
+  padding-left: round(nearest, rems(6.2222222222px), 0.001rem);
+}
+
+.pr--2 {
+  padding-right: round(nearest, rems(6.2222222222px), 0.001rem);
+}
+
+.pt--2 {
+  padding-top: round(nearest, rems(6.2222222222px), 0.001rem);
+}
+
+.mb--1 {
+  margin-bottom: round(nearest, rems(9.3333333333px), 0.001rem);
+}
+
+.ml--1 {
+  margin-left: round(nearest, rems(9.3333333333px), 0.001rem);
+}
+
+.mr--1 {
+  margin-right: round(nearest, rems(9.3333333333px), 0.001rem);
+}
+
+.mt--1 {
+  margin-top: round(nearest, rems(9.3333333333px), 0.001rem);
+}
+
+.pb--1 {
+  padding-bottom: round(nearest, rems(9.3333333333px), 0.001rem);
+}
+
+.pl--1 {
+  padding-left: round(nearest, rems(9.3333333333px), 0.001rem);
+}
+
+.pr--1 {
+  padding-right: round(nearest, rems(9.3333333333px), 0.001rem);
+}
+
+.pt--1 {
+  padding-top: round(nearest, rems(9.3333333333px), 0.001rem);
+}
+
+.mb-0 {
+  margin-bottom: round(nearest, rems(14px), 0.001rem);
+}
+
+.ml-0 {
+  margin-left: round(nearest, rems(14px), 0.001rem);
+}
+
+.mr-0 {
+  margin-right: round(nearest, rems(14px), 0.001rem);
+}
+
+.mt-0 {
+  margin-top: round(nearest, rems(14px), 0.001rem);
+}
+
+.pb-0 {
+  padding-bottom: round(nearest, rems(14px), 0.001rem);
+}
+
+.pl-0 {
+  padding-left: round(nearest, rems(14px), 0.001rem);
+}
+
+.pr-0 {
+  padding-right: round(nearest, rems(14px), 0.001rem);
+}
+
+.pt-0 {
+  padding-top: round(nearest, rems(14px), 0.001rem);
 }
 
 .mb-1 {
-  margin-bottom: 0.667rem;
+  margin-bottom: round(nearest, rems(21px), 0.001rem);
 }
 
 .ml-1 {
-  margin-left: 0.667rem;
+  margin-left: round(nearest, rems(21px), 0.001rem);
 }
 
 .mr-1 {
-  margin-right: 0.667rem;
+  margin-right: round(nearest, rems(21px), 0.001rem);
 }
 
 .mt-1 {
-  margin-top: 0.667rem;
+  margin-top: round(nearest, rems(21px), 0.001rem);
 }
 
 .pb-1 {
-  padding-bottom: 0.667rem;
+  padding-bottom: round(nearest, rems(21px), 0.001rem);
 }
 
 .pl-1 {
-  padding-left: 0.667rem;
+  padding-left: round(nearest, rems(21px), 0.001rem);
 }
 
 .pr-1 {
-  padding-right: 0.667rem;
+  padding-right: round(nearest, rems(21px), 0.001rem);
 }
 
 .pt-1 {
-  padding-top: 0.667rem;
+  padding-top: round(nearest, rems(21px), 0.001rem);
 }
 
-.mb0 {
-  margin-bottom: 1rem;
+.mb-2 {
+  margin-bottom: round(nearest, rems(31.5px), 0.001rem);
 }
 
-.ml0 {
-  margin-left: 1rem;
+.ml-2 {
+  margin-left: round(nearest, rems(31.5px), 0.001rem);
 }
 
-.mr0 {
-  margin-right: 1rem;
+.mr-2 {
+  margin-right: round(nearest, rems(31.5px), 0.001rem);
 }
 
-.mt0 {
-  margin-top: 1rem;
+.mt-2 {
+  margin-top: round(nearest, rems(31.5px), 0.001rem);
 }
 
-.pb0 {
-  padding-bottom: 1rem;
+.pb-2 {
+  padding-bottom: round(nearest, rems(31.5px), 0.001rem);
 }
 
-.pl0 {
-  padding-left: 1rem;
+.pl-2 {
+  padding-left: round(nearest, rems(31.5px), 0.001rem);
 }
 
-.pr0 {
-  padding-right: 1rem;
+.pr-2 {
+  padding-right: round(nearest, rems(31.5px), 0.001rem);
 }
 
-.pt0 {
-  padding-top: 1rem;
+.pt-2 {
+  padding-top: round(nearest, rems(31.5px), 0.001rem);
 }
 
-.mb1 {
-  margin-bottom: 1.2rem;
+.mb-3 {
+  margin-bottom: round(nearest, rems(47.25px), 0.001rem);
 }
 
-.ml1 {
-  margin-left: 1.2rem;
+.ml-3 {
+  margin-left: round(nearest, rems(47.25px), 0.001rem);
 }
 
-.mr1 {
-  margin-right: 1.2rem;
+.mr-3 {
+  margin-right: round(nearest, rems(47.25px), 0.001rem);
 }
 
-.mt1 {
-  margin-top: 1.2rem;
+.mt-3 {
+  margin-top: round(nearest, rems(47.25px), 0.001rem);
 }
 
-.pb1 {
-  padding-bottom: 1.2rem;
+.pb-3 {
+  padding-bottom: round(nearest, rems(47.25px), 0.001rem);
 }
 
-.pl1 {
-  padding-left: 1.2rem;
+.pl-3 {
+  padding-left: round(nearest, rems(47.25px), 0.001rem);
 }
 
-.pr1 {
-  padding-right: 1.2rem;
+.pr-3 {
+  padding-right: round(nearest, rems(47.25px), 0.001rem);
 }
 
-.pt1 {
-  padding-top: 1.2rem;
+.pt-3 {
+  padding-top: round(nearest, rems(47.25px), 0.001rem);
 }
 
-.mb2 {
-  margin-bottom: 1.44rem;
+.mb-4 {
+  margin-bottom: round(nearest, rems(70.875px), 0.001rem);
 }
 
-.ml2 {
-  margin-left: 1.44rem;
+.ml-4 {
+  margin-left: round(nearest, rems(70.875px), 0.001rem);
 }
 
-.mr2 {
-  margin-right: 1.44rem;
+.mr-4 {
+  margin-right: round(nearest, rems(70.875px), 0.001rem);
 }
 
-.mt2 {
-  margin-top: 1.44rem;
+.mt-4 {
+  margin-top: round(nearest, rems(70.875px), 0.001rem);
 }
 
-.pb2 {
-  padding-bottom: 1.44rem;
+.pb-4 {
+  padding-bottom: round(nearest, rems(70.875px), 0.001rem);
 }
 
-.pl2 {
-  padding-left: 1.44rem;
+.pl-4 {
+  padding-left: round(nearest, rems(70.875px), 0.001rem);
 }
 
-.pr2 {
-  padding-right: 1.44rem;
+.pr-4 {
+  padding-right: round(nearest, rems(70.875px), 0.001rem);
 }
 
-.pt2 {
-  padding-top: 1.44rem;
+.pt-4 {
+  padding-top: round(nearest, rems(70.875px), 0.001rem);
 }
 
-.mb3 {
-  margin-bottom: 1.728rem;
+.mb-5 {
+  margin-bottom: round(nearest, rems(106.3125px), 0.001rem);
 }
 
-.ml3 {
-  margin-left: 1.728rem;
+.ml-5 {
+  margin-left: round(nearest, rems(106.3125px), 0.001rem);
 }
 
-.mr3 {
-  margin-right: 1.728rem;
+.mr-5 {
+  margin-right: round(nearest, rems(106.3125px), 0.001rem);
 }
 
-.mt3 {
-  margin-top: 1.728rem;
+.mt-5 {
+  margin-top: round(nearest, rems(106.3125px), 0.001rem);
 }
 
-.pb3 {
-  padding-bottom: 1.728rem;
+.pb-5 {
+  padding-bottom: round(nearest, rems(106.3125px), 0.001rem);
 }
 
-.pl3 {
-  padding-left: 1.728rem;
+.pl-5 {
+  padding-left: round(nearest, rems(106.3125px), 0.001rem);
 }
 
-.pr3 {
-  padding-right: 1.728rem;
+.pr-5 {
+  padding-right: round(nearest, rems(106.3125px), 0.001rem);
 }
 
-.pt3 {
-  padding-top: 1.728rem;
+.pt-5 {
+  padding-top: round(nearest, rems(106.3125px), 0.001rem);
 }
 
-.mb4 {
-  margin-bottom: 2.074rem;
+.mb-6 {
+  margin-bottom: round(nearest, rems(159.46875px), 0.001rem);
 }
 
-.ml4 {
-  margin-left: 2.074rem;
+.ml-6 {
+  margin-left: round(nearest, rems(159.46875px), 0.001rem);
 }
 
-.mr4 {
-  margin-right: 2.074rem;
+.mr-6 {
+  margin-right: round(nearest, rems(159.46875px), 0.001rem);
 }
 
-.mt4 {
-  margin-top: 2.074rem;
+.mt-6 {
+  margin-top: round(nearest, rems(159.46875px), 0.001rem);
 }
 
-.pb4 {
-  padding-bottom: 2.074rem;
+.pb-6 {
+  padding-bottom: round(nearest, rems(159.46875px), 0.001rem);
 }
 
-.pl4 {
-  padding-left: 2.074rem;
+.pl-6 {
+  padding-left: round(nearest, rems(159.46875px), 0.001rem);
 }
 
-.pr4 {
-  padding-right: 2.074rem;
+.pr-6 {
+  padding-right: round(nearest, rems(159.46875px), 0.001rem);
 }
 
-.pt4 {
-  padding-top: 2.074rem;
+.pt-6 {
+  padding-top: round(nearest, rems(159.46875px), 0.001rem);
 }
 
-.mb5 {
-  margin-bottom: 2.488rem;
+.mb-7 {
+  margin-bottom: round(nearest, rems(239.203125px), 0.001rem);
 }
 
-.ml5 {
-  margin-left: 2.488rem;
+.ml-7 {
+  margin-left: round(nearest, rems(239.203125px), 0.001rem);
 }
 
-.mr5 {
-  margin-right: 2.488rem;
+.mr-7 {
+  margin-right: round(nearest, rems(239.203125px), 0.001rem);
 }
 
-.mt5 {
-  margin-top: 2.488rem;
+.mt-7 {
+  margin-top: round(nearest, rems(239.203125px), 0.001rem);
 }
 
-.pb5 {
-  padding-bottom: 2.488rem;
+.pb-7 {
+  padding-bottom: round(nearest, rems(239.203125px), 0.001rem);
 }
 
-.pl5 {
-  padding-left: 2.488rem;
+.pl-7 {
+  padding-left: round(nearest, rems(239.203125px), 0.001rem);
 }
 
-.pr5 {
-  padding-right: 2.488rem;
+.pr-7 {
+  padding-right: round(nearest, rems(239.203125px), 0.001rem);
 }
 
-.pt5 {
-  padding-top: 2.488rem;
-}
-
-.mb6 {
-  margin-bottom: 2.986rem;
-}
-
-.ml6 {
-  margin-left: 2.986rem;
-}
-
-.mr6 {
-  margin-right: 2.986rem;
-}
-
-.mt6 {
-  margin-top: 2.986rem;
-}
-
-.pb6 {
-  padding-bottom: 2.986rem;
-}
-
-.pl6 {
-  padding-left: 2.986rem;
-}
-
-.pr6 {
-  padding-right: 2.986rem;
-}
-
-.pt6 {
-  padding-top: 2.986rem;
-}
-
-.mb7 {
-  margin-bottom: 3.583rem;
-}
-
-.ml7 {
-  margin-left: 3.583rem;
-}
-
-.mr7 {
-  margin-right: 3.583rem;
-}
-
-.mt7 {
-  margin-top: 3.583rem;
-}
-
-.pb7 {
-  padding-bottom: 3.583rem;
-}
-
-.pl7 {
-  padding-left: 3.583rem;
-}
-
-.pr7 {
-  padding-right: 3.583rem;
-}
-
-.pt7 {
-  padding-top: 3.583rem;
+.pt-7 {
+  padding-top: round(nearest, rems(239.203125px), 0.001rem);
 }
 
 /*****************
