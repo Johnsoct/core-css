@@ -1,0 +1,246 @@
+@use "sass:map";
+@use "../constants/breakpoints.scss" as *;
+@use "./constants.scss" as *;
+@use "./mixins.scss" as *;
+
+/****************************
+OVERWRITING BROWSER DEFAULTS
+****************************/
+
+* {
+    line-height: $ru;
+    margin-bottom: calc(1 * $ru);
+    margin-top: 0;
+    padding: 0;
+}
+
+html {
+    font-size: $base-font-size;
+}
+
+a,
+abbr,
+blockquote,
+button,
+caption,
+cite,
+code,
+dd,
+dt,
+figcaption,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+i,
+input,
+label,
+legend,
+li,
+mark,
+option,
+p,
+pre,
+q,
+small,
+span,
+strong,
+td,
+textarea,
+th,
+time {
+    @include font-family;
+    font-weight: map.get($weights, "normal");
+    text-align: left;
+}
+
+/****************************
+LIBRARY-SPECIFIC TYPOGRAPHY STYLES
+****************************/
+
+h1 {
+    font-size: ms(4);
+    line-height: $heading-line-height;
+    font-weight: map.get($weights, "bold");
+
+    @media #{$tablet-large-and-down} {
+        font-size: ms(2);
+    }
+}
+
+h2 {
+    font-size: ms(3);
+    line-height: $heading-line-height;
+    font-weight: map.get($weights, "bold");
+
+    @media #{$tablet-large-and-down} {
+        font-size: ms(1);
+    }
+}
+
+h3 {
+    font-size: ms(2);
+    line-height: $heading-line-height;
+    font-weight: map.get($weights, "bold");
+
+    @media #{$tablet-large-and-down} {
+        font-size: ms(0);
+    }
+}
+
+h4 {
+    font-size: ms(1);
+    line-height: $heading-line-height;
+    font-weight: map.get($weights, "bold");
+
+    @media #{$tablet-large-and-down} {
+        font-size: ms(-1);
+    }
+}
+
+h5 {
+    font-size: ms(1);
+    line-height: $heading-line-height;
+    font-weight: map.get($weights, "bold");
+
+    @media #{$tablet-large-and-down} {
+        font-size: ms(-1);
+    }
+}
+
+h6 {
+    font-size: ms(1);
+    line-height: $heading-line-height;
+    font-weight: map.get($weights, "bold");
+
+    @media #{$tablet-large-and-down} {
+        font-size: ms(-1);
+    }
+}
+
+a,
+abbr,
+blockquote,
+button,
+caption,
+cite,
+code,
+dd,
+dt,
+figcaption,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+i,
+input,
+label,
+legend,
+li,
+mark,
+option,
+p,
+pre,
+q,
+small,
+span,
+strong,
+td,
+textarea,
+th,
+time {
+    font-size: ms(0);
+    line-height: $base-line-height;
+
+    @media #{$tablet-large-and-down} {
+        font-size: ms(0);
+    }
+}
+
+/****************************
+TAG-SPECIFIC OVERWRITES
+****************************/
+
+a {
+    text-decoration: none;
+    user-select: none;
+
+    &:hover,
+    &:focus {
+        cursor: pointer;
+    }
+
+    &:visited {
+        text-decoration: none;
+    }
+}
+
+/*******************
+FONT WEIGHTS
+*******************/
+
+.fw-bold {
+    font-weight: map.get($weights, "bold");
+}
+
+.fw-med {
+    font-weight: map.get($weights, "medium");
+}
+
+.fw-reg {
+    font-weight: map.get($weights, "normal");
+}
+
+.fw-semi-bold {
+    font-weight: map.get($weights, "semi-bold");
+}
+
+/*******************
+FONT MODIFIERS
+*******************/
+
+.capitalize {
+    text-transform: capitalize !important;
+}
+
+.center {
+    text-align: center !important;
+}
+
+.def-lh {
+    line-height: 1;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.no-cap {
+    text-transform: none !important;
+}
+
+.no-select {
+    user-select: none;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.right {
+    text-align: right !important;
+}
+
+.underline {
+    text-decoration: underline !important;
+}
+
+.uppercase {
+    text-transform: uppercase !important;
+}

@@ -1,0 +1,21 @@
+@use "../constants/breakpoints.scss" as *;
+
+$base-font-size: 14px; // desktop-first, SaaS focused
+
+@media #{$tablet-large-and-down} {
+    $base-font-size: 16px;
+}
+
+// TODO: test
+$base-line-height: 1.5;
+
+// TODO: test
+$heading-line-height: 1.2;
+$scale: 1.5;
+$ru: $base-font-size * $scale;
+$weights: (
+    "bold": 700,
+    "medium": 500,
+    "normal": 400,
+    "semi-bold": 600,
+);
