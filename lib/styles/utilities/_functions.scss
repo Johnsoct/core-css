@@ -1,4 +1,19 @@
 @use "sass:math";
+@use "../typography/constants.scss" as *;
+
+@function ms($power-of) {
+    // (scale^base) x base-font-size
+    /* stylelint-disable-next-line scss/no-global-function-names */
+    @return round(
+        nearest,
+        rems(calc(pow($scale, $power-of) * $base-font-size)),
+        0.001rem
+    );
+}
+
+@function pow($base, $power) {
+    @return math.pow($base, $power);
+}
 
 @function strip-unit($num) {
     @return math.div($num, ($num * 0 + 1));
