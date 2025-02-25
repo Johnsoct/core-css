@@ -1,10 +1,6 @@
 @use "../constants/breakpoints.scss" as *;
 
-$base-font-size: 14px; // desktop-first, SaaS focused
-
-@media #{$tablet-large-and-down} {
-    $base-font-size: 16px;
-}
+$base-font-size: 16px; // desktop-first, SaaS focused
 
 // TODO: test
 $base-line-height: 1.5;
