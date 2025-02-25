@@ -257,7 +257,9 @@
         options.htmlElements.forEach((el, index) => {
             const html = `
                 <div class="Styleguide__type-container">
-                    <label>${el.name} - size: ${el.size} | line-height: ${el.lineHeight} | tracking: ${el.tracking} | available classes: ${el.associatedClasses}</label>
+                    <label>
+                        ${el.name} - size: ${el.size} | line-height: ${el.lineHeight} | tracking: ${el.tracking} | available classes: ${el.associatedClasses}
+                    </label>
                     <${el.name}>${displayText}</${el.name}>
                 </div>
             `
