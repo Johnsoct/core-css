@@ -1,43 +1,40 @@
-@use "sass:list";
-@use "../constants/typography" as *;
+@use "../utilities/functions.scss" as *;
 
 /*****************
 GENERATED CLASSES
 *****************/
 
-$scales: -2, -1, 0, 1, 2, 3, 4, 5, 6, 7;
-
-@each $scale in $scales {
-    .mb#{$scale} {
-        margin-bottom: get-modular-scale($scale);
+@for $i from -4 through 7 {
+    .mb-#{$i} {
+        margin-bottom: ms($i);
     }
 
-    .ml#{$scale} {
-        margin-left: get-modular-scale($scale);
+    .ml-#{$i} {
+        margin-left: ms($i);
     }
 
-    .mr#{$scale} {
-        margin-right: get-modular-scale($scale);
+    .mr-#{$i} {
+        margin-right: ms($i);
     }
 
-    .mt#{$scale} {
-        margin-top: get-modular-scale($scale);
+    .mt-#{$i} {
+        margin-top: ms($i);
     }
 
-    .pb#{$scale} {
-        padding-bottom: get-modular-scale($scale);
+    .pb-#{$i} {
+        padding-bottom: ms($i);
     }
 
-    .pl#{$scale} {
-        padding-left: get-modular-scale($scale);
+    .pl-#{$i} {
+        padding-left: ms($i);
     }
 
-    .pr#{$scale} {
-        padding-right: get-modular-scale($scale);
+    .pr-#{$i} {
+        padding-right: ms($i);
     }
 
-    .pt#{$scale} {
-        padding-top: get-modular-scale($scale);
+    .pt-#{$i} {
+        padding-top: ms($i);
     }
 }
 
