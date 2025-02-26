@@ -7,8 +7,7 @@ WHOLE NUMBER SCALES
 *****************/
 
 @for $i from 0 through 7 {
-    // TODO: refactor (./mixins.scss uses same calculation)
-    $value: rems(calc($ru * $i));
+    $value: rus($i);
 
     .mb-#{$i} {
         margin-bottom: $value;
@@ -47,7 +46,7 @@ WHOLE NUMBER SCALES
 FRACTIONAL SCALES
 *****************/
 @for $i from 1 through 1 {
-    $base-ru: calc($ru * $i);
+    $base-ru: rus($i);
     $scales: (
         "02": calc($base-ru / 2),
         "03": calc($base-ru / 3),

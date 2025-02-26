@@ -1,4 +1,3 @@
-@use "../typography/constants.scss" as *;
 @use "../typography/functions.scss" as *;
 
 @mixin margin(
@@ -9,7 +8,7 @@
     $left: false
 ) {
     // TODO: refactor (./styles.scss uses same calculation)
-    $value: rems(calc($ru * $base));
+    $value: rus($base);
 
     @if $top {
         margin-top: $value;
