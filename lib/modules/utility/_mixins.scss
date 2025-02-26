@@ -1,3 +1,5 @@
+@use "sass:map";
+
 @mixin flex(
     $direction: row,
     $align: flex-start,
