@@ -6,7 +6,7 @@
     /* stylelint-disable-next-line scss/no-global-function-names */
     @return round(
         nearest,
-        rems(calc(pow($scale, $power-of) * $base-font-size)),
+        rems(calc(pow($perfect-fifth, $power-of) * $base-font-size)),
         0.001rem
     );
 }

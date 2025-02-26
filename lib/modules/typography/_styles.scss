@@ -61,60 +61,65 @@ time {
 LIBRARY-SPECIFIC TYPOGRAPHY STYLES
 ****************************/
 
-h1 {
-    font-size: ms(4);
+h1,
+.heading-ms4,
+h2,
+.heading-ms3,
+h3,
+.heading-ms2,
+h4,
+.heading-ms1,
+h5,
+h6 {
+    letter-spacing: $heading-letter-spacing;
     line-height: $heading-line-height;
     font-weight: map.get($weights, "bold");
+}
+
+h1,
+.heading-ms4 {
+    font-size: ms(4);
+
+    // TODO:
+    // max-width: rems();
 
     @media #{$tablet-large-and-down} {
         font-size: ms(2);
     }
 }
 
-h2 {
+h2,
+.heading-ms3 {
     font-size: ms(3);
-    line-height: $heading-line-height;
-    font-weight: map.get($weights, "bold");
+
+    // TODO:
+    // max-width: rems();
 
     @media #{$tablet-large-and-down} {
         font-size: ms(1);
     }
 }
 
-h3 {
+h3,
+.heading-ms2 {
     font-size: ms(2);
-    line-height: $heading-line-height;
-    font-weight: map.get($weights, "bold");
+
+    // TODO:
+    // max-width: rems();
 
     @media #{$tablet-large-and-down} {
         font-size: ms(0);
     }
 }
 
-h4 {
+h4,
+h5,
+h6,
+.heading-ms1 {
     font-size: ms(1);
-    line-height: $heading-line-height;
-    font-weight: map.get($weights, "bold");
 
-    @media #{$tablet-large-and-down} {
-        font-size: ms(-1);
-    }
-}
-
-h5 {
-    font-size: ms(1);
-    line-height: $heading-line-height;
-    font-weight: map.get($weights, "bold");
-
-    @media #{$tablet-large-and-down} {
-        font-size: ms(-1);
-    }
-}
-
-h6 {
-    font-size: ms(1);
-    line-height: $heading-line-height;
-    font-weight: map.get($weights, "bold");
+    // TODO:
+    // max-width: rems();
 
     @media #{$tablet-large-and-down} {
         font-size: ms(-1);
@@ -154,9 +159,13 @@ strong,
 td,
 textarea,
 th,
-time {
+time,
+.body-ms0 {
     font-size: ms(0);
     line-height: $base-line-height;
+
+    // TODO:
+    // max-width: rems();
 
     @media #{$tablet-large-and-down} {
         font-size: ms(0);

@@ -4,11 +4,12 @@ $base-font-size: 16px; // desktop-first, SaaS focused
 
 // TODO: test
 $base-line-height: 1.5;
+$heading-letter-spacing: -3%;
 
 // TODO: test
 $heading-line-height: 1.2;
-$scale: 1.5;
-$ru: $base-font-size * $scale;
+$perfect-fifth: 1.5;
+$ru: $base-font-size * $perfect-fifth;
 $weights: (
     "bold": 700,
     "medium": 500,
