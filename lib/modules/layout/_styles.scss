@@ -1,12 +1,14 @@
 @use "sass:map";
 @use "../typography/constants.scss" as *;
+@use "../typography/functions.scss" as *;
 
 /*****************
 WHOLE NUMBER SCALES
 *****************/
 
 @for $i from 0 through 7 {
-    $value: calc($ru * $i);
+    // TODO: refactor (./mixins.scss uses same calculation)
+    $value: rems(calc($ru * $i));
 
     .mb-#{$i} {
         margin-bottom: $value;

@@ -1,0 +1,29 @@
+@use "../typography/constants.scss" as *;
+@use "../typography/functions.scss" as *;
+
+@mixin margin(
+    $base,
+    $top: false,
+    $right: false,
+    $bottom: false,
+    $left: false
+) {
+    // TODO: refactor (./styles.scss uses same calculation)
+    $value: rems(calc($ru * $base));
+
+    @if $top {
+        margin-top: $value;
+    }
+
+    @if $right {
+        margin-right: $value;
+    }
+
+    @if $bottom {
+        margin-bottom: $value;
+    }
+
+    @if $left {
+        margin-left: $value;
+    }
+}
