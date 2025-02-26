@@ -1,6 +1,6 @@
 ---
 aside: false
-layout: 'page'
+layout: false
 next:
     text: Typography
     link: /documentation/typography

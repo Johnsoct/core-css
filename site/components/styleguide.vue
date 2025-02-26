@@ -274,15 +274,20 @@
 </script>
 
 <style lang="scss">
-@use "@modules/index.scss";
+@use "@modules/index.scss" as *;
+
+#app {
+    background-image: linear-gradient(to right, rgba(0,0,0, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0, 0.08) 1px, transparent 1px);
+    background-size: 10px 10px;
+}
 
 .Styleguide {
-    background-image: linear-gradient(to right, rgb(0,0,0) 1px, transparent 1px), linear-gradient(to bottom, rgb(0,0,0) 1px, transparent 1px);
-    background-size: 10px 10px;
-    padding: 1rem 0;
+    margin: 0 auto;
+    max-width: $tablet-large;
 
     &__section-content {
-        margin-top: 2rem;
+        // TODO: REPLACE WITH SS MIXINS
+        @include margin(2, $top: true);
     }
 
     &__type-container {
@@ -295,6 +300,8 @@
 
 <template>
     <div class="Styleguide">
+        <a href="/core-css/">Go Back</a>
+
         <div class="Styleguide__section">
             <h1>Typography</h1>
 
