@@ -2,13 +2,9 @@
 @use "../typography/constants.scss" as *;
 
 @function ms($power-of) {
-    // (scale^base) x base-font-size
-    /* stylelint-disable-next-line scss/no-global-function-names */
-    @return round(
-        nearest,
-        rems(calc(pow($perfect-fifth, $power-of) * $base-font-size)),
-        0.001rem
-    );
+    // (scale^power) x base-font-size
+    // Ex. (<h1> = 1.5^4 * 16)
+    @return calc(pow($perfect-fifth, $power-of) * $base-font-size);
 }
 
 @function pow($base, $power) {
