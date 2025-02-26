@@ -30,7 +30,7 @@ export default defineConfig({
     vite: {
         resolve: {
             alias: {
-                '@styles': path.resolve(__dirname, '../../lib/styles'),
+                '@modules': path.resolve(__dirname, '../../lib/modules/'),
             },
         },
  
