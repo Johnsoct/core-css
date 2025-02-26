@@ -2,7 +2,6 @@
 @use "../constants/breakpoints.scss" as *;
 @use "./constants.scss" as *;
 @use "./mixins.scss" as *;
-@use "../utility/functions.scss" as *;
 @use "./functions.scss" as *;
 
 /****************************
@@ -80,37 +79,37 @@ h6 {
 
 h1,
 .heading-ms4 {
-    font-size: rems(ms(4));
+    @include font-size($base: 4);
 
     // TODO:
     // max-width: rems();
 
     @media #{$tablet-large-and-down} {
-        font-size: rems(ms(2));
+        @include font-size($base: 2);
     }
 }
 
 h2,
 .heading-ms3 {
-    font-size: rems(ms(3));
+    @include font-size($base: 3);
 
     // TODO:
     // max-width: rems();
 
     @media #{$tablet-large-and-down} {
-        font-size: rems(ms(1));
+        @include font-size($base: 1);
     }
 }
 
 h3,
 .heading-ms2 {
-    font-size: rems(ms(2));
+    @include font-size($base: 2);
 
     // TODO:
     // max-width: rems();
 
     @media #{$tablet-large-and-down} {
-        font-size: rems(ms(0));
+        @include font-size($base: 0);
     }
 }
 
@@ -118,13 +117,13 @@ h4,
 h5,
 h6,
 .heading-ms1 {
-    font-size: rems(ms(1));
+    @include font-size($base: 1);
 
     // TODO:
     // max-width: rems();
 
     @media #{$tablet-large-and-down} {
-        font-size: rems(ms(-1));
+        @include font-size($base: -1);
     }
 }
 
@@ -157,14 +156,14 @@ textarea,
 th,
 time,
 .body-ms0 {
-    font-size: rems(ms(0));
+    @include font-size($base: 0);
     line-height: $base-line-height;
 
     // TODO:
     // max-width: rems();
 
     @media #{$tablet-large-and-down} {
-        font-size: rems(ms(0));
+        @include font-size($base: 0);
     }
 }
 

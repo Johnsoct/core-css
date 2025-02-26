@@ -1,10 +1,11 @@
 @use "../utility/functions.scss" as *;
+@use "./functions.scss" as *;
 
 @mixin font-family {
     // Downloaded via <link>
     font-family: "Inter", sans-serif;
 }
 
-@mixin font-size($scale) {
-    font-size: ms($scale);
+@mixin font-size($base) {
+    font-size: rems(ms($base));
 }
