@@ -57,8 +57,6 @@ FRACTIONAL SCALES
     );
 
     @each $key, $value in $scales {
-        @debug "KEYS: #{$key}";
-
         .mb-#{$key} {
             margin-bottom: $value;
         }
