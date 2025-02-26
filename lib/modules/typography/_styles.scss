@@ -2,6 +2,8 @@
 @use "../constants/breakpoints.scss" as *;
 @use "./constants.scss" as *;
 @use "./mixins.scss" as *;
+@use "../utility/functions.scss" as *;
+@use "./functions.scss" as *;
 
 /****************************
 OVERWRITING BROWSER DEFAULTS
@@ -78,37 +80,37 @@ h6 {
 
 h1,
 .heading-ms4 {
-    font-size: ms(4);
+    font-size: rems(ms(4));
 
     // TODO:
     // max-width: rems();
 
     @media #{$tablet-large-and-down} {
-        font-size: ms(2);
+        font-size: rems(ms(2));
     }
 }
 
 h2,
 .heading-ms3 {
-    font-size: ms(3);
+    font-size: rems(ms(3));
 
     // TODO:
     // max-width: rems();
 
     @media #{$tablet-large-and-down} {
-        font-size: ms(1);
+        font-size: rems(ms(1));
     }
 }
 
 h3,
 .heading-ms2 {
-    font-size: ms(2);
+    font-size: rems(ms(2));
 
     // TODO:
     // max-width: rems();
 
     @media #{$tablet-large-and-down} {
-        font-size: ms(0);
+        font-size: rems(ms(0));
     }
 }
 
@@ -116,13 +118,13 @@ h4,
 h5,
 h6,
 .heading-ms1 {
-    font-size: ms(1);
+    font-size: rems(ms(1));
 
     // TODO:
     // max-width: rems();
 
     @media #{$tablet-large-and-down} {
-        font-size: ms(-1);
+        font-size: rems(ms(-1));
     }
 }
 
@@ -137,12 +139,6 @@ dd,
 dt,
 figcaption,
 hr,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
 i,
 input,
 label,
@@ -161,14 +157,14 @@ textarea,
 th,
 time,
 .body-ms0 {
-    font-size: ms(0);
+    font-size: rems(ms(0));
     line-height: $base-line-height;
 
     // TODO:
     // max-width: rems();
 
     @media #{$tablet-large-and-down} {
-        font-size: ms(0);
+        font-size: rems(ms(0));
     }
 }
 
