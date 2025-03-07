@@ -1,11 +1,21 @@
 <script setup>
     import { 
         onMounted,
+        onBeforeUnmount,
         useTemplateRef 
-    } from 'vue';
+    } from 'vue'
     
     const typographyContainer = useTemplateRef('typography')
+    let link
     
+    const appendCoreCSS = () => {
+        const elLink = document.createElement("link")
+        elLink.href = "../public/index.css"
+        elLink.rel = "stylesheet"
+        document.head.appendChild(elLink)
+        link = elLink
+    }
+
     const appendTypography = () => {
         const displayText = "The quick, brown fox jumps over the lazy dog."
         const frag = new DocumentFragment()
@@ -268,13 +278,21 @@
         typographyContainer.value.innerHTML = frag.innerHTML
     }
 
+    onBeforeUnmount(() => {
+        if (link) {
+            document.head.removeChild(link)
+        }
+    })
+
     onMounted(() => {
+        appendCoreCSS()
         appendTypography()
     })
 </script>
 
 <style lang="scss">
-@use "@modules/index.scss" as *;
+@use "@modules/constants/breakpoints.scss" as *;
+@use "@modules/layout/mixins.scss" as *;
 
 #app {
     background-image: linear-gradient(to right, rgba(0,0,0, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0, 0.08) 1px, transparent 1px);

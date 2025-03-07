@@ -26,18 +26,16 @@
     ],
     "scripts": {
         "docs:dev": "vitepress dev site --port 8080",
-        "docs:build": "vitepress build --outDir dist/site site",
-        "docs:preview": "vitepress preview site",
-        "lib:build": "npm run lib:compile && npm run lib:minify",
+        "lib:build": "npm run lib:compile && npm run lib:minify && npm run lib:transfer-to-docs",
         "lib:compile": "sass --style=expanded --source-map lib/index.scss:lib/index.css",
         "lib:minify": "postcss lib/index.css --no-map --use cssnano --output dist/lib/index.min.css",
         "lib:minify-on-change": "chokidar 'lib/index.css' -c 'npm run lib:minify'",
+        "lib:transfer-to-docs": "cp lib/index.css site/public/",
+        "lib:transfer-to-docs-on-change": "chokidar 'lib/index.css' -c 'npm run lib:transfer-to-docs'",
         "lib:watch": "sass --style=expanded --source-map --watch lib/index.scss:lib/index.css",
-        "site:build": "vite build --config vite.config.site.ts",
-        "site:dev": "npm-run-all --parallel lib:watch lib:minify-on-change vite:dev",
-        "site:preview": "npm run lib:build && npm run vite:preview",
-        "vite:dev": "vite --config vite.config.site.ts",
-        "vite:preview": "vite preview --config vite.config.site.ts"
+        "site:build": "vitepress build --outDir dist/site site",
+        "site:dev": "npm-run-all --parallel lib:watch lib:minify-on-change lib:transfer-to-docs-on-change docs:dev",
+        "site:preview": "npm run lib:build && vitepress preview site"
     },
     "devDependencies": {
         "@eslint/js": "^9.17.0",
