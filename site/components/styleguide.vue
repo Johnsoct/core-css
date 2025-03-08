@@ -1,16 +1,16 @@
 <script setup>
     import { 
-        onMounted,
         onBeforeUnmount,
+        onMounted,
         useTemplateRef 
     } from 'vue'
     
     const typographyContainer = useTemplateRef('typography')
     let link
-    
+
     const appendCoreCSS = () => {
         const elLink = document.createElement("link")
-        elLink.href = "../public/index.css"
+        elLink.href = `${import.meta.env.BASE_URL}index.css`
         elLink.rel = "stylesheet"
         document.head.appendChild(elLink)
         link = elLink

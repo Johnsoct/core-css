@@ -35,7 +35,7 @@
         "lib:watch": "sass --style=expanded --source-map --watch lib/index.scss:lib/index.css",
         "site:build": "vitepress build --outDir dist/site site",
         "site:dev": "npm-run-all --parallel lib:watch lib:minify-on-change lib:transfer-to-docs-on-change docs:dev",
-        "site:preview": "npm run lib:build && vitepress preview site"
+        "site:preview": "npm run lib:build && npm run site:build && vite preview --outDir dist/site --base core-css"
     },
     "devDependencies": {
         "@eslint/js": "^9.17.0",
