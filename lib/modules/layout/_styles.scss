@@ -1,0 +1,137 @@
+@use "sass:map";
+@use "../typography/constants.scss" as *;
+@use "../typography/functions.scss" as *;
+
+/*****************
+WHOLE NUMBER SCALES
+*****************/
+
+@for $i from 0 through 7 {
+    $value: rus($i);
+
+    .mb-#{$i} {
+        margin-bottom: $value;
+    }
+
+    .ml-#{$i} {
+        margin-left: $value;
+    }
+
+    .mr-#{$i} {
+        margin-right: $value;
+    }
+
+    .mt-#{$i} {
+        margin-top: $value;
+    }
+
+    .pb-#{$i} {
+        padding-bottom: $value;
+    }
+
+    .pl-#{$i} {
+        padding-left: $value;
+    }
+
+    .pr-#{$i} {
+        padding-right: $value;
+    }
+
+    .pt-#{$i} {
+        padding-top: $value;
+    }
+}
+
+/*****************
+FRACTIONAL SCALES
+*****************/
+@for $i from 1 through 1 {
+    $base-ru: rus($i);
+    $scales: (
+        "02": calc($base-ru / 2),
+        "03": calc($base-ru / 3),
+        "04": calc($base-ru / 4),
+        "05": calc($base-ru / 5),
+        "06": calc($base-ru / 6),
+        "07": calc($base-ru / 7),
+        "08": calc($base-ru / 8)
+    );
+
+    @each $key, $value in $scales {
+        .mb-#{$key} {
+            margin-bottom: $value;
+        }
+
+        .ml-#{$key} {
+            margin-left: $value;
+        }
+
+        .mr-#{$key} {
+            margin-right: $value;
+        }
+
+        .mt-#{$key} {
+            margin-top: $value;
+        }
+
+        .pb-#{$key} {
+            padding-bottom: $value;
+        }
+
+        .pl-#{$key} {
+            padding-left: $value;
+        }
+
+        .pr-#{$key} {
+            padding-right: $value;
+        }
+
+        .pt-#{$key} {
+            padding-top: $value;
+        }
+    }
+}
+
+/*****************
+STATIC CLASSES
+*****************/
+
+.m-reset {
+    margin: 0;
+}
+
+.mb-reset {
+    margin-bottom: 0;
+}
+
+.ml-reset {
+    margin-left: 0;
+}
+
+.mr-reset {
+    margin-right: 0;
+}
+
+.mt-reset {
+    margin-top: 0;
+}
+
+.p-reset {
+    padding: 0;
+}
+
+.pb-reset {
+    padding-bottom: 0;
+}
+
+.pl-reset {
+    padding-left: 0;
+}
+
+.pr-reset {
+    padding-right: 0;
+}
+
+.pt-reset {
+    padding-top: 0;
+}

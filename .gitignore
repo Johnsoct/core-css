@@ -15,7 +15,7 @@ coverage
 /cypress/screenshots/
 
 # Vite output
-dist/site
+# dist/site
 
 # Editor directories and files
 .vscode/*

@@ -1,0 +1,40 @@
+@use "sass:math";
+@use "sass:meta";
+@use "sass:list";
+@use "../utility/functions.scss" as *;
+@use "./constants.scss" as *;
+
+@function rems($values) {
+    $result: ();
+    $separator: list.separator($values);
+
+    @each $value in $values {
+        $value: $value;
+
+        @if meta.type-of($value) == "number" {
+            @if math.unit($value) == "px" {
+                $value: calc(strip-unit($value) / strip-unit($base-font-size) * 1rem);
+            }
+            @else if math.unit($value) != "rem" and $value != 0 {
+                @warn "Cannot convert number `#{$value}` to rem units";
+            }
+        }
+        @else if meta.type-of($value) == "list" {
+            $value: rems($value);
+        }
+        @else {
+            @warn "Cannot convert value `#{$value}` to rem units";
+        }
+
+        /* stylelint-disable-next-line scss/dollar-variable-first-in-block */
+        $result: list.append($result, $value, $separator);
+    }
+
+    @return if(list.length($result) == 1, list.nth($result, 1), $result);
+}
+
+// rus = rhymthical units
+@function rus($base) {
+    // Scale 0 represents 1ru, so add one to avoid multiplying by 0
+    @return rems(calc($ru * calc($base + 1)));
+}
