@@ -1,4 +1,4 @@
-name: Build and test publish Rolodex
+name: Build and test publish Core-CSS 
 
 on:
     push
