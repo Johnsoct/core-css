@@ -1,11 +1,317 @@
-<script setup>
-    import { 
+<script lang="ts" setup>
+    import {
         onBeforeUnmount,
         onMounted,
-        useTemplateRef 
+        useTemplateRef
     } from 'vue'
-    
+
+    type typographyData = {
+        associatedClasses: string[]
+        lineHeight: number
+        // TODO: remove null when max-widths are set
+        maxWidth: number | null
+        name: string
+        size: [number, number]
+        tracking: number
+        weight: number | null,
+    }
+
+    const optionsTypography: { htmlElements: typographyData[], weights: number[] } = {
+        // Headings
+        htmlElements: [
+            {
+                associatedClasses: [ 'heading-ms4' ],
+                lineHeight: 1.2,
+                maxWidth: null,
+                name: 'h1',
+                size: 0,
+                tracking: -3,
+                weight: 700,
+            },
+            {
+                associatedClasses: [ 'heading-ms3' ],
+                lineHeight: 1.2,
+                maxWidth: null,
+                name: 'h2',
+                size: 0,
+                tracking: -3,
+                weight: 700,
+            },
+            {
+                associatedClasses: [ 'heading-ms2' ],
+                lineHeight: 1.2,
+                maxWidth: null,
+                name: 'h3',
+                size: 0,
+                tracking: -3,
+                weight: 700,
+            },
+            {
+                associatedClasses: [ 'heading-ms1' ],
+                lineHeight: 1.2,
+                maxWidth: null,
+                name: 'h5',
+                size: 0,
+                tracking: -3,
+                weight: 700,
+            },
+            {
+                associatedClasses: [ 'heading-ms1' ],
+                lineHeight: 1.2,
+                maxWidth: null,
+                name: 'h6',
+                size: 0,
+                tracking: -3,
+                weight: 700,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'a',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'abbr',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'blockquote',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'button',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'caption',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'cite',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'code',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'dd',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'dt',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'figcaption',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'i',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'input',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'label',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'legend',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'li',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'mark',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'option',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'p',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'span',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'pre',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'q',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'small',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'strong',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'td',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'textarea',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'th',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+            {
+                associatedClasses: [ 't1' ],
+                lineHeight: 0,
+                maxWidth: null,
+                name: 'time',
+                size: 0,
+                tracking: 0,
+                weight: 400,
+            },
+        ],
+        weights: [400, 500, 600, 700],
+    }
     const typographyContainer = useTemplateRef('typography')
+
     let link
 
     const appendCoreCSS = () => {
@@ -19,245 +325,8 @@
     const appendTypography = () => {
         const displayText = "The quick, brown fox jumps over the lazy dog."
         const frag = new DocumentFragment()
-        const options = {
-            htmlElements: [
-                // Headings
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'h1',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'h2',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'h3',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'h4',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'h5',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'h6',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'a',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'abbr',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'blockquote',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'button',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'caption',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'cite',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'code',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'dd',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'dt',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'figcaption',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'i',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'input',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'label',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'legend',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'li',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'mark',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'option',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'p',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'span',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'pre',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'q',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'small',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'strong',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'td',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'textarea',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'th',
-                    size: 0,
-                    tracking: 0,
-                },
-                {
-                    associatedClasses: [ 't1' ],
-                    lineHeight: 0, 
-                    name: 'time',
-                    size: 0,
-                    tracking: 0,
-                },
-            ],
-            weights: [400, 500, 600, 700],
-        }
 
-        options.htmlElements.forEach((el, index) => {
+        optionsTypography.htmlElements.forEach((el, index) => {
             const html = `
                 <div class="Styleguide__type-container">
                     <label>
@@ -323,7 +392,7 @@
         <div class="Styleguide__section">
             <h1>Typography</h1>
 
-            <div 
+            <div
                 class="Styleguide__section-content"
                 ref="typography"
             ></div>
