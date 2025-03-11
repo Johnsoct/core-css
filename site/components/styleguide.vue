@@ -5,17 +5,27 @@
         useTemplateRef
     } from 'vue'
 
+    // Types
+    // Types
+    // Types
+
+    type typographyScales = -2 | -1 | 0 | 1 | 2 | 3 | 4
     type typographyData = {
         associatedClasses: string[]
         lineHeight: number
         // TODO: remove null when max-widths are set
         maxWidth: number | null
         name: string
-        size: [number, number]
+        size: [typographyScales, typographyScales]
         tracking: number
         weight: number | null,
     }
 
+    // Variables
+    // Variables
+    // Variables
+
+    const baseFontSize = 16
     const optionsTypography: { htmlElements: typographyData[], weights: number[] } = {
         // Headings
         htmlElements: [
@@ -24,7 +34,7 @@
                 lineHeight: 1.2,
                 maxWidth: null,
                 name: 'h1',
-                size: 0,
+                size: [4, 2],
                 tracking: -3,
                 weight: 700,
             },
@@ -33,7 +43,7 @@
                 lineHeight: 1.2,
                 maxWidth: null,
                 name: 'h2',
-                size: 0,
+                size: [3, 1],
                 tracking: -3,
                 weight: 700,
             },
@@ -42,7 +52,16 @@
                 lineHeight: 1.2,
                 maxWidth: null,
                 name: 'h3',
-                size: 0,
+                size: [2, 0],
+                tracking: -3,
+                weight: 700,
+            },
+            {
+                associatedClasses: [ 'heading-ms1' ],
+                lineHeight: 1.2,
+                maxWidth: null,
+                name: 'h4',
+                size: [1, -1],
                 tracking: -3,
                 weight: 700,
             },
@@ -51,7 +70,7 @@
                 lineHeight: 1.2,
                 maxWidth: null,
                 name: 'h5',
-                size: 0,
+                size: [1, -1],
                 tracking: -3,
                 weight: 700,
             },
@@ -60,259 +79,262 @@
                 lineHeight: 1.2,
                 maxWidth: null,
                 name: 'h6',
-                size: 0,
+                size: [1, -1],
                 tracking: -3,
                 weight: 700,
             },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'a',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'abbr',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'blockquote',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'button',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'caption',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'cite',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'code',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'dd',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'dt',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'figcaption',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'i',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'input',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'label',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'legend',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'li',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'mark',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'option',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'p',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'span',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'pre',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'q',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'small',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'strong',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'td',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'textarea',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'th',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
-            {
-                associatedClasses: [ 't1' ],
-                lineHeight: 0,
-                maxWidth: null,
-                name: 'time',
-                size: 0,
-                tracking: 0,
-                weight: 400,
-            },
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'a',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'abbr',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'blockquote',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'button',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'caption',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'cite',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'code',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'dd',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'dt',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'figcaption',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'i',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'input',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'label',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'legend',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'li',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'mark',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'option',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'p',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'span',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'pre',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'q',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'small',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'strong',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'td',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'textarea',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'th',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
+            //{
+            //    associatedClasses: [ 't1' ],
+            //    lineHeight: 0,
+            //    maxWidth: null,
+            //    name: 'time',
+            //    size: [0, 0],
+            //    tracking: 0,
+            //    weight: 400,
+            //},
         ],
         weights: [400, 500, 600, 700],
     }
     const typographyContainer = useTemplateRef('typography')
+    let link: HTMLLinkElement
 
-    let link
+    // Functions
+    // Functions
+    // Functions
 
     const appendCoreCSS = () => {
         const elLink = document.createElement("link")
@@ -321,16 +343,25 @@
         document.head.appendChild(elLink)
         link = elLink
     }
-
     const appendTypography = () => {
         const displayText = "The quick, brown fox jumps over the lazy dog."
         const frag = new DocumentFragment()
 
         optionsTypography.htmlElements.forEach((el, index) => {
+            const desktopPixelSize = convertMSToPixels(el.size[0])
+            const desktopRemsSize = desktopPixelSize / baseFontSize
+            const mobilePixelSize = convertMSToPixels(el.size[1])
+            const mobileRemsSize = mobilePixelSize / baseFontSize
+
             const html = `
                 <div class="Styleguide__type-container">
                     <label>
-                        ${el.name} - size: ${el.size} | line-height: ${el.lineHeight} | tracking: ${el.tracking} | available classes: ${el.associatedClasses}
+${el.name} - size: ${desktopPixelSize}px / ${desktopRemsSize}rems (desktop) ${mobilePixelSize}px / ${mobileRemsSize}rems (mobile) |
+                        line-height: ${el.lineHeight} |
+                        tracking: ${el.tracking} |
+                        max width: ${el.maxWidth} |
+                        weight: ${el.weight} |
+                        available classes: ${el.associatedClasses}
                     </label>
                     <${el.name}>${displayText}</${el.name}>
                 </div>
@@ -346,6 +377,15 @@
 
         typographyContainer.value.innerHTML = frag.innerHTML
     }
+    const convertMSToPixels = (ms: number): number => {
+        const perfectFifth = 1.5
+
+        return Math.pow(perfectFifth, ms) * baseFontSize
+    }
+
+    // Lifecycle hooks
+    // Lifecycle hooks
+    // Lifecycle hooks
 
     onBeforeUnmount(() => {
         if (link) {
