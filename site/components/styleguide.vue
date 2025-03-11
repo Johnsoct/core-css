@@ -61,7 +61,7 @@
                 lineHeight: 1.2,
                 maxWidth: null,
                 name: 'h4',
-                size: [1, -1],
+                size: [1, 0],
                 tracking: -3,
                 weight: 700,
             },
@@ -70,7 +70,7 @@
                 lineHeight: 1.2,
                 maxWidth: null,
                 name: 'h5',
-                size: [1, -1],
+                size: [1, 0],
                 tracking: -3,
                 weight: 700,
             },
@@ -79,7 +79,7 @@
                 lineHeight: 1.2,
                 maxWidth: null,
                 name: 'h6',
-                size: [1, -1],
+                size: [1, 0],
                 tracking: -3,
                 weight: 700,
             },
@@ -348,21 +348,47 @@
         const frag = new DocumentFragment()
 
         optionsTypography.htmlElements.forEach((el, index) => {
-            const desktopPixelSize = convertMSToPixels(el.size[0])
+            const desktopPixelSize = convertMSToPixels(el.size[0]).toFixed(2)
             const desktopRemsSize = desktopPixelSize / baseFontSize
-            const mobilePixelSize = convertMSToPixels(el.size[1])
+            const mobilePixelSize = convertMSToPixels(el.size[1]).toFixed(2)
             const mobileRemsSize = mobilePixelSize / baseFontSize
 
             const html = `
                 <div class="Styleguide__type-container">
-                    <label>
-${el.name} - size: ${desktopPixelSize}px / ${desktopRemsSize}rems (desktop) ${mobilePixelSize}px / ${mobileRemsSize}rems (mobile) |
-                        line-height: ${el.lineHeight} |
-                        tracking: ${el.tracking} |
-                        max width: ${el.maxWidth} |
-                        weight: ${el.weight} |
-                        available classes: ${el.associatedClasses}
-                    </label>
+                    <table>
+                        <caption>${el.name}</caption>
+                        <thead>
+                            <th scope="col">Property</th>
+                            <th scope="col">Value</th>
+                        </thead>    
+                        <tbody>
+                            <tr>
+                                <th scope="row">Size</th>
+                                <th scope="row">${desktopPixelSize}px / ${desktopRemsSize}rems (desktop) ${mobilePixelSize}px / ${mobileRemsSize}rems (mobile)</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Line-height</th>
+                                <th scope="row">${el.lineHeight}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Tracking</th>
+                                <th scope="row">${el.tracking}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Max-width</th>
+                                <th scope="row">${el.maxWidth}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Weight</th>
+                                <th scope="row">${el.weight}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Associated Classes</th>
+                                <th scope="row">${el.associatedClasses}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+
                     <${el.name}>${displayText}</${el.name}>
                 </div>
             `
@@ -421,6 +447,19 @@ ${el.name} - size: ${desktopPixelSize}px / ${desktopRemsSize}rems (desktop) ${mo
         display: flex;
         flex-direction: column;
         margin-bottom: 2rem;
+
+        table {
+            caption {
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+
+            thead {
+                th {
+                    font-weight: 600;
+                }
+            }
+        }
     }
 }
 </style>
