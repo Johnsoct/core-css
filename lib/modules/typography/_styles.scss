@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "../constants/breakpoints.scss" as *;
+@use "../utility/_functions.scss" as *;
 @use "./constants.scss" as *;
 @use "./mixins.scss" as *;
 @use "./functions.scss" as *;
@@ -79,15 +80,16 @@ h6 {
 
 h1,
 .heading-ms4 {
-    @include font-size($base: 4);
+    $base-desktop: 4;
+    $base-mobile: 2;
+
+    @include font-size($base: $base-desktop);
     margin-bottom: rus(2);
     margin-top: rus(3);
-
-    // TODO:
-    // max-width: rems();
+    max-width: rus(calc($base-desktop * 10));
 
     @media #{$tablet-large-and-down} {
-        @include font-size($base: 2);
+        @include font-size($base: $base-mobile);
         margin-bottom: rus(1);
         margin-top: rus(2);
     }
@@ -95,15 +97,16 @@ h1,
 
 h2,
 .heading-ms3 {
-    @include font-size($base: 3);
+    $base-desktop: 3;
+    $base-mobile: 1;
+
+    @include font-size($base: $base-desktop);
     margin-bottom: rus(1);
     margin-top: rus(2);
-
-    // TODO:
-    // max-width: rems();
+    max-width: rus(calc($base-desktop * 10));
 
     @media #{$tablet-large-and-down} {
-        @include font-size($base: 1);
+        @include font-size($base: $base-mobile);
         margin-bottom: rus(0);
         margin-top: rus(1);
     }
@@ -111,15 +114,16 @@ h2,
 
 h3,
 .heading-ms2 {
-    @include font-size($base: 2);
+    $base-desktop: 2;
+    $base-mobile: 0;
+
+    @include font-size($base: $base-desktop);
     margin-bottom: rus(0);
     margin-top: rus(1);
-
-    // TODO:
-    // max-width: rems();
+    max-width: rus(calc($base-desktop * 10));
 
     @media #{$tablet-large-and-down} {
-        @include font-size($base: 0);
+        @include font-size($base: $base-mobile);
         margin-top: rus(0);
     }
 }
@@ -128,15 +132,16 @@ h4,
 h5,
 h6,
 .heading-ms1 {
-    @include font-size($base: 1);
+    $base-desktop: 1;
+    $base-mobile: 0;
+
+    @include font-size($base: $base-desktop);
     margin-bottom: rus(0);
     margin-top: rus(0);
-
-    // TODO:
-    // max-width: rems();
+    max-width: rus(calc($base-desktop * 10));
 
     @media #{$tablet-large-and-down} {
-        @include font-size($base: 0);
+        @include font-size($base: $base-mobile);
     }
 }
 
