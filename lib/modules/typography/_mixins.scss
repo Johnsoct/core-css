@@ -9,3 +9,24 @@
 @mixin font-size($base) {
     font-size: rems(ms($base));
 }
+
+@mixin max-width($base) {
+    // RU = 24px
+
+    @if $base == 4 {
+        // 1008
+        max-width: rus(41);
+    }
+    @else if $base == 3 {
+        // 888
+        max-width: rus(36);
+    }
+    @else if $base == 2 {
+        // 768
+        max-width: rus(31);
+    }
+    @else {
+        // 648
+        max-width: rus(26);
+    }
+}
