@@ -32,7 +32,7 @@
             {
                 associatedClasses: [ 'heading-ms4' ],
                 lineHeight: 1.2,
-                maxWidth: null,
+                maxWidth: 1008,
                 name: 'h1',
                 size: [4, 2],
                 tracking: -3,
@@ -41,7 +41,7 @@
             {
                 associatedClasses: [ 'heading-ms3' ],
                 lineHeight: 1.2,
-                maxWidth: null,
+                maxWidth: 888,
                 name: 'h2',
                 size: [3, 1],
                 tracking: -3,
@@ -50,7 +50,7 @@
             {
                 associatedClasses: [ 'heading-ms2' ],
                 lineHeight: 1.2,
-                maxWidth: null,
+                maxWidth: 768,
                 name: 'h3',
                 size: [2, 0],
                 tracking: -3,
@@ -59,7 +59,7 @@
             {
                 associatedClasses: [ 'heading-ms1' ],
                 lineHeight: 1.2,
-                maxWidth: null,
+                maxWidth: 648,
                 name: 'h4',
                 size: [1, 0],
                 tracking: -3,
@@ -68,7 +68,7 @@
             {
                 associatedClasses: [ 'heading-ms1' ],
                 lineHeight: 1.2,
-                maxWidth: null,
+                maxWidth: 648,
                 name: 'h5',
                 size: [1, 0],
                 tracking: -3,
@@ -77,7 +77,7 @@
             {
                 associatedClasses: [ 'heading-ms1' ],
                 lineHeight: 1.2,
-                maxWidth: null,
+                maxWidth: 648,
                 name: 'h6',
                 size: [1, 0],
                 tracking: -3,
@@ -344,7 +344,7 @@
         link = elLink
     }
     const appendTypography = () => {
-        const displayText = "The quick, brown fox jumps over the lazy dog."
+        const displayText = 'Contrary to popular belief, CSS is the most difficult programming language.'
         const frag = new DocumentFragment()
 
         optionsTypography.htmlElements.forEach((el, index) => {
@@ -364,7 +364,7 @@
                         <tbody>
                             <tr>
                                 <th scope="row">Size</th>
-                                <th scope="row">${desktopPixelSize}px / ${desktopRemsSize}rems (desktop) ${mobilePixelSize}px / ${mobileRemsSize}rems (mobile)</th>
+                                <th scope="row">${desktopPixelSize}px / ${desktopRemsSize}rems (desktop) | ${mobilePixelSize}px / ${mobileRemsSize}rems (mobile)</th>
                             </tr>
                             <tr>
                                 <th scope="row">Line-height</th>
@@ -372,11 +372,11 @@
                             </tr>
                             <tr>
                                 <th scope="row">Tracking</th>
-                                <th scope="row">${el.tracking}</th>
+                                <th scope="row">${el.tracking}%</th>
                             </tr>
                             <tr>
                                 <th scope="row">Max-width</th>
-                                <th scope="row">${el.maxWidth}</th>
+                                <th scope="row">${el.maxWidth}px</th>
                             </tr>
                             <tr>
                                 <th scope="row">Weight</th>
@@ -384,7 +384,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">Associated Classes</th>
-                                <th scope="row">${el.associatedClasses}</th>
+                                <th scope="row"><code>${el.associatedClasses}</code></th>
                             </tr>
                         </tbody>
                     </table>
