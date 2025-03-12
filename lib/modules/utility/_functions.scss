@@ -1,12 +1,4 @@
 @use "sass:math";
-@use "../typography/constants.scss" as *;
-
-@function ms($power-of) {
-    // https://www.modularscale.com/?16=&px=&1.5=
-    // (scale^power) x base-font-size
-    // Ex. (<h1> = 1.5^4 * 16)
-    @return calc(pow($perfect-fifth, $power-of) * $base-font-size);
-}
 
 @function pow($base, $power) {
     @return math.pow($base, $power);
