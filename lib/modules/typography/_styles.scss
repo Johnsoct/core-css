@@ -82,53 +82,54 @@ h6 {
 h1,
 .heading-ms4 {
     $base-desktop: 4;
-    $base-mobile: 2;
+    $base-mobile: 3;
 
     @include font-size($base: $base-desktop);
     @include max-width($base: $base-desktop);
-    margin-bottom: rus(2);
-    margin-top: rus(3);
+    margin-bottom: rus(calc($base-desktop - 1));
+    margin-top: rus($base-desktop);
 
     @media #{$tablet-large-and-down} {
         @include font-size($base: $base-mobile);
         @include max-width($base: $base-desktop);
-        margin-bottom: rus(1);
-        margin-top: rus(2);
+        margin-bottom: rus(calc($base-mobile - 1));
+        margin-top: rus($base-mobile);
     }
 }
 
 h2,
 .heading-ms3 {
     $base-desktop: 3;
-    $base-mobile: 1;
+    $base-mobile: 2;
 
     @include font-size($base: $base-desktop);
     @include max-width($base: $base-desktop);
-    margin-bottom: rus(1);
-    margin-top: rus(2);
+    margin-bottom: rus(calc($base-desktop - 1));
+    margin-top: rus($base-desktop);
 
     @media #{$tablet-large-and-down} {
         @include font-size($base: $base-mobile);
         @include max-width($base: $base-desktop);
-        margin-bottom: rus(0);
-        margin-top: rus(1);
+        margin-bottom: rus(calc($base-mobile - 1));
+        margin-top: rus($base-mobile);
     }
 }
 
 h3,
 .heading-ms2 {
     $base-desktop: 2;
-    $base-mobile: 0;
+    $base-mobile: 1;
 
     @include font-size($base: $base-desktop);
     @include max-width($base: $base-desktop);
-    margin-bottom: rus(0);
-    margin-top: rus(1);
+    margin-bottom: rus(calc($base-desktop - 1));
+    margin-top: rus($base-desktop);
 
     @media #{$tablet-large-and-down} {
         @include font-size($base: $base-mobile);
         @include max-width($base: $base-desktop);
-        margin-top: rus(0);
+        margin-bottom: rus(0.5);
+        margin-top: rus($base-mobile);
     }
 }
 
@@ -141,8 +142,8 @@ h6,
 
     @include font-size($base: $base-desktop);
     @include max-width($base: $base-desktop);
-    margin-bottom: rus(0);
-    margin-top: rus(0);
+    margin-bottom: rus(0.5);
+    margin-top: rus($base-desktop);
 
     @media #{$tablet-large-and-down} {
         @include font-size($base: $base-mobile);

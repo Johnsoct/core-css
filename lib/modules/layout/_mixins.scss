@@ -7,7 +7,6 @@
     $bottom: false,
     $left: false
 ) {
-    // TODO: refactor (./styles.scss uses same calculation)
     $value: rus($base);
 
     @if $top {
@@ -24,5 +23,39 @@
 
     @if $left {
         margin-left: $value;
+    }
+
+    @if not $top and not $right and not $bottom and not $left {
+        margin: $value;
+    }
+}
+
+@mixin padding(
+    $base,
+    $top: false,
+    $right: false,
+    $bottom: false,
+    $left: false
+) {
+    $value: rus($base);
+
+    @if $top {
+        padding-top: $value;
+    }
+
+    @if $right {
+        padding-right: $value;
+    }
+
+    @if $bottom {
+        padding-bottom: $value;
+    }
+
+    @if $left {
+        padding-left: $value;
+    }
+
+    @if not $top and not $right and not $bottom and not $left {
+        padding: $value;
     }
 }
