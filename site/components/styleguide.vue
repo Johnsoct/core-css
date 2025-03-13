@@ -356,35 +356,38 @@
             const html = `
                 <div class="Styleguide__type-container">
                     <table>
-                        <caption>${el.name}</caption>
+                        <caption>${el.name} settings</caption>
                         <thead>
                             <th scope="col">Property</th>
                             <th scope="col">Value</th>
                         </thead>    
                         <tbody>
                             <tr>
-                                <th scope="row">Size</th>
-                                <th scope="row">${desktopPixelSize}px / ${desktopRemsSize}rems (desktop) | ${mobilePixelSize}px / ${mobileRemsSize}rems (mobile)</th>
+                                <td scope="row">Size</td>
+                                <td scope="row">
+                                        <label>Desktop: ${desktopPixelSize}px / ${desktopRemsSize}rems</label>
+                                        <label>Mobile: ${mobilePixelSize}px / ${mobileRemsSize}rems</label>
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">Line-height</th>
-                                <th scope="row">${el.lineHeight}</th>
+                                <td scope="row">Line-height</td>
+                                <td scope="row">${el.lineHeight}</td>
                             </tr>
                             <tr>
-                                <th scope="row">Tracking</th>
-                                <th scope="row">${el.tracking}%</th>
+                                <td scope="row">Tracking</td>
+                                <td scope="row">${el.tracking}%</td>
                             </tr>
                             <tr>
-                                <th scope="row">Max-width</th>
-                                <th scope="row">${el.maxWidth}px</th>
+                                <td scope="row">Max-width</td>
+                                <td scope="row">${el.maxWidth}px / ${el.maxWidth / baseFontSize}rems</td>
                             </tr>
                             <tr>
-                                <th scope="row">Weight</th>
-                                <th scope="row">${el.weight}</th>
+                                <td scope="row">Weight</td>
+                                <td scope="row">${el.weight}</td>
                             </tr>
                             <tr>
-                                <th scope="row">Associated Classes</th>
-                                <th scope="row"><code>${el.associatedClasses}</code></th>
+                                <td scope="row">Associated Classes</td>
+                                <td scope="row"><code>${el.associatedClasses}</code></td>
                             </tr>
                         </tbody>
                     </table>
@@ -428,6 +431,7 @@
 <style lang="scss">
 @use "@modules/constants/breakpoints.scss" as *;
 @use "@modules/layout/mixins.scss" as *;
+@use "@modules/typography/functions.scss" as *;
 
 #app {
     background-image: linear-gradient(to right, rgba(0,0,0, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0, 0.08) 1px, transparent 1px);
@@ -438,6 +442,49 @@
     margin: 0 auto;
     max-width: $tablet-large;
 
+    table {
+        caption {
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        td,
+        th {
+            display: flex;
+            flex-direction: column;
+
+            &:first-child {
+                flex-basis: rems(200px);
+            }
+
+            &:nth-child(2) {
+                flex-grow: 1;
+            }
+
+            code {
+                margin: 0;
+            }
+
+            label {
+                display: block;
+                margin: 0;
+            }
+        }
+
+        thead {
+            th {
+                font-weight: 600;
+                text-align: left;
+            }
+
+        }
+
+        tr {
+            display: flex;
+            margin: 0;
+        }
+    }
+
     &__section-content {
         // TODO: REPLACE WITH SS MIXINS
         @include margin(2, $top: true);
@@ -447,19 +494,6 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 2rem;
-
-        table {
-            caption {
-                font-weight: 700;
-                text-transform: uppercase;
-            }
-
-            thead {
-                th {
-                    font-weight: 600;
-                }
-            }
-        }
     }
 }
 </style>
