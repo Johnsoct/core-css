@@ -1,5 +1,45 @@
+@use "sass:map";
+@use "../color/colors.scss" as *;
 @use "../typography/functions" as *;
+@use "./mixins" as *;
 
+$border-color: map.get($base-color, "black");
+$border-thickness: 1px;
+
+table,
+tbody,
+thead {
+    margin: 0;
+}
+
+td,
 th {
-    padding: rus(0.25);
+    @include padding($base: 0.2);
+    border-right: $border-thickness solid $border-color;
+    margin: 0;
+
+    &:last-child {
+        border-right: unset;
+    }
+}
+
+tbody {
+    border-top: $border-thickness solid $border-color;
+    border-right: $border-thickness solid $border-color;
+    border-bottom: $border-thickness solid $border-color;
+    border-left: $border-thickness solid $border-color;
+}
+
+thead {
+    border-top: $border-thickness solid $border-color;
+    border-right: $border-thickness solid $border-color;
+    border-left: $border-thickness solid $border-color;
+}
+
+tr {
+    border-bottom: $border-thickness solid $border-color;
+
+    &:last-child {
+        border-bottom: unset;
+    }
 }
