@@ -1,10 +1,15 @@
 @use "sass:map";
+@use "../layout/mixins.scss" as *;
 @use "../color/colors.scss" as *;
 @use "../typography/functions" as *;
 @use "./mixins" as *;
 
 $border-color: map.get($base-color, "black");
 $border-thickness: 1px;
+
+caption {
+    @include margin($base: 1, $bottom: true);
+}
 
 table,
 tbody,

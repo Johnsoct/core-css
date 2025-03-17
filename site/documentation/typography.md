@@ -132,8 +132,9 @@ Although a minor detail without a good CSS solution (and I'm not interested in s
 
 <!--DOCS: bodyquotes-->
 ```css
+blockquote,
 blockquote p {
-    text-indent: -0.5em; // May need to customize
+    text-indent: -0.2lh;
 }
 ```
 
