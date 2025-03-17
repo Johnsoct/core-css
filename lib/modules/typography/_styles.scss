@@ -55,6 +55,7 @@ textarea,
 th,
 time {
     @include font-family;
+    font-kerning: auto;
     font-weight: map.get($weights, "normal");
     text-align: left;
 }
@@ -207,6 +208,27 @@ a {
     &:visited {
         text-decoration: none;
     }
+}
+
+// DOCS: bodyquotes
+
+blockquote p {
+    text-indent: -0.5lh;
+}
+
+// DOCS: bulletpoints
+
+ol,
+ul {
+    list-style-position: outside;
+    padding-left: 0;
+}
+
+// DOCS: paragraphindent
+
+p + p {
+    margin-bottom: 0;
+    text-indent: 1lh;
 }
 
 /*******************
