@@ -2,7 +2,7 @@
 
 @mixin flex(
     $direction: row,
-    $align: flex-start,
+    $align: unset,
     $basis: auto,
     $justify: flex-start,
     $wrap: nowrap,
