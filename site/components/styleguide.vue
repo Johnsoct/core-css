@@ -157,7 +157,7 @@ const optionsTypography: typographyData[] = [
         text: 'A taco in the wild',
         textLocation: 'textContent',
         tracking: 0,
-        weight: 400,
+        weight: 700,
     },
     {
         associatedClasses: [ 'body-ms0' ],
@@ -355,7 +355,7 @@ const optionsTypography: typographyData[] = [
         text: 'Dad tacos!!!',
         textLocation: 'textContent',
         tracking: 0,
-        weight: 400,
+        weight: 600,
     },
     {
         associatedClasses: [ 'body-ms0' ],
@@ -388,7 +388,7 @@ const optionsTypography: typographyData[] = [
         text: 'Ingredients',
         textLocation: 'textContent',
         tracking: 0,
-        weight: 400,
+        weight: 600,
     },
     {
         associatedClasses: [ 'body-ms0' ],
@@ -464,7 +464,8 @@ onMounted(() => {
 
 #app {
     background-image: linear-gradient(to right, rgba(0,0,0, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0, 0.08) 1px, transparent 1px);
-    background-size: 10px 10px;
+    background-size: rus(0.5) rus(0.5);
+    padding: rus(1);
 }
 
 .Styleguide {
@@ -476,8 +477,6 @@ onMounted(() => {
     }
 
     table {
-        // @include margin(1, $bottom: true);
-
         caption {
             font-weight: 700;
             text-transform: uppercase;
@@ -506,13 +505,10 @@ onMounted(() => {
         }
 
         thead {
-            @include flex();
-
             th {
                 font-weight: 600;
                 text-align: left;
             }
-
         }
 
         tr {
@@ -563,8 +559,10 @@ onMounted(() => {
                     <table class="mb-1">
                         <caption>{{ el.name }}</caption>
                         <thead>
-                            <th scope="col">Property</th>
-                            <th scope="col">Value</th>
+                            <tr>
+                                <th scope="col">Property</th>
+                                <th scope="col">Value</th>
+                            </tr>
                         </thead>    
                         <tbody>
                             <tr>
@@ -596,7 +594,7 @@ onMounted(() => {
                             <tr>
                                 <td scope="row">Associated Classes</td>
                                 <td scope="row">
-                                    <code>{{ el.associatedClasses }}</code>
+                                    <code>{{ el.associatedClasses.join(', ') }}</code>
                                 </td>
                             </tr>
                         </tbody>
