@@ -16,14 +16,14 @@ const props = defineProps<{
 const HTMLStructure = computed(() => {
     if (props.element === 'caption') {
         return `
-            <table>
+            <table class="ElementTypography">
                 <caption class="mb-0">${props.text}</caption>
             </table>
         `
     }
     else if (props.element === 'td') {
         return `
-            <table>
+            <table class="ElementTypography">
                 <tbody>
                     <tr>
                         <td>${props.text}</td>
@@ -34,7 +34,7 @@ const HTMLStructure = computed(() => {
     }
     else if (props.element === 'th') {
         return `
-            <table>
+            <table class="ElementTypography">
                 <thead>
                     <th>${props.text}</caption>
                 </thead>
@@ -53,8 +53,13 @@ const HTMLStructure = computed(() => {
 });
 </script>
 
-<style lang="scss" scoped>
-tbody {
-    border: unset;
+<style lang="scss">
+.ElementTypography {
+    width: max-content;
+
+    thead,
+    tbody {
+        border: unset;
+    }
 }
 </style>
