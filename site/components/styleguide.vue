@@ -38,6 +38,7 @@ const displayTextOptions = {
     heading: 'Contrary to popular belief, CSS is the most difficult programming language.',
     link: 'Click here to learn more',
 };
+const input = useTemplateRef('input');
 const rus = baseFontSize * baseBodyLineHeight;
 const typesBody: typographyData[] = [
     {
@@ -430,7 +431,6 @@ const types: typographyData[] = [
     ...typesMisc,
     ...typesModify,
 ];
-const typographyContainer = useTemplateRef('typography');
 let link: HTMLLinkElement;
 
 // Functions
@@ -475,6 +475,13 @@ const displaySize = (el: typographyData, index?: number): string => {
         return `Desktop: ${el.size}px / ${convertPixelsToRems(el.size)}rems`;
     }
 }
+const focusInput = () => {
+    console.log('firing');
+    input.value.focus();
+};
+const search = () => {
+
+};
 
 // Lifecycle hooks
 // Lifecycle hooks
@@ -488,6 +495,12 @@ onBeforeUnmount(() => {
 
 onMounted(() => {
     appendCoreCSS()
+
+    window.addEventListener('keydown', (event: KeyboardEvent) => {
+        const key = event.key;
+        const timestamp = event.timeStamp;
+        console.log(key, timestamp);
+    })
 });
 </script>
 
@@ -543,6 +556,15 @@ onMounted(() => {
         }
     }
 
+    &__input {
+        $block: &;
+        width: rus(12);
+
+        &--search {
+            @extend .Styleguide__input;
+        }
+    }
+
     &__link-go-back {
         @include flex();
         @include padding(1, $top: true, $bottom: true);
@@ -554,6 +576,10 @@ onMounted(() => {
         @include margin(2, $top: true);
     }
 
+    &__top {
+        @include flex($justify: space-between);
+    }
+
     &__type-container {
         @include flex($direction: column);
         @include margin(3, $bottom: true);
@@ -562,13 +588,25 @@ onMounted(() => {
 </style>
 
 <template>
-    <div class="Styleguide">
-        <a
-            class="Styleguide__link-go-back"
-            href="/core-css/"
-        >
-            Go Back
-        </a>
+    <div 
+        @keyup.capture.enter="focusInput"
+        class="Styleguide"
+    >
+        <div class="Styleguide__top">
+            <a
+                class="Styleguide__link-go-back"
+                href="/core-css/"
+            >
+                Go Back
+            </a>
+
+            <input
+                @input="search"
+                class="Styleguide__input--search"
+                ref="input"
+                placeholder="Search for an element (&#8984;K)"
+            >
+        </div>
 
         <div class="Styleguide__section">
             <h1>Typography</h1>
