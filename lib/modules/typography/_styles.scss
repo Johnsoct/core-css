@@ -186,7 +186,6 @@ time,
     @include font-size($base: $base-desktop);
     @include max-width($base: $base-desktop);
     line-height: $base-line-height;
-    width: max-content;
 
     @media #{$tablet-large-and-down} {
         @include font-size($base: $base-mobile);
