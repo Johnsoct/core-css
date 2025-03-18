@@ -530,7 +530,7 @@ onMounted(() => {
 
     &__type-container {
         @include flex($direction: column);
-        @include margin(1, $bottom: true);
+        @include margin(3, $bottom: true);
     }
 }
 </style>
