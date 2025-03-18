@@ -55,7 +55,10 @@ const HTMLStructure = computed(() => {
 
 <style lang="scss">
 .ElementTypography {
-    width: max-content;
+
+    caption {
+        width: max-content;
+    }
 
     thead,
     tbody {
