@@ -14,15 +14,16 @@ import ElementTypography from './element-typography.vue';
 
 type typographyScales = -2 | -1 | 0 | 1 | 2 | 3 | 4
 type typographyData = {
-    associatedClasses: string[]
+    associatedClasses?: string[]
     lineHeight: number
     maxWidth: [number, number]
+    miscellaneous?: string
     name: string
-    size: [typographyScales, typographyScales]
+    size: number | [typographyScales, typographyScales]
     text: string
     textLocation: 'textContent' | 'placeholder' 
     tracking: number
-    weight: number | null,
+    weight: number
 }
 
 // Variables
@@ -105,14 +106,16 @@ const optionsTypography: typographyData[] = [
         weight: 700,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        // DOCS: a
+        associatedClasses: [ 'body-ms0', 'link' ],
         lineHeight: 1.5,
         maxWidth: [0, 0],
+        // DOCS: a
+        miscellaneous: 'Underlined; pointer on hover & focus',
         name: 'a',
         size: [0, 0],
         text: displayTextOptions.link,
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -123,18 +126,19 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: "CSS",
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        // DOCS: bodyquotes
+        associatedClasses: [ 'body-ms0', 'blockquote' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
+        // DOCS: bodyquotes
+        miscellaneous: 'Has an "inset" appearance; negative left margin to maintain horizontal rhythm (matches the amount of padding plus the border width); negative text indent to prevent quotes from disrupting horizontal rhythm; hardcoded quotes via :after and :before',
         name: 'blockquote',
         size: [0, 0],
         text: displayTextOptions.body,
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -145,40 +149,44 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: displayTextOptions.link,
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
         associatedClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
+        // DOCS: caption 
+        miscellaneous: 'Uppercase',
         name: 'caption',
         size: [0, 0],
         text: 'A taco in the wild',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 700,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        // DOCS: cite
+        associatedClasses: [ 'body-ms0', 'italic' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
+        // DOCS: cite
+        miscellaneous: 'Italic',
         name: 'cite',
         size: [0, 0],
         text: 'Smith, John. The Art of Coding. Tech Press, 2020.',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
         associatedClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
+        // TODO: introduce code styling
+        // DOCS: cite
+        // miscellaneous: 'Italic',
         name: 'code',
         size: [0, 0],
         text: 'console.log("Tacos are for superior human beings")',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -189,7 +197,6 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: 'Basic Bitch',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -200,7 +207,6 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: 'Types of Tacos',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -211,18 +217,19 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: 'A fried chicken taco in the wild',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        // DOCS: i
+        associatedClasses: [ 'body-ms0', 'italic' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
+        // DOCS: i 
+        miscellaneous: 'Italic',
         name: 'i',
         size: [0, 0],
         text: 'This taco is to die for!',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -233,7 +240,6 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: 'Please enter your favorite taco',
         textLocation: 'placeholder',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -244,7 +250,6 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: 'The taco of the year',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -255,7 +260,6 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: 'Taco origin',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -266,18 +270,19 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: 'Pulled pork taco',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        // DOCS: mark
+        associatedClasses: [ 'body-ms0', 'mark' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
+        // DOCS: mark 
+        miscellaneous: 'Background-color set to "mark"',
         name: 'mark',
         size: [0, 0],
         text: 'Tacos are known to reduce death by 100%',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -288,7 +293,6 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: 'Skirt steak taco',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -299,7 +303,6 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: displayTextOptions.body,
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -308,31 +311,37 @@ const optionsTypography: typographyData[] = [
         maxWidth: [0, 0],
         name: 'pre',
         size: [0, 0],
-        text: 'Mission objective: obtain all the tacos!',
+        text: `Mission objective: 
+obtain
+all
+the
+tacos!
+`,
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        // DOCS: q
+        associatedClasses: [ 'body-ms0', 'inline-quote' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
+        // DOCS: q
+        miscellaneous: 'Hardcoded quotes via :after and :before',
         name: 'q',
         size: [0, 0],
-        text: 'President Taco, and I quote, "Tacos for all!"',
+        text: `President Taco, and I quote, 'Tacos for all!'`,
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        // DOCS: small
+        associatedClasses: [ 'body-ms0', 'small' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'small',
-        size: [0, 0],
+        size: 12,
         text: 'Children taco options',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -343,7 +352,6 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: 'best damn taco',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -354,7 +362,6 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: 'Dad tacos!!!',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 600,
     },
     {
@@ -365,7 +372,6 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: 'Mexican-style cheese',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -376,7 +382,6 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: 'Please tell us why you love tacos',
         textLocation: 'placeholder',
-        tracking: 0,
         weight: 400,
     },
     {
@@ -387,7 +392,6 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: 'Ingredients',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 600,
     },
     {
@@ -398,7 +402,6 @@ const optionsTypography: typographyData[] = [
         size: [0, 0],
         text: 'TA:CO',
         textLocation: 'textContent',
-        tracking: 0,
         weight: 400,
     },
 ];
@@ -440,6 +443,14 @@ const convertMSToPixels = (ms: number): number => {
 const convertPixelsToRems = (px: number): number => {
     return px / baseFontSize;
 };
+const displaySize = (el: typographyData, index?: number): string => {
+    if (typeof el.size === 'object') {
+        return `Desktop: ${convertMSToPixels(el.size[index])}px / ${convertPixelsToRems(convertMSToPixels(el.size[index]))}rems`;
+    }
+    else {
+        return `Desktop: ${el.size}px / ${convertPixelsToRems(el.size)}rems`;
+    }
+}
 
 // Lifecycle hooks
 // Lifecycle hooks
@@ -463,25 +474,16 @@ onMounted(() => {
 @use "@modules/typography/functions.scss" as *;
 
 #app {
+    @include padding($base: 1);
     background-image: linear-gradient(to right, rgba(0,0,0, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0, 0.08) 1px, transparent 1px);
     background-size: rus(0.5) rus(0.5);
-    padding: rus(1);
 }
 
 .Styleguide {
     margin: 0 auto;
     max-width: $tablet-large;
 
-    @media screen and (max-width: calc($tablet-large + rus(2))) {
-        padding: 0 rus(1);
-    }
-
     table {
-        caption {
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
         td,
         th {
             @include flex($direction: column);
@@ -546,6 +548,7 @@ onMounted(() => {
 
         <div class="Styleguide__section">
             <h1>Typography</h1>
+            <p>The following displayed elements strictly focus on the text attributes of said elements (i.e. the button element is unstyled to purposefully demonstrate the specific styles applied to the button's basic text).</p>
 
             <div
                 class="Styleguide__section-content"
@@ -566,36 +569,40 @@ onMounted(() => {
                         </thead>    
                         <tbody>
                             <tr>
-                                <td scope="row">Size</td>
-                                <td scope="row">
-                                    <label>Desktop: {{ convertMSToPixels(el.size[0]) }}px / {{ convertPixelsToRems(convertMSToPixels(el.size[0])) }}rems</label>
-                                    <label>Mobile: {{ convertMSToPixels(el.size[1]) }}px / {{ convertPixelsToRems(convertMSToPixels(el.size[1])) }}rems</label>
+                                <td>Associated Classes</td>
+                                <td>
+                                    <code>{{ el.associatedClasses.join(', ') }}</code>
                                 </td>
                             </tr>
                             <tr>
-                                <td scope="row">Line-height</td>
-                                <td scope="row">{{ el.lineHeight }}</td>
+                                <td>Line-height</td>
+                                <td>{{ el.lineHeight }}</td>
                             </tr>
                             <tr>
-                                <td scope="row">Tracking</td>
-                                <td scope="row">{{ el.tracking }}%</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">Max-width</td>
-                                <td scope="row">
+                                <td>Max-width</td>
+                                <td>
                                     <label>Desktop: {{ convertMSToMaxWidth(el.maxWidth[0]) }}px / {{ convertPixelsToRems(convertMSToMaxWidth(el.maxWidth[0])) }}rems</label>
                                     <label>Mobile: {{ convertMSToMaxWidth(el.maxWidth[1]) }}px / {{ convertPixelsToRems(convertMSToMaxWidth(el.maxWidth[1])) }}rems</label>
                                 </td>
                             </tr>
                             <tr>
-                                <td scope="row">Weight</td>
-                                <td scope="row">{{ el.weight }}</td>
+                                <td>Size</td>
+                                <td>
+                                    <label>{{ displaySize(el, 0) }}</label>
+                                    <label>{{ displaySize(el, 1) }}</label>
+                                </td>
+                            </tr>
+                            <tr v-if="el.tracking">
+                                <td>Tracking</td>
+                                <td>{{ el.tracking }}%</td>
                             </tr>
                             <tr>
-                                <td scope="row">Associated Classes</td>
-                                <td scope="row">
-                                    <code>{{ el.associatedClasses.join(', ') }}</code>
-                                </td>
+                                <td>Weight</td>
+                                <td>{{ el.weight }}</td>
+                            </tr>
+                            <tr v-if="el.miscellaneous">
+                                <td>Miscellaneous</td>
+                                <td>{{ el.miscellaneous }}</td>
                             </tr>
                         </tbody>
                     </table>
