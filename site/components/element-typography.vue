@@ -14,10 +14,12 @@ const props = defineProps<{
 }>()
 
 const HTMLStructure = computed(() => {
+    const text = props.text.trim();
+
     if (props.element === 'caption') {
         return `
             <table class="ElementTypography">
-                <caption class="mb-0">${props.text}</caption>
+                <caption class="mb-0">${text}</caption>
             </table>
         `
     }
@@ -26,7 +28,7 @@ const HTMLStructure = computed(() => {
             <table class="ElementTypography">
                 <tbody>
                     <tr>
-                        <td>${props.text}</td>
+                        <td>${text}</td>
                     </tr>
                 </tbody>
             </table>
@@ -36,18 +38,18 @@ const HTMLStructure = computed(() => {
         return `
             <table class="ElementTypography">
                 <thead>
-                    <th>${props.text}</caption>
+                    <th>${text}</caption>
                 </thead>
             </table>
         `
     }
     else {
         if (props.textLocation === 'placeholder') {
-            return `<${props.element} placeholder="${props.text}" />`;
+            return `<${props.element} placeholder="${text}" />`;
         }
     
         if (props.textLocation === 'textContent') {
-            return `<${props.element}>${props.text}</${props.element}>`;
+            return `<${props.element}>${text}</${props.element}>`;
         }
     }
 });
