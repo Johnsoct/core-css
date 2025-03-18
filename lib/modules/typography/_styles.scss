@@ -186,18 +186,14 @@ time,
     @include font-size($base: $base-desktop);
     @include max-width($base: $base-desktop);
     line-height: $base-line-height;
-
-    @media #{$tablet-large-and-down} {
-        @include font-size($base: $base-mobile);
-        @include max-width($base: $base-mobile);
-    }
 }
 
 /****************************
 TAG-SPECIFIC OVERWRITES
 ****************************/
 
-a {
+a,
+.link {
     text-decoration: underline;
     user-select: none;
 
@@ -214,7 +210,8 @@ a {
 // DOCS: bodyquotes
 
 blockquote,
-blockquote p {
+blockquote p,
+.blockquote {
     $border-thickness: rus(0.2);
 
     @include padding($base: 1);
@@ -235,12 +232,14 @@ i {
 // DOCS: bulletpoints
 
 ol,
-ul {
+ul,
+.list {
     list-style-position: outside;
     padding-left: 0;
 }
 
-q {
+q,
+.inline-quote {
     text-indent: -0.3lh;
 }
 
@@ -251,7 +250,8 @@ p + p {
     text-indent: 1lh;
 }
 
-small {
+small,
+.small {
     font-size: calc($base-font-size * 0.75);
 }
 
