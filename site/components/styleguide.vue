@@ -38,7 +38,58 @@ const displayTextOptions = {
     heading: 'Contrary to popular belief, CSS is the most difficult programming language.',
     link: 'Click here to learn more',
 };
-const optionsTypography: typographyData[] = [
+const rus = baseFontSize * baseBodyLineHeight;
+const typesBody: typographyData[] = [
+    {
+        associatedClasses: [ 'body-ms0' ],
+        lineHeight: baseBodyLineHeight,
+        maxWidth: [0, 0],
+        // TODO: introduce code styling
+        // DOCS: cite
+        // miscellaneous: 'Italic',
+        name: 'code',
+        size: [0, 0],
+        text: 'console.log("Tacos are for superior human beings")',
+        textLocation: 'textContent',
+        weight: 400,
+    },
+    {
+        associatedClasses: [ 'body-ms0' ],
+        lineHeight: baseBodyLineHeight,
+        maxWidth: [0, 0],
+        name: 'li',
+        size: [0, 0],
+        text: 'Pulled pork taco',
+        textLocation: 'textContent',
+        weight: 400,
+    },
+    {
+        associatedClasses: [ 'body-ms0' ],
+        lineHeight: baseBodyLineHeight,
+        maxWidth: [0, 0],
+        name: 'p',
+        size: [0, 0],
+        text: displayTextOptions.body,
+        textLocation: 'textContent',
+        weight: 400,
+    },
+    {
+        associatedClasses: [ 'body-ms0' ],
+        lineHeight: baseBodyLineHeight,
+        maxWidth: [0, 0],
+        name: 'pre',
+        size: [0, 0],
+        text: `Mission objective: 
+obtain
+all
+the
+tacos!
+`,
+        textLocation: 'textContent',
+        weight: 400,
+    },
+];
+const typesHeaders: typographyData[] = [
     {
         associatedClasses: [ 'heading-ms4' ],
         lineHeight: baseHeaderLineHeight,
@@ -105,6 +156,30 @@ const optionsTypography: typographyData[] = [
         tracking: -3,
         weight: 700,
     },
+];
+const typesInline: typographyData[] = [
+    {
+        associatedClasses: [ 'body-ms0' ],
+        lineHeight: baseBodyLineHeight,
+        maxWidth: [0, 0],
+        name: 'abbr',
+        size: [0, 0],
+        text: "CSS",
+        textLocation: 'textContent',
+        weight: 400,
+    },
+    {
+        associatedClasses: [ 'body-ms0' ],
+        lineHeight: baseBodyLineHeight,
+        maxWidth: [0, 0],
+        name: 'span',
+        size: [0, 0],
+        text: 'best damn taco',
+        textLocation: 'textContent',
+        weight: 400,
+    },
+];
+const typesInteractive: typographyData[] = [
     {
         // DOCS: a
         associatedClasses: [ 'body-ms0', 'link' ],
@@ -122,29 +197,6 @@ const optionsTypography: typographyData[] = [
         associatedClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
-        name: 'abbr',
-        size: [0, 0],
-        text: "CSS",
-        textLocation: 'textContent',
-        weight: 400,
-    },
-    {
-        // DOCS: bodyquotes
-        associatedClasses: [ 'body-ms0', 'blockquote' ],
-        lineHeight: baseBodyLineHeight,
-        maxWidth: [0, 0],
-        // DOCS: bodyquotes
-        miscellaneous: 'Has an "inset" appearance; negative left margin to maintain horizontal rhythm (matches the amount of padding plus the border width); negative text indent to prevent quotes from disrupting horizontal rhythm; hardcoded quotes via :after and :before',
-        name: 'blockquote',
-        size: [0, 0],
-        text: displayTextOptions.body,
-        textLocation: 'textContent',
-        weight: 400,
-    },
-    {
-        associatedClasses: [ 'body-ms0' ],
-        lineHeight: baseBodyLineHeight,
-        maxWidth: [0, 0],
         name: 'button',
         size: [0, 0],
         text: displayTextOptions.link,
@@ -155,14 +207,34 @@ const optionsTypography: typographyData[] = [
         associatedClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
-        // DOCS: caption 
-        miscellaneous: 'Uppercase',
-        name: 'caption',
+        name: 'input',
         size: [0, 0],
-        text: 'A taco in the wild',
-        textLocation: 'textContent',
-        weight: 700,
+        text: 'Please enter your favorite taco',
+        textLocation: 'placeholder',
+        weight: 400,
     },
+    {
+        associatedClasses: [ 'body-ms0' ],
+        lineHeight: baseBodyLineHeight,
+        maxWidth: [0, 0],
+        name: 'option',
+        size: [0, 0],
+        text: 'Skirt steak taco',
+        textLocation: 'textContent',
+        weight: 400,
+    },
+    {
+        associatedClasses: [ 'body-ms0' ],
+        lineHeight: baseBodyLineHeight,
+        maxWidth: [0, 0],
+        name: 'textarea',
+        size: [0, 0],
+        text: 'Please tell us why you love tacos',
+        textLocation: 'placeholder',
+        weight: 400,
+    },
+];
+const typesMisc: typographyData[] = [
     {
         // DOCS: cite
         associatedClasses: [ 'body-ms0', 'italic' ],
@@ -173,19 +245,6 @@ const optionsTypography: typographyData[] = [
         name: 'cite',
         size: [0, 0],
         text: 'Smith, John. The Art of Coding. Tech Press, 2020.',
-        textLocation: 'textContent',
-        weight: 400,
-    },
-    {
-        associatedClasses: [ 'body-ms0' ],
-        lineHeight: baseBodyLineHeight,
-        maxWidth: [0, 0],
-        // TODO: introduce code styling
-        // DOCS: cite
-        // miscellaneous: 'Italic',
-        name: 'code',
-        size: [0, 0],
-        text: 'console.log("Tacos are for superior human beings")',
         textLocation: 'textContent',
         weight: 400,
     },
@@ -220,29 +279,6 @@ const optionsTypography: typographyData[] = [
         weight: 400,
     },
     {
-        // DOCS: i
-        associatedClasses: [ 'body-ms0', 'italic' ],
-        lineHeight: baseBodyLineHeight,
-        maxWidth: [0, 0],
-        // DOCS: i 
-        miscellaneous: 'Italic',
-        name: 'i',
-        size: [0, 0],
-        text: 'This taco is to die for!',
-        textLocation: 'textContent',
-        weight: 400,
-    },
-    {
-        associatedClasses: [ 'body-ms0' ],
-        lineHeight: baseBodyLineHeight,
-        maxWidth: [0, 0],
-        name: 'input',
-        size: [0, 0],
-        text: 'Please enter your favorite taco',
-        textLocation: 'placeholder',
-        weight: 400,
-    },
-    {
         associatedClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
@@ -266,9 +302,24 @@ const optionsTypography: typographyData[] = [
         associatedClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
-        name: 'li',
+        name: 'time',
         size: [0, 0],
-        text: 'Pulled pork taco',
+        text: 'TA:CO',
+        textLocation: 'textContent',
+        weight: 400,
+    },
+];
+const typesModify: typographyData[] = [
+    {
+        // DOCS: i
+        associatedClasses: [ 'body-ms0', 'italic' ],
+        lineHeight: baseBodyLineHeight,
+        maxWidth: [0, 0],
+        // DOCS: i 
+        miscellaneous: 'Italic',
+        name: 'i',
+        size: [0, 0],
+        text: 'This taco is to die for!',
         textLocation: 'textContent',
         weight: 400,
     },
@@ -282,54 +333,6 @@ const optionsTypography: typographyData[] = [
         name: 'mark',
         size: [0, 0],
         text: 'Tacos are known to reduce death by 100%',
-        textLocation: 'textContent',
-        weight: 400,
-    },
-    {
-        associatedClasses: [ 'body-ms0' ],
-        lineHeight: baseBodyLineHeight,
-        maxWidth: [0, 0],
-        name: 'option',
-        size: [0, 0],
-        text: 'Skirt steak taco',
-        textLocation: 'textContent',
-        weight: 400,
-    },
-    {
-        associatedClasses: [ 'body-ms0' ],
-        lineHeight: baseBodyLineHeight,
-        maxWidth: [0, 0],
-        name: 'p',
-        size: [0, 0],
-        text: displayTextOptions.body,
-        textLocation: 'textContent',
-        weight: 400,
-    },
-    {
-        associatedClasses: [ 'body-ms0' ],
-        lineHeight: baseBodyLineHeight,
-        maxWidth: [0, 0],
-        name: 'pre',
-        size: [0, 0],
-        text: `Mission objective: 
-obtain
-all
-the
-tacos!
-`,
-        textLocation: 'textContent',
-        weight: 400,
-    },
-    {
-        // DOCS: q
-        associatedClasses: [ 'body-ms0', 'inline-quote' ],
-        lineHeight: baseBodyLineHeight,
-        maxWidth: [0, 0],
-        // DOCS: q
-        miscellaneous: 'Hardcoded quotes via :after and :before',
-        name: 'q',
-        size: [0, 0],
-        text: `President Taco, and I quote, 'Tacos for all!'`,
         textLocation: 'textContent',
         weight: 400,
     },
@@ -348,21 +351,53 @@ tacos!
         associatedClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
-        name: 'span',
-        size: [0, 0],
-        text: 'best damn taco',
-        textLocation: 'textContent',
-        weight: 400,
-    },
-    {
-        associatedClasses: [ 'body-ms0' ],
-        lineHeight: baseBodyLineHeight,
-        maxWidth: [0, 0],
         name: 'strong',
         size: [0, 0],
         text: 'Dad tacos!!!',
         textLocation: 'textContent',
         weight: 600,
+    },
+];
+const typesQuotes: typographyData[] = [
+    {
+        // DOCS: bodyquotes
+        associatedClasses: [ 'body-ms0', 'blockquote' ],
+        lineHeight: baseBodyLineHeight,
+        maxWidth: [0, 0],
+        // DOCS: bodyquotes
+        miscellaneous: 'Has an "inset" appearance; negative left margin to maintain horizontal rhythm (matches the amount of padding plus the border width); negative text indent to prevent quotes from disrupting horizontal rhythm; hardcoded quotes via :after and :before',
+        name: 'blockquote',
+        size: [0, 0],
+        text: displayTextOptions.body,
+        textLocation: 'textContent',
+        weight: 400,
+    },
+    {
+        // DOCS: q
+        associatedClasses: [ 'body-ms0', 'inline-quote' ],
+        lineHeight: baseBodyLineHeight,
+        maxWidth: [0, 0],
+        // DOCS: q
+        miscellaneous: 'Hardcoded quotes via :after and :before',
+        name: 'q',
+        size: [0, 0],
+        text: `President Taco, and I quote, 'Tacos for all!'`,
+        textLocation: 'textContent',
+        weight: 400,
+    },
+];
+const typesTable: typographyData[] = [
+    {
+        associatedClasses: [ 'body-ms0' ],
+        lineHeight: baseBodyLineHeight,
+        maxWidth: [0, 0],
+        // DOCS: caption 
+        miscellaneous: 'Uppercase',
+        name: 'caption',
+        size: [0, 0],
+        text: 'A taco in the wild',
+        textLocation: 'textContent',
+        weight: 700,
     },
     {
         associatedClasses: [ 'body-ms0' ],
@@ -378,34 +413,23 @@ tacos!
         associatedClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
-        name: 'textarea',
-        size: [0, 0],
-        text: 'Please tell us why you love tacos',
-        textLocation: 'placeholder',
-        weight: 400,
-    },
-    {
-        associatedClasses: [ 'body-ms0' ],
-        lineHeight: baseBodyLineHeight,
-        maxWidth: [0, 0],
         name: 'th',
         size: [0, 0],
         text: 'Ingredients',
         textLocation: 'textContent',
         weight: 600,
     },
-    {
-        associatedClasses: [ 'body-ms0' ],
-        lineHeight: baseBodyLineHeight,
-        maxWidth: [0, 0],
-        name: 'time',
-        size: [0, 0],
-        text: 'TA:CO',
-        textLocation: 'textContent',
-        weight: 400,
-    },
 ];
-const rus = baseFontSize * baseBodyLineHeight;
+const types: typographyData[] = [
+    ...typesHeaders,
+    ...typesBody,
+    ...typesQuotes,
+    ...typesInteractive,
+    ...typesTable,
+    ...typesInline,
+    ...typesMisc,
+    ...typesModify,
+];
 const typographyContainer = useTemplateRef('typography');
 let link: HTMLLinkElement;
 
@@ -555,12 +579,12 @@ onMounted(() => {
                 ref="typography"
             >
                 <div 
-                    v-for="(el, index) in optionsTypography"
+                    v-for="(type, index) in types"
                     :key="index"
                     class="Styleguide__type-container"
                 >
                     <table class="mb-1">
-                        <caption>{{ el.name }}</caption>
+                        <caption>{{ type.name }}</caption>
                         <thead>
                             <tr>
                                 <th scope="col">Property</th>
@@ -571,46 +595,46 @@ onMounted(() => {
                             <tr>
                                 <td>Associated Classes</td>
                                 <td>
-                                    <code>{{ el.associatedClasses.join(', ') }}</code>
+                                    <code>{{ type.associatedClasses.join(', ') }}</code>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Line-height</td>
-                                <td>{{ el.lineHeight }}</td>
+                                <td>{{ type.lineHeight }}</td>
                             </tr>
                             <tr>
                                 <td>Max-width</td>
                                 <td>
-                                    <label>Desktop: {{ convertMSToMaxWidth(el.maxWidth[0]) }}px / {{ convertPixelsToRems(convertMSToMaxWidth(el.maxWidth[0])) }}rems</label>
-                                    <label>Mobile: {{ convertMSToMaxWidth(el.maxWidth[1]) }}px / {{ convertPixelsToRems(convertMSToMaxWidth(el.maxWidth[1])) }}rems</label>
+                                    <label>Desktop: {{ convertMSToMaxWidth(type.maxWidth[0]) }}px / {{ convertPixelsToRems(convertMSToMaxWidth(type.maxWidth[0])) }}rems</label>
+                                    <label>Mobile: {{ convertMSToMaxWidth(type.maxWidth[1]) }}px / {{ convertPixelsToRems(convertMSToMaxWidth(type.maxWidth[1])) }}rems</label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Size</td>
                                 <td>
-                                    <label>{{ displaySize(el, 0) }}</label>
-                                    <label>{{ displaySize(el, 1) }}</label>
+                                    <label>{{ displaySize(type, 0) }}</label>
+                                    <label>{{ displaySize(type, 1) }}</label>
                                 </td>
                             </tr>
-                            <tr v-if="el.tracking">
+                            <tr v-if="type.tracking">
                                 <td>Tracking</td>
-                                <td>{{ el.tracking }}%</td>
+                                <td>{{ type.tracking }}%</td>
                             </tr>
                             <tr>
                                 <td>Weight</td>
-                                <td>{{ el.weight }}</td>
+                                <td>{{ type.weight }}</td>
                             </tr>
-                            <tr v-if="el.miscellaneous">
+                            <tr v-if="type.miscellaneous">
                                 <td>Miscellaneous</td>
-                                <td>{{ el.miscellaneous }}</td>
+                                <td>{{ type.miscellaneous }}</td>
                             </tr>
                         </tbody>
                     </table>
 
                     <element-typography
-                        :element="el.name"
-                        :text="el.text"
-                        :text-location="el.textLocation"
+                        :element="type.name"
+                        :text="type.text"
+                        :text-location="type.textLocation"
                     />
                 </div>
             </div>
