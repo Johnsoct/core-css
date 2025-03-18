@@ -471,6 +471,10 @@ onMounted(() => {
     margin: 0 auto;
     max-width: $tablet-large;
 
+    @media screen and (max-width: calc($tablet-large + rus(2))) {
+        padding: 0 rus(1);
+    }
+
     table {
         // @include margin(1, $bottom: true);
 
