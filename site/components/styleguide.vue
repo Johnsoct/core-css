@@ -3,6 +3,7 @@
 import {
     onBeforeUnmount,
     onMounted,
+    ref,
     useTemplateRef
 } from 'vue';
 // Components
@@ -38,7 +39,11 @@ const displayTextOptions = {
     heading: 'Contrary to popular belief, CSS is the most difficult programming language.',
     link: 'Click here to learn more',
 };
-const input = useTemplateRef('input');
+const domTypographyList: NodeList | null = ref();
+const keyMeta = ref('Meta');
+const inputSearch = ref('');
+const refCaptions = useTemplateRef('captions');
+const refSearchInput = useTemplateRef('input');
 const rus = baseFontSize * baseBodyLineHeight;
 const typesBody: typographyData[] = [
     {
@@ -475,13 +480,24 @@ const displaySize = (el: typographyData, index?: number): string => {
         return `Desktop: ${el.size}px / ${convertPixelsToRems(el.size)}rems`;
     }
 }
-const focusInput = () => {
-    console.log('firing');
-    input.value.focus();
+const handleInputBlur = (): void => {
+    inputSearch.value = '';
+    refSearchInput.value.removeEventListener('blur', handleInputBlur);
 };
-const search = () => {
+const handleInputFocus = (e: KeyboardEvent): void => {
+    if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
 
+        refSearchInput.value.focus();
+        refSearchInput.value.addEventListener('blur', handleInputBlur);
+    }
 };
+const handleInputSearch = (e: KeyboardEvent): void => {
+    inputSearch.value += e.data;
+};
+const searchBinary = (query: string) => {
+
+}
 
 // Lifecycle hooks
 // Lifecycle hooks
@@ -491,16 +507,35 @@ onBeforeUnmount(() => {
     if (link) {
         document.head.removeChild(link)
     }
+
+    window.removeEventListener('keydown', handleInputFocus);
 });
 
 onMounted(() => {
-    appendCoreCSS()
+    appendCoreCSS() 
 
-    window.addEventListener('keydown', (event: KeyboardEvent) => {
-        const key = event.key;
-        const timestamp = event.timeStamp;
-        console.log(key, timestamp);
-    })
+    // Meta key detect (Use Ctrl not Win on Windows)
+    keyMeta.value = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)
+        ? '⌘'
+        : 'Ctrl';
+
+    window.addEventListener('keydown', handleInputFocus);
+
+    domTypographyList.value = refCaptions
+        .value        
+        .map((node) => {
+            //console.dir(node);
+            // Normalize the NodeList
+            return {
+                // NOTE: Captions (<caption>) is a part of the table context, which
+                // itself has reliable offset values as a Node; however, table elements,
+                // such as <caption> do not, so we have to use the parent element (<table>)
+                // to get the offsetTop
+                fromTop: node.offsetParent.offsetTop,
+                text: node.innerText,
+            };
+        })
+        .sort();
 });
 </script>
 
@@ -588,10 +623,7 @@ onMounted(() => {
 </style>
 
 <template>
-    <div 
-        @keyup.capture.enter="focusInput"
-        class="Styleguide"
-    >
+    <div class="Styleguide">
         <div class="Styleguide__top">
             <a
                 class="Styleguide__link-go-back"
@@ -601,10 +633,11 @@ onMounted(() => {
             </a>
 
             <input
-                @input="search"
+                @input="handleInputSearch"
                 class="Styleguide__input--search"
-                ref="input"
-                placeholder="Search for an element (&#8984;K)"
+                ref="refSearchInput"
+                :placeholder="`Search for an element (${keyMeta}K)`"
+                :value="inputSearch"
             >
         </div>
 
@@ -612,17 +645,19 @@ onMounted(() => {
             <h1>Typography</h1>
             <p>The following displayed elements strictly focus on the text attributes of said elements (i.e. the button element is unstyled to purposefully demonstrate the specific styles applied to the button's basic text).</p>
 
-            <div
-                class="Styleguide__section-content"
-                ref="typography"
-            >
+            <div class="Styleguide__section-content">
                 <div 
                     v-for="(type, index) in types"
                     :key="index"
                     class="Styleguide__type-container"
                 >
                     <table class="mb-1">
-                        <caption>{{ type.name }}</caption>
+                        <caption 
+                            class="captions" 
+                            ref="captions"
+                        >
+                            {{ type.name }}
+                        </caption>
                         <thead>
                             <tr>
                                 <th scope="col">Property</th>
