@@ -23,6 +23,10 @@ export default defineConfig({
         },
     },
 
+    esbuild: {
+        target: 'es2022',
+    },
+
     resolve: {
         alias: {
             '@modules': path.resolve(__dirname, 'lib/modules'),
