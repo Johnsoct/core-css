@@ -525,6 +525,10 @@ const searchBinary = (input: string): Node | null => {
 }
 const searchSubstrings = (input: string): Node | null => {
     const query = input.toLowerCase().trim();
+    
+    if (!query) {
+        return null;
+    }
 
     return domTypographyList
         .value
