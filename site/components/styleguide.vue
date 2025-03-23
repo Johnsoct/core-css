@@ -39,11 +39,10 @@ const displayTextOptions = {
     heading: 'Contrary to popular belief, CSS is the most difficult programming language.',
     link: 'Click here to learn more',
 };
-const domTypographyList: NodeList | null = ref();
+const domTypographyList: Node[] | null = ref();
 const keyMeta = ref('Meta');
-const inputSearch = ref('');
 const refCaptions = useTemplateRef('captions');
-const refSearchInput = useTemplateRef('input');
+const refSearchInput = useTemplateRef('refSearchInput');
 const rus = baseFontSize * baseBodyLineHeight;
 const typesBody: typographyData[] = [
     {
@@ -492,11 +491,46 @@ const handleInputFocus = (e: KeyboardEvent): void => {
         refSearchInput.value.addEventListener('blur', handleInputBlur);
     }
 };
-const handleInputSearch = (e: KeyboardEvent): void => {
-    inputSearch.value += e.data;
+const handleInputSearch = (e: InputEvent): void => {
+    const query = e.target.value;
+    //const searchResults = searchBinary(query);
+    const searchResults = searchSubstrings(query);
+    console.log(searchResults);
 };
-const searchBinary = (query: string) => {
+const searchBinary = (input: string): Node | null => {
+    const query = input.toLowerCase().trim();
+    let indexEnd = domTypographyList.value.length - 1;
+    let indexStart = 0;
 
+    while (indexStart <= indexEnd) {
+        const middleIndex = indexStart + Math.floor((indexEnd - indexStart) / 2);
+        const target = domTypographyList.value[middleIndex];
+        //console.log('Loop:', indexStart, indexEnd);
+        //console.log('Inner loop:', middleIndex, query, target.text);
+
+        if (query === target.text) {
+            return target; 
+        }
+
+        if (query < target.text) {
+            indexEnd = middleIndex - 1;
+        }
+
+        if (query > target.text) {
+            indexStart = middleIndex + 1;
+        }
+    }
+
+    return null;
+}
+const searchSubstrings = (input: string): Node | null => {
+    const query = input.toLowerCase().trim();
+
+    return domTypographyList
+        .value
+        .filter((value) => {
+            return value.text.startsWith(query);
+        })
 }
 
 // Lifecycle hooks
@@ -524,7 +558,6 @@ onMounted(() => {
     domTypographyList.value = refCaptions
         .value        
         .map((node) => {
-            //console.dir(node);
             // Normalize the NodeList
             return {
                 // NOTE: Captions (<caption>) is a part of the table context, which
@@ -532,10 +565,14 @@ onMounted(() => {
                 // such as <caption> do not, so we have to use the parent element (<table>)
                 // to get the offsetTop
                 fromTop: node.offsetParent.offsetTop,
-                text: node.innerText,
+                text: node.innerText.toLowerCase(),
             };
         })
-        .sort();
+        .sort((a, b) => {
+            return a.text.toLowerCase() < b.text.toLowerCase()
+                ? -1
+                : 1;
+        });
 });
 </script>
 
@@ -637,7 +674,6 @@ onMounted(() => {
                 class="Styleguide__input--search"
                 ref="refSearchInput"
                 :placeholder="`Search for an element (${keyMeta}K)`"
-                :value="inputSearch"
             >
         </div>
 
