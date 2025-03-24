@@ -6,26 +6,16 @@ import {
     ref,
     useTemplateRef
 } from 'vue';
+// Types
+import {
+    Ref,
+} from 'vue';
+import {
+    typographyData,
+} from '../types/styleguide';
 // Components
+import BaseSelect from './base-select.vue';
 import ElementTypography from './element-typography.vue';
-
-// Types
-// Types
-// Types
-
-type typographyScales = -2 | -1 | 0 | 1 | 2 | 3 | 4
-type typographyData = {
-    associatedClasses?: string[]
-    lineHeight: number
-    maxWidth: [number, number]
-    miscellaneous?: string
-    name: string
-    size: number | [typographyScales, typographyScales]
-    text: string
-    textLocation: 'textContent' | 'placeholder' 
-    tracking: number
-    weight: number
-}
 
 // Variables
 // Variables
@@ -39,10 +29,8 @@ const displayTextOptions = {
     heading: 'Contrary to popular belief, CSS is the most difficult programming language.',
     link: 'Click here to learn more',
 };
-const domTypographyList: Node[] | null = ref();
 const keyMeta = ref('Meta');
-const refCaptions = useTemplateRef('captions');
-const refSearchInput = useTemplateRef('refSearchInput');
+const refCaptions: Ref<HTMLTableCaptionElement[]> | Ref<any, any> = useTemplateRef('captions');
 const rus = baseFontSize * baseBodyLineHeight;
 const typesBody: typographyData[] = [
     {
@@ -84,7 +72,7 @@ const typesBody: typographyData[] = [
         maxWidth: [0, 0],
         name: 'pre',
         size: [0, 0],
-        text: `Mission objective: 
+        text: `Mission objective:
 obtain
 all
 the
@@ -320,7 +308,7 @@ const typesModify: typographyData[] = [
         associatedClasses: [ 'body-ms0', 'italic' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
-        // DOCS: i 
+        // DOCS: i
         miscellaneous: 'Italic',
         name: 'i',
         size: [0, 0],
@@ -333,7 +321,7 @@ const typesModify: typographyData[] = [
         associatedClasses: [ 'body-ms0', 'mark' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
-        // DOCS: mark 
+        // DOCS: mark
         miscellaneous: 'Background-color set to "mark"',
         name: 'mark',
         size: [0, 0],
@@ -396,7 +384,7 @@ const typesTable: typographyData[] = [
         associatedClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
-        // DOCS: caption 
+        // DOCS: caption
         miscellaneous: 'Uppercase',
         name: 'caption',
         size: [0, 0],
@@ -442,11 +430,11 @@ let link: HTMLLinkElement;
 // Functions
 
 const appendCoreCSS = () => {
-    const elLink = document.createElement("link")
-    elLink.href = `${import.meta.env.BASE_URL}index.css`
-    elLink.rel = "stylesheet"
-    document.head.appendChild(elLink)
-    link = elLink
+    const elLink = document.createElement("link");
+    elLink.href = `${import.meta.env.BASE_URL}index.css`;
+    elLink.rel = "stylesheet";
+    document.head.appendChild(elLink);
+    link = elLink;
 };
 const convertMSToMaxWidth = (ms: number): number => {
     // DOCS: typopgraphymaxwidth
@@ -464,14 +452,14 @@ const convertMSToMaxWidth = (ms: number): number => {
     }
 };
 const convertMSToPixels = (ms: number): number => {
-    const perfectFifth = 1.5
+    const perfectFifth = 1.5;
 
-    return (Math.pow(perfectFifth, ms) * baseFontSize).toFixed(2)
+    return Number.parseFloat((Math.pow(perfectFifth, ms) * baseFontSize).toFixed(2));
 };
 const convertPixelsToRems = (px: number): number => {
     return px / baseFontSize;
 };
-const displaySize = (el: typographyData, index?: number): string => {
+const displaySize = (el: typographyData, index = 0): string => {
     if (typeof el.size === 'object') {
         return `Desktop: ${convertMSToPixels(el.size[index])}px / ${convertPixelsToRems(convertMSToPixels(el.size[index]))}rems`;
     }
@@ -479,62 +467,18 @@ const displaySize = (el: typographyData, index?: number): string => {
         return `Desktop: ${el.size}px / ${convertPixelsToRems(el.size)}rems`;
     }
 }
-const handleInputBlur = (): void => {
-    inputSearch.value = '';
-    refSearchInput.value.removeEventListener('blur', handleInputBlur);
-};
-const handleInputFocus = (e: KeyboardEvent): void => {
-    if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-
-        refSearchInput.value.focus();
-        refSearchInput.value.addEventListener('blur', handleInputBlur);
-    }
-};
-const handleInputSearch = (e: InputEvent): void => {
-    const query = e.target.value;
-    //const searchResults = searchBinary(query);
-    const searchResults = searchSubstrings(query);
-    console.log(searchResults);
-};
-const searchBinary = (input: string): Node | null => {
-    const query = input.toLowerCase().trim();
-    let indexEnd = domTypographyList.value.length - 1;
-    let indexStart = 0;
-
-    while (indexStart <= indexEnd) {
-        const middleIndex = indexStart + Math.floor((indexEnd - indexStart) / 2);
-        const target = domTypographyList.value[middleIndex];
-        //console.log('Loop:', indexStart, indexEnd);
-        //console.log('Inner loop:', middleIndex, query, target.text);
-
-        if (query === target.text) {
-            return target; 
-        }
-
-        if (query < target.text) {
-            indexEnd = middleIndex - 1;
-        }
-
-        if (query > target.text) {
-            indexStart = middleIndex + 1;
-        }
+const getScrollYPosition = (el: HTMLTableCaptionElement): number => {
+    if (!el.offsetParent) {
+       return 0;
     }
 
-    return null;
+    return (el.offsetParent as HTMLTableElement).offsetTop;
 }
-const searchSubstrings = (input: string): Node | null => {
-    const query = input.toLowerCase().trim();
-    
-    if (!query) {
-        return null;
-    }
-
-    return domTypographyList
-        .value
-        .filter((value) => {
-            return value.text.startsWith(query);
-        })
+const scrollTo = (el: HTMLTableCaptionElement): void => {
+    window.scroll({
+        behavior: 'smooth',
+        top: getScrollYPosition(el),
+    });
 }
 
 // Lifecycle hooks
@@ -545,38 +489,15 @@ onBeforeUnmount(() => {
     if (link) {
         document.head.removeChild(link)
     }
-
-    window.removeEventListener('keydown', handleInputFocus);
 });
 
 onMounted(() => {
-    appendCoreCSS() 
+    appendCoreCSS()
 
     // Meta key detect (Use Ctrl not Win on Windows)
-    keyMeta.value = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)
+    keyMeta.value = /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent)
         ? '⌘'
         : 'Ctrl';
-
-    window.addEventListener('keydown', handleInputFocus);
-
-    domTypographyList.value = refCaptions
-        .value        
-        .map((node) => {
-            // Normalize the NodeList
-            return {
-                // NOTE: Captions (<caption>) is a part of the table context, which
-                // itself has reliable offset values as a Node; however, table elements,
-                // such as <caption> do not, so we have to use the parent element (<table>)
-                // to get the offsetTop
-                fromTop: node.offsetParent.offsetTop,
-                text: node.innerText.toLowerCase(),
-            };
-        })
-        .sort((a, b) => {
-            return a.text.toLowerCase() < b.text.toLowerCase()
-                ? -1
-                : 1;
-        });
 });
 </script>
 
@@ -632,18 +553,10 @@ onMounted(() => {
         }
     }
 
-    &__input {
-        $block: &;
-        width: rus(12);
-
-        &--search {
-            @extend .Styleguide__input;
-        }
-    }
-
     &__link-go-back {
-        @include flex();
-        @include padding(1, $top: true, $bottom: true);
+        @include flex($align: center, $justify: center);
+        @include padding(1, $left: true, $right: true);
+        height: rus(2);
         margin-bottom: 0;
         width: max-content;
     }
@@ -673,12 +586,12 @@ onMounted(() => {
                 Go Back
             </a>
 
-            <input
-                @input="handleInputSearch"
-                class="Styleguide__input--search"
-                ref="refSearchInput"
+            <base-select
+                v-if="refCaptions"
+                @select="scrollTo($event)"
+                :options="Array.from(refCaptions)"
                 :placeholder="`Search for an element (${keyMeta}K)`"
-            >
+            />
         </div>
 
         <div class="Styleguide__section">
@@ -686,14 +599,14 @@ onMounted(() => {
             <p>The following displayed elements strictly focus on the text attributes of said elements (i.e. the button element is unstyled to purposefully demonstrate the specific styles applied to the button's basic text).</p>
 
             <div class="Styleguide__section-content">
-                <div 
+                <div
                     v-for="(type, index) in types"
                     :key="index"
                     class="Styleguide__type-container"
                 >
                     <table class="mb-1">
-                        <caption 
-                            class="captions" 
+                        <caption
+                            class="captions"
                             ref="captions"
                         >
                             {{ type.name }}
@@ -703,9 +616,9 @@ onMounted(() => {
                                 <th scope="col">Property</th>
                                 <th scope="col">Value</th>
                             </tr>
-                        </thead>    
+                        </thead>
                         <tbody>
-                            <tr>
+                            <tr v-if="type.associatedClasses">
                                 <td>Associated Classes</td>
                                 <td>
                                     <code>{{ type.associatedClasses.join(', ') }}</code>
