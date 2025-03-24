@@ -19,7 +19,12 @@ const HTMLStructure = computed(() => {
     if (props.element === 'caption') {
         return `
             <table class="ElementTypography">
-                <caption class="mb-0">${text}</caption>
+                <caption 
+                    class="mb-0"
+                    tabindex="-1"
+                >
+                    ${text}
+                </caption>
             </table>
         `
     }
@@ -28,7 +33,7 @@ const HTMLStructure = computed(() => {
             <table class="ElementTypography">
                 <tbody>
                     <tr>
-                        <td>${text}</td>
+                        <td tabindex="-1">${text}</td>
                     </tr>
                 </tbody>
             </table>
@@ -38,18 +43,18 @@ const HTMLStructure = computed(() => {
         return `
             <table class="ElementTypography">
                 <thead>
-                    <th>${text}</caption>
+                    <th tabindex="-1">${text}</caption>
                 </thead>
             </table>
         `
     }
     else {
         if (props.textLocation === 'placeholder') {
-            return `<${props.element} placeholder="${text}" />`;
+            return `<${props.element} placeholder="${text}" tabindex="-1" />`;
         }
     
         if (props.textLocation === 'textContent') {
-            return `<${props.element}>${text}</${props.element}>`;
+            return `<${props.element} tabindex="-1">${text}</${props.element}>`;
         }
     }
 });
