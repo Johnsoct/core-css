@@ -61,7 +61,6 @@ const handleInputFocus = (e: KeyboardEvent): void => {
     if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
 
-        clearSubstringSearchMatches();
         focusRefSearchInput();
     }
 };
@@ -80,10 +79,10 @@ const handleSelectKeydownTab = (shiftKey = false) => {
         return;
     }
 
-    const activeSelectOption = document.activeElement;
-    const activeSelectOptionIndex = activeSelectOption && activeSelectOption.classList.contains('BaseSelect__option')
+    const activeElement = document.activeElement;
+    const activeElementIndex = activeElement && activeElement.classList.contains('BaseSelect__option')
         ? refSelectOptions.value.findIndex((option: HTMLLIElement) => {
-            return option.id === activeSelectOption.id;
+            return option.id === activeElement.id;
         })
         : -1;
 
@@ -92,7 +91,6 @@ const handleSelectKeydownTab = (shiftKey = false) => {
             return;
         }
 
-        refSelectOptions.value[index].classList.remove('Select__option--active');
         refSelectOptions.value[index].setAttribute('aria-selected', 'false');
     };
     const updateNext = (index: number) => {
@@ -101,11 +99,10 @@ const handleSelectKeydownTab = (shiftKey = false) => {
         }
 
         refSelectOptions.value[index].focus()
-        refSelectOptions.value[index].classList.add('Select__option--active');
         refSelectOptions.value[index].setAttribute('aria-selected', 'true');
     };
 
-    if (activeSelectOptionIndex === -1) {
+    if (activeElementIndex === -1) {
         updateNext(0);
     }
     else {
@@ -113,19 +110,19 @@ const handleSelectKeydownTab = (shiftKey = false) => {
 
         if (!shiftKey) {
             // If active index === length of the options, go to start; move forward 1
-            nextSelectOptionIndex = activeSelectOptionIndex === refSelectOptions.value.length - 1
+            nextSelectOptionIndex = activeElementIndex === refSelectOptions.value.length - 1
                 ? 0
-                : activeSelectOptionIndex + 1;
+                : activeElementIndex + 1;
         }
         else {
             // If active index is at start, go to end; move backward 1
-            nextSelectOptionIndex = !activeSelectOptionIndex
+            nextSelectOptionIndex = !activeElementIndex
                 ? refSelectOptions.value.length - 1
-                : activeSelectOptionIndex - 1;
+                : activeElementIndex - 1;
         }
 
         // Update current
-        updateCurrent(activeSelectOptionIndex);
+        updateCurrent(activeElementIndex);
 
         // Update next
         updateNext(nextSelectOptionIndex);
@@ -206,10 +203,6 @@ watch(focused, (focused) => {
 onBeforeUnmount(() => {
     // REMOVE EVENT LISTENERS
     window.removeEventListener('keydown', handleInputFocus);
-
-    if (refSelectInput.value) {
-        refSelectInput.value.removeEventListener('blur', handleSelectBlur);
-    }
 })
 
 onMounted(() => {
@@ -242,8 +235,8 @@ onMounted(() => {
         >
             <li
                 v-for="(option, index) in substringSearchMatches"
-                @keydown="handleSelectKeydown($event, option)"
                 @click="handleSelectClick($event, option)"
+                @keydown="handleSelectKeydown($event, option)"
                 :key="index"
                 :aria-selected="false"
                 class="Select__option BaseSelect__option"
@@ -281,6 +274,7 @@ onMounted(() => {
     }
 
     &__select {
+        background-color: map.get($base-color, "body");
         border: none;
         left: 0;
         position: absolute;

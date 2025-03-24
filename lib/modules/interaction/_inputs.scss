@@ -8,22 +8,25 @@
 
 $input-height: rus(2);
 
-input {
+@mixin input-padding() {
     @include padding($base: 1, $left: true, $right: true);
+}
+
+input {
+    @include input-padding;
     border: 1px solid map.get($base-color, "border");
     border-radius: $border-radius;
     height: $input-height;
 }
 
 .Select {
-    background-color: map.get($base-color, "body");
     border: 1px solid map.get($base-color, "border");
     border-radius: $border-radius;
     min-height: $input-height;
 
     &__option {
         @include flex($align: center);
-        @include padding($base: 1, $left: true, $right: true);
+        @include input-padding;
         height: $input-height;
 
         &:hover,
