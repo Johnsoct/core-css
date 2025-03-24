@@ -192,6 +192,8 @@ time,
 TAG-SPECIFIC OVERWRITES
 ****************************/
 
+// DOCS: a
+
 a,
 .link {
     text-decoration: underline;
@@ -201,10 +203,6 @@ a,
     &:focus {
         cursor: pointer;
     }
-
-    // &:visited {
-    //     text-decoration: none;
-    // }
 }
 
 // DOCS: bodyquotes
@@ -225,8 +223,31 @@ blockquote p,
     }
 }
 
+// DOCS: caption
+
+caption {
+    font-weight: map.get($weights, "bold");
+    text-transform: uppercase;
+}
+
+// DOCS: cite
+
+cite {
+    font-style: italic;
+}
+
+// DOCS: i
+
 i {
-    text-transform: italic;
+    font-style: italic;
+}
+
+// DOCS: mark
+
+mark,
+.mark {
+    background-color: mark;
+    color: map.get($base-color, "black");
 }
 
 // DOCS: bulletpoints
@@ -238,9 +259,15 @@ ul,
     padding-left: 0;
 }
 
+// DOCS: q
+
 q,
 .inline-quote {
-    text-indent: -0.3lh;
+
+    &::after,
+    &::before {
+        content: '"';
+    }
 }
 
 // DOCS: paragraphindent
@@ -249,6 +276,8 @@ p + p {
     margin-bottom: 0;
     text-indent: 1lh;
 }
+
+// DOCS: small
 
 small,
 .small {
