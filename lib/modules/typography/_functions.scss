@@ -4,6 +4,14 @@
 @use "../utility/functions.scss" as *;
 @use "./constants.scss" as *;
 
+// WARN: Should only be used to calculate font-size
+@function ms($power-of) {
+    // https://www.modularscale.com/?16=&px=&1.5=
+    // (scale^power) x base-font-size
+    // Ex. (<h1> = 1.5^4 * 16)
+    @return calc(pow($perfect-fifth, $power-of) * $base-font-size);
+}
+
 @function rems($values) {
     $result: ();
     $separator: list.separator($values);
@@ -36,5 +44,5 @@
 // rus = rhymthical units
 @function rus($base) {
     // Scale 0 represents 1ru, so add one to avoid multiplying by 0
-    @return rems(calc($ru * calc($base + 1)));
+    @return rems(calc($ru * $base));
 }

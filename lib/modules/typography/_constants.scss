@@ -1,13 +1,9 @@
 @use "../constants/breakpoints.scss" as *;
 
-$base-font-size: 16px; // desktop-first, SaaS focused
-
-// TODO: test
-$base-line-height: 1.5;
-$heading-letter-spacing: -3%;
-
-// TODO: test
-$heading-line-height: 1.2;
+$base-font-size: 16px; // DOCS: basefontsize
+$base-line-height: 1.5; // DOCS: lineheight
+$heading-letter-spacing: calc($base-font-size * -0.03); // DOCS: letterspacing
+$heading-line-height: 1.25; // DOCS: lineheight
 $perfect-fifth: 1.5;
 $ru: $base-font-size * $perfect-fifth;
 $weights: (

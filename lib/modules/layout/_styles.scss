@@ -9,6 +9,12 @@ WHOLE NUMBER SCALES
 @for $i from 0 through 7 {
     $value: rus($i);
 
+    // Margin
+
+    .m-#{$i} {
+        margin: $value;
+    }
+
     .mb-#{$i} {
         margin-bottom: $value;
     }
@@ -23,6 +29,12 @@ WHOLE NUMBER SCALES
 
     .mt-#{$i} {
         margin-top: $value;
+    }
+
+    // Padding
+
+    .p-#{$i} {
+        margin: $value;
     }
 
     .pb-#{$i} {
@@ -43,95 +55,50 @@ WHOLE NUMBER SCALES
 }
 
 /*****************
-FRACTIONAL SCALES
+FRACTIONAL SCALES (tenths)
 *****************/
-@for $i from 1 through 1 {
-    $base-ru: rus($i);
-    $scales: (
-        "02": calc($base-ru / 2),
-        "03": calc($base-ru / 3),
-        "04": calc($base-ru / 4),
-        "05": calc($base-ru / 5),
-        "06": calc($base-ru / 6),
-        "07": calc($base-ru / 7),
-        "08": calc($base-ru / 8)
-    );
+$scales: (
+    "01": rus(0.1),
+    "02": rus(0.2),
+    "03": rus(0.3),
+    "04": rus(0.4),
+    "05": rus(0.5),
+    "06": rus(0.6),
+    "07": rus(0.7),
+    "08": rus(0.8),
+    "09": rus(0.9)
+);
 
-    @each $key, $value in $scales {
-        .mb-#{$key} {
-            margin-bottom: $value;
-        }
-
-        .ml-#{$key} {
-            margin-left: $value;
-        }
-
-        .mr-#{$key} {
-            margin-right: $value;
-        }
-
-        .mt-#{$key} {
-            margin-top: $value;
-        }
-
-        .pb-#{$key} {
-            padding-bottom: $value;
-        }
-
-        .pl-#{$key} {
-            padding-left: $value;
-        }
-
-        .pr-#{$key} {
-            padding-right: $value;
-        }
-
-        .pt-#{$key} {
-            padding-top: $value;
-        }
+@each $key, $value in $scales {
+    .mb-#{$key} {
+        margin-bottom: $value;
     }
-}
 
-/*****************
-STATIC CLASSES
-*****************/
+    .ml-#{$key} {
+        margin-left: $value;
+    }
 
-.m-reset {
-    margin: 0;
-}
+    .mr-#{$key} {
+        margin-right: $value;
+    }
 
-.mb-reset {
-    margin-bottom: 0;
-}
+    .mt-#{$key} {
+        margin-top: $value;
+    }
 
-.ml-reset {
-    margin-left: 0;
-}
+    .pb-#{$key} {
+        padding-bottom: $value;
+    }
 
-.mr-reset {
-    margin-right: 0;
-}
+    .pl-#{$key} {
+        padding-left: $value;
+    }
 
-.mt-reset {
-    margin-top: 0;
-}
+    .pr-#{$key} {
+        padding-right: $value;
+    }
 
-.p-reset {
-    padding: 0;
-}
-
-.pb-reset {
-    padding-bottom: 0;
-}
-
-.pl-reset {
-    padding-left: 0;
-}
-
-.pr-reset {
-    padding-right: 0;
-}
-
-.pt-reset {
-    padding-top: 0;
+    .pt-#{$key} {
+        padding-top: $value;
+    }
 }

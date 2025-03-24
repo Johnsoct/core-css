@@ -1,5 +1,8 @@
 @use "sass:map";
+@use "../color/colors.scss" as *;
 @use "../constants/breakpoints.scss" as *;
+@use "../utility/functions.scss" as *;
+@use "../layout/mixins.scss" as *;
 @use "./constants.scss" as *;
 @use "./mixins.scss" as *;
 @use "./functions.scss" as *;
@@ -9,9 +12,7 @@ OVERWRITING BROWSER DEFAULTS
 ****************************/
 
 * {
-    line-height: $ru;
-    margin-bottom: calc(1 * $ru);
-    margin-top: 0;
+    margin: 0;
     padding: 0;
 }
 
@@ -54,6 +55,7 @@ textarea,
 th,
 time {
     @include font-family;
+    font-kerning: auto;
     font-weight: map.get($weights, "normal");
     text-align: left;
 }
@@ -79,37 +81,55 @@ h6 {
 
 h1,
 .heading-ms4 {
-    @include font-size($base: 4);
+    $base-desktop: 4;
+    $base-mobile: 3;
 
-    // TODO:
-    // max-width: rems();
+    @include font-size($base: $base-desktop);
+    @include max-width($base: $base-desktop);
+    margin-bottom: rus(calc($base-desktop - 1));
+    margin-top: rus($base-desktop);
 
     @media #{$tablet-large-and-down} {
-        @include font-size($base: 2);
+        @include font-size($base: $base-mobile);
+        @include max-width($base: $base-mobile);
+        margin-bottom: rus(calc($base-mobile - 1));
+        margin-top: rus($base-mobile);
     }
 }
 
 h2,
 .heading-ms3 {
-    @include font-size($base: 3);
+    $base-desktop: 3;
+    $base-mobile: 2;
 
-    // TODO:
-    // max-width: rems();
+    @include font-size($base: $base-desktop);
+    @include max-width($base: $base-desktop);
+    margin-bottom: rus(calc($base-desktop - 1));
+    margin-top: rus($base-desktop);
 
     @media #{$tablet-large-and-down} {
-        @include font-size($base: 1);
+        @include font-size($base: $base-mobile);
+        @include max-width($base: $base-mobile);
+        margin-bottom: rus(calc($base-mobile - 1));
+        margin-top: rus($base-mobile);
     }
 }
 
 h3,
 .heading-ms2 {
-    @include font-size($base: 2);
+    $base-desktop: 2;
+    $base-mobile: 1;
 
-    // TODO:
-    // max-width: rems();
+    @include font-size($base: $base-desktop);
+    @include max-width($base: $base-desktop);
+    margin-bottom: rus(calc($base-desktop - 1));
+    margin-top: rus($base-desktop);
 
     @media #{$tablet-large-and-down} {
-        @include font-size($base: 0);
+        @include font-size($base: $base-mobile);
+        @include max-width($base: $base-mobile);
+        margin-bottom: rus(0.5);
+        margin-top: rus($base-mobile);
     }
 }
 
@@ -117,13 +137,17 @@ h4,
 h5,
 h6,
 .heading-ms1 {
-    @include font-size($base: 1);
+    $base-desktop: 1;
+    $base-mobile: 0;
 
-    // TODO:
-    // max-width: rems();
+    @include font-size($base: $base-desktop);
+    @include max-width($base: $base-desktop);
+    margin-bottom: rus(0.5);
+    margin-top: rus($base-desktop);
 
     @media #{$tablet-large-and-down} {
-        @include font-size($base: -1);
+        @include font-size($base: $base-mobile);
+        @include max-width($base: $base-mobile);
     }
 }
 
@@ -156,33 +180,112 @@ textarea,
 th,
 time,
 .body-ms0 {
-    @include font-size($base: 0);
+    $base-desktop: 0;
+    $base-mobile: 0;
+
+    @include font-size($base: $base-desktop);
+    @include max-width($base: $base-desktop);
     line-height: $base-line-height;
-
-    // TODO:
-    // max-width: rems();
-
-    @media #{$tablet-large-and-down} {
-        @include font-size($base: 0);
-    }
 }
 
 /****************************
 TAG-SPECIFIC OVERWRITES
 ****************************/
 
-a {
-    text-decoration: none;
+// DOCS: a
+
+a,
+.link {
+    text-decoration: underline;
     user-select: none;
 
     &:hover,
     &:focus {
         cursor: pointer;
     }
+}
 
-    &:visited {
-        text-decoration: none;
+// DOCS: bodyquotes
+
+blockquote,
+blockquote p,
+.blockquote {
+    $border-thickness: rus(0.2);
+
+    @include padding($base: 1);
+    border-left: map.get($base-color, "black") $border-thickness solid;
+    margin-left: calc(rus(-1) - $border-thickness);
+    text-indent: -0.3lh;
+
+    &::after,
+    &::before {
+        content: '"';
     }
+}
+
+// DOCS: caption
+
+caption {
+    font-weight: map.get($weights, "bold");
+    text-transform: uppercase;
+}
+
+// DOCS: cite
+
+cite {
+    font-style: italic;
+}
+
+// DOCS: i
+
+i {
+    font-style: italic;
+}
+
+// DOCS: mark
+
+mark,
+.mark {
+    background-color: mark;
+    color: map.get($base-color, "black");
+}
+
+// DOCS: bulletpoints
+
+ol,
+ul,
+.list {
+    list-style-position: outside;
+    padding-left: 0;
+}
+
+// DOCS: q
+
+q,
+.inline-quote {
+
+    &::after,
+    &::before {
+        content: '"';
+    }
+}
+
+// DOCS: paragraphindent
+
+p + p {
+    margin-bottom: 0;
+    text-indent: 1lh;
+}
+
+// DOCS: small
+
+small,
+.small {
+    font-size: calc($base-font-size * 0.75);
+}
+
+strong {
+    font-weight: map.get($weights, "semi-bold");
 }
 
 /*******************

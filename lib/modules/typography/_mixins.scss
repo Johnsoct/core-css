@@ -9,3 +9,25 @@
 @mixin font-size($base) {
     font-size: rems(ms($base));
 }
+
+// DOCS: typopgraphymaxwidth
+@mixin max-width($base) {
+    // RU = 24px
+
+    @if $base == 4 {
+        // 1008
+        max-width: rus(42);
+    }
+    @else if $base == 3 {
+        // 888
+        max-width: rus(37);
+    }
+    @else if $base == 2 {
+        // 768
+        max-width: rus(32);
+    }
+    @else {
+        // 648
+        max-width: rus(27);
+    }
+}

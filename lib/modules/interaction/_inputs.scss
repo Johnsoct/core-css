@@ -1,5 +1,42 @@
-$input-height: rems(40px);
+@use "sass:color";
+@use "sass:map";
+@use "../color/colors.scss" as *;
+@use "../constants/radii.scss" as *;
+@use "../layout/mixins.scss" as *;
+@use "../typography/functions.scss" as *;
+@use "../utility/mixins.scss" as *;
+
+$input-height: rus(2);
+
+@mixin input-padding() {
+    @include padding($base: 1, $left: true, $right: true);
+}
 
 input {
+    @include input-padding;
+    border: 1px solid map.get($base-color, "border");
+    border-radius: $border-radius;
     height: $input-height;
+}
+
+.Select {
+    border: 1px solid map.get($base-color, "border");
+    border-radius: $border-radius;
+    min-height: $input-height;
+
+    &__option {
+        @include flex($align: center);
+        @include input-padding;
+        height: $input-height;
+
+        &:hover,
+        &:focus {
+            background-color: color.mix(white, map.get($base-color, "body"), $weight: 65%);
+            cursor: pointer;
+        }
+
+        &:last-child {
+            border-radius: 0 0 $border-radius $border-radius;
+        }
+    }
 }
