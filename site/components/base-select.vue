@@ -5,7 +5,9 @@ import {
     onMounted,
     ref,
     useTemplateRef,
+    watch,
 } from 'vue';
+import { useFocusWithin } from '@vueuse/core'
 // Types
 import {
     Ref,
@@ -24,14 +26,14 @@ const props = defineProps<{
 
 const refSearchInput = useTemplateRef('refSearchInput');
 const refSelectInput = useTemplateRef('refSelectInput');
-const sortedOptions = props
-    .options
-    .sort((a: HTMLTableCaptionElement, b: HTMLTableCaptionElement) => {
-        return a.innerText.toLowerCase() < b.innerText.toLowerCase()
-            ? -1
-            : 1;
-    });
+const refSelectOptions = useTemplateRef('refSelectOptions');
+const sortedOptions = props.options.sort((a: HTMLTableCaptionElement, b: HTMLTableCaptionElement) => {
+    return a.innerText.toLowerCase() < b.innerText.toLowerCase()
+        ? -1
+        : 1;
+});
 const substringSearchMatches: Ref<HTMLTableCaptionElement[]> = ref([]);
+const { focused } = useFocusWithin(refSelectInput);
 
 // FUNCTIONS
 // FUNCTIONS
@@ -45,7 +47,13 @@ const clearRefSearchInput = (): void => {
 const clearSubstringSearchMatches = (): void => {
     substringSearchMatches.value = [];
 };
+const focusRefSearchInput = (): void => {
+    if (refSearchInput.value) {
+        refSearchInput.value.focus();
+    }
+};
 const handleSelectBlur = (): void => {
+    // PERF: fires twice on "Enter" and "Space" keydowns
     clearRefSearchInput();
     clearSubstringSearchMatches();
 };
@@ -54,10 +62,7 @@ const handleInputFocus = (e: KeyboardEvent): void => {
         e.preventDefault();
 
         clearSubstringSearchMatches();
-
-        if (refSearchInput.value) {
-            refSearchInput.value.focus();
-        }
+        focusRefSearchInput();
     }
 };
 const handleInputSearch = (e: Event): void => {
@@ -70,11 +75,80 @@ const handleSelectClick = (e: Event, option: HTMLTableCaptionElement): void => {
 
     events('select', option)
 };
-// TODO: keybinds
-const handleSelectKeydown = (e: Event, option: HTMLTableCaptionElement): void => {
-    e.preventDefault();
-    handleSelectBlur();
+const handleSelectKeydownTab = (shiftKey = false) => {
+    if (!refSelectOptions.value) {
+        return;
+    }
 
+    const activeSelectOption = document.activeElement;
+    const activeSelectOptionIndex = activeSelectOption && activeSelectOption.classList.contains('BaseSelect__option')
+        ? refSelectOptions.value.findIndex((option: HTMLLIElement) => {
+            return option.id === activeSelectOption.id;
+        })
+        : -1;
+
+    const updateCurrent = (index: number) => {
+        if (!refSelectOptions.value) {
+            return;
+        }
+
+        refSelectOptions.value[index].classList.remove('Select__option--active');
+        refSelectOptions.value[index].setAttribute('aria-selected', 'false');
+    };
+    const updateNext = (index: number) => {
+        if (!refSelectOptions.value) {
+            return;
+        }
+
+        refSelectOptions.value[index].focus()
+        refSelectOptions.value[index].classList.add('Select__option--active');
+        refSelectOptions.value[index].setAttribute('aria-selected', 'true');
+    };
+
+    if (activeSelectOptionIndex === -1) {
+        updateNext(0);
+    }
+    else {
+        let nextSelectOptionIndex: number;
+
+        if (!shiftKey) {
+            // If active index === length of the options, go to start; move forward 1
+            nextSelectOptionIndex = activeSelectOptionIndex === refSelectOptions.value.length - 1
+                ? 0
+                : activeSelectOptionIndex + 1;
+        }
+        else {
+            // If active index is at start, go to end; move backward 1
+            nextSelectOptionIndex = !activeSelectOptionIndex
+                ? refSelectOptions.value.length - 1
+                : activeSelectOptionIndex - 1;
+        }
+
+        // Update current
+        updateCurrent(activeSelectOptionIndex);
+
+        // Update next
+        updateNext(nextSelectOptionIndex);
+    }
+};
+const handleSelectKeydown = (e: KeyboardEvent, option: HTMLTableCaptionElement): void => {
+    e.preventDefault();
+
+    if (![ 'Enter', ' ', 'Tab', 'Escape' ].includes(e.key)) {
+        return;
+    }
+
+    if (e.key === 'Escape') {
+        focusRefSearchInput();
+        return;
+    }
+
+    if (e.key === 'Tab') {
+        handleSelectKeydownTab(e.shiftKey);
+        return;
+    }
+
+    handleSelectBlur();
     events('select', option)
 };
 const searchBinary = (input: string): HTMLTableCaptionElement | null => {
@@ -115,6 +189,16 @@ const searchSubstrings = (input: string): HTMLTableCaptionElement[] => {
     })
 }
 
+// WATCHERS
+// WATCHERS
+// WATCHERS
+
+watch(focused, (focused) => {
+    if (!focused) {
+        handleSelectBlur();
+    }
+});
+
 // LIFE CYCLE
 // LIFE CYCLE
 // LIFE CYCLE
@@ -131,10 +215,6 @@ onBeforeUnmount(() => {
 onMounted(() => {
     // ADD EVENT LISTENERS
     window.addEventListener('keydown', handleInputFocus);
-
-    if (refSelectInput.value) {
-        refSelectInput.value.addEventListener('blur', handleSelectBlur);
-    }
 });
 </script>
 
@@ -168,7 +248,9 @@ onMounted(() => {
                 :aria-selected="false"
                 class="Select__option BaseSelect__option"
                 :id="`BaseSelect__option-${index}`"
+                ref="refSelectOptions"
                 role="option"
+                tabindex="0"
             >
                 {{ option.innerText.toLowerCase().trim() }}
             </li>
