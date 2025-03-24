@@ -14,6 +14,18 @@ First, I'd like to note typography systems are developed around displaying long-
 
 It is not possible to declare a perfect typography system with math alone. Although I have tweaked this library for use with built-in sans-serif typefaces and Inter, you may need to override some of the typography variables, such as the heading or body line-height ratios, to accommadate your specific needs.
 
+<!-- DOCS: overrides -->
+```scss
+// Hardcode or import a SCSS file with these variables
+// before importing core-css to override the default
+// typography variables
+$base-font-size: 99999px;
+$heading-line-height: 99999;
+$base-line-height: 99999;
+
+@use "core-css";
+```
+
 ## Color
 
 <!--DOCS: baseblack-->
