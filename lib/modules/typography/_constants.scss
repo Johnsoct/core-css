@@ -1,9 +1,10 @@
 @use "../constants/breakpoints.scss" as *;
 
-$base-font-size: 16px; // DOCS: basefontsize
-$base-line-height: 1.5; // DOCS: lineheight
+// DOCS: overrides
+$base-font-size: 16px !default; // DOCS: basefontsize
+$base-line-height: 1.5 !default; // DOCS: lineheight
 $heading-letter-spacing: calc($base-font-size * -0.03); // DOCS: letterspacing
-$heading-line-height: 1.25; // DOCS: lineheight
+$heading-line-height: 1.25 !default; // DOCS: lineheight
 $perfect-fifth: 1.5;
 $ru: $base-font-size * $perfect-fifth;
 $weights: (
