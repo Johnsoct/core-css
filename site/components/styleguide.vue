@@ -34,7 +34,7 @@ const refCaptions: Ref<HTMLTableCaptionElement[]> | Ref<any, any> = useTemplateR
 const rus = baseFontSize * baseBodyLineHeight;
 const typesBody: typographyData[] = [
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         // TODO: introduce code styling
@@ -47,7 +47,7 @@ const typesBody: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'li',
@@ -57,7 +57,7 @@ const typesBody: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'p',
@@ -67,7 +67,7 @@ const typesBody: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'pre',
@@ -84,7 +84,7 @@ tacos!
 ];
 const typesHeaders: typographyData[] = [
     {
-        associatedClasses: [ 'heading-ms4' ],
+        utilityClasses: [ 'heading-ms4' ],
         lineHeight: baseHeaderLineHeight,
         maxWidth: [4, 3],
         name: 'h1',
@@ -95,7 +95,7 @@ const typesHeaders: typographyData[] = [
         weight: 700,
     },
     {
-        associatedClasses: [ 'heading-ms3' ],
+        utilityClasses: [ 'heading-ms3' ],
         lineHeight: baseHeaderLineHeight,
         maxWidth: [3, 2],
         name: 'h2',
@@ -106,7 +106,7 @@ const typesHeaders: typographyData[] = [
         weight: 700,
     },
     {
-        associatedClasses: [ 'heading-ms2' ],
+        utilityClasses: [ 'heading-ms2' ],
         lineHeight: baseHeaderLineHeight,
         maxWidth: [2, 1],
         name: 'h3',
@@ -117,7 +117,7 @@ const typesHeaders: typographyData[] = [
         weight: 700,
     },
     {
-        associatedClasses: [ 'heading-ms1' ],
+        utilityClasses: [ 'heading-ms1' ],
         lineHeight: baseHeaderLineHeight,
         maxWidth: [1, 0],
         name: 'h4',
@@ -128,7 +128,7 @@ const typesHeaders: typographyData[] = [
         weight: 700,
     },
     {
-        associatedClasses: [ 'heading-ms1' ],
+        utilityClasses: [ 'heading-ms1' ],
         lineHeight: baseHeaderLineHeight,
         maxWidth: [1, 0],
         name: 'h5',
@@ -139,7 +139,7 @@ const typesHeaders: typographyData[] = [
         weight: 700,
     },
     {
-        associatedClasses: [ 'heading-ms1' ],
+        utilityClasses: [ 'heading-ms1' ],
         lineHeight: baseHeaderLineHeight,
         maxWidth: [1, 0],
         name: 'h6',
@@ -152,7 +152,7 @@ const typesHeaders: typographyData[] = [
 ];
 const typesInline: typographyData[] = [
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'abbr',
@@ -162,7 +162,7 @@ const typesInline: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'span',
@@ -175,7 +175,7 @@ const typesInline: typographyData[] = [
 const typesInteractive: typographyData[] = [
     {
         // DOCS: a
-        associatedClasses: [ 'body-ms0', 'link' ],
+        utilityClasses: [ 'body-ms0', 'link' ],
         lineHeight: 1.5,
         maxWidth: [0, 0],
         // DOCS: a
@@ -187,7 +187,7 @@ const typesInteractive: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'button',
@@ -197,7 +197,7 @@ const typesInteractive: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'input',
@@ -207,7 +207,7 @@ const typesInteractive: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'option',
@@ -217,7 +217,7 @@ const typesInteractive: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'textarea',
@@ -230,7 +230,7 @@ const typesInteractive: typographyData[] = [
 const typesMisc: typographyData[] = [
     {
         // DOCS: cite
-        associatedClasses: [ 'body-ms0', 'italic' ],
+        utilityClasses: [ 'body-ms0', 'italic' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         // DOCS: cite
@@ -242,7 +242,7 @@ const typesMisc: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'dd',
@@ -252,7 +252,7 @@ const typesMisc: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'dt',
@@ -262,7 +262,7 @@ const typesMisc: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'figcaption',
@@ -272,7 +272,7 @@ const typesMisc: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'label',
@@ -282,7 +282,7 @@ const typesMisc: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'legend',
@@ -292,7 +292,7 @@ const typesMisc: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'time',
@@ -305,7 +305,7 @@ const typesMisc: typographyData[] = [
 const typesModify: typographyData[] = [
     {
         // DOCS: i
-        associatedClasses: [ 'body-ms0', 'italic' ],
+        utilityClasses: [ 'body-ms0', 'italic' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         // DOCS: i
@@ -318,7 +318,7 @@ const typesModify: typographyData[] = [
     },
     {
         // DOCS: mark
-        associatedClasses: [ 'body-ms0', 'mark' ],
+        utilityClasses: [ 'body-ms0', 'mark' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         // DOCS: mark
@@ -331,7 +331,7 @@ const typesModify: typographyData[] = [
     },
     {
         // DOCS: small
-        associatedClasses: [ 'body-ms0', 'small' ],
+        utilityClasses: [ 'body-ms0', 'small' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'small',
@@ -341,7 +341,7 @@ const typesModify: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'strong',
@@ -354,7 +354,7 @@ const typesModify: typographyData[] = [
 const typesQuotes: typographyData[] = [
     {
         // DOCS: bodyquotes
-        associatedClasses: [ 'body-ms0', 'blockquote' ],
+        utilityClasses: [ 'body-ms0', 'blockquote' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         // DOCS: bodyquotes
@@ -367,7 +367,7 @@ const typesQuotes: typographyData[] = [
     },
     {
         // DOCS: q
-        associatedClasses: [ 'body-ms0', 'inline-quote' ],
+        utilityClasses: [ 'body-ms0', 'inline-quote' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         // DOCS: q
@@ -381,7 +381,7 @@ const typesQuotes: typographyData[] = [
 ];
 const typesTable: typographyData[] = [
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         // DOCS: caption
@@ -393,7 +393,7 @@ const typesTable: typographyData[] = [
         weight: 700,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'td',
@@ -403,7 +403,7 @@ const typesTable: typographyData[] = [
         weight: 400,
     },
     {
-        associatedClasses: [ 'body-ms0' ],
+        utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
         name: 'th',
@@ -520,14 +520,12 @@ onMounted(() => {
     table {
         td,
         th {
-            @include flex($direction: column);
 
             &:first-child {
-                flex-basis: rems(200px);
+                width: rems(150px);
             }
 
             &:nth-child(2) {
-                flex-grow: 1;
             }
 
             code {
@@ -548,7 +546,6 @@ onMounted(() => {
         }
 
         tr {
-            @include flex();
             margin: 0;
         }
     }
@@ -618,10 +615,10 @@ onMounted(() => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-if="type.associatedClasses">
-                                <td>Associated Classes</td>
+                            <tr v-if="type.utilityClasses">
+                                <td>Utility Classes</td>
                                 <td>
-                                    <code>{{ type.associatedClasses.join(', ') }}</code>
+                                    <code>{{ type.utilityClasses.join(', ') }}</code>
                                 </td>
                             </tr>
                             <tr>
