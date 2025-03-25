@@ -43,6 +43,5 @@
 
 // rus = rhymthical units
 @function rus($base) {
-    // Scale 0 represents 1ru, so add one to avoid multiplying by 0
     @return rems(calc($ru * $base));
 }

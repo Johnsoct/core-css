@@ -1,7 +1,6 @@
 export type typographyScales = -2 | -1 | 0 | 1 | 2 | 3 | 4
 
 export type typographyData = {
-    associatedClasses?: string[]
     lineHeight: number
     maxWidth: [number, number]
     miscellaneous?: string
@@ -10,5 +9,6 @@ export type typographyData = {
     text: string
     textLocation: 'textContent' | 'placeholder'
     tracking?: number
+    utilityClasses?: string[]
     weight: number
 }
