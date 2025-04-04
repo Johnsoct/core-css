@@ -1,4 +1,6 @@
+@use "../constants/breakpoints.scss" as *;
 @use "../utility/functions.scss" as *;
+@use "./constants.scss" as *;
 @use "./functions.scss" as *;
 
 @mixin font-family {
@@ -15,19 +17,65 @@
     // RU = 24px
 
     @if $base == 4 {
+        max-width: unset;
+    }
+    @else if $base == 3 {
         // 1008
         max-width: rus(42);
     }
-    @else if $base == 3 {
+    @else if $base == 2 {
         // 888
         max-width: rus(37);
-    }
-    @else if $base == 2 {
-        // 768
-        max-width: rus(32);
     }
     @else {
         // 648
         max-width: rus(27);
+    }
+}
+
+@mixin element-padding($element) {
+    @if $element == "h1" {
+        padding-bottom: rus(calc($scale-desktop-h1 - 1));
+        padding-top: rus($scale-desktop-h1);
+
+        @media #{$tablet-large-and-down} {
+            padding-bottom: rus(calc($scale-mobile-h1 - 1));
+            padding-top: rus($scale-mobile-h1);
+        }
+    }
+
+    @if $element == "h2" {
+        padding-bottom: rus(calc($scale-desktop-h2 - 1));
+        padding-top: rus($scale-desktop-h2);
+
+        @media #{$tablet-large-and-down} {
+            padding-bottom: rus(calc($scale-mobile-h2 - 1));
+            padding-top: rus($scale-mobile-h2);
+        }
+    }
+
+    @if $element == "h3" {
+        padding-bottom: rus(calc($scale-desktop-h3 - 1));
+        padding-top: rus($scale-desktop-h3);
+
+        @media #{$tablet-large-and-down} {
+            padding-bottom: rus(0.5);
+            padding-top: rus($scale-mobile-h3);
+        }
+    }
+
+    @if $element == "h4" {
+        padding-bottom: rus(0.5);
+        padding-top: rus($scale-desktop-h4);
+    }
+
+    @if $element == "h5" {
+        padding-bottom: rus(0.5);
+        padding-top: rus($scale-desktop-h4);
+    }
+
+    @if $element == "h6" {
+        padding-bottom: rus(0.5);
+        padding-top: rus($scale-desktop-h4);
     }
 }

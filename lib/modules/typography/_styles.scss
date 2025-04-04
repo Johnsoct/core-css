@@ -50,6 +50,7 @@ q,
 small,
 span,
 strong,
+summary,
 td,
 textarea,
 th,
@@ -57,6 +58,8 @@ time {
     @include font-family;
     font-kerning: auto;
     font-weight: map.get($weights, "normal");
+    margin: 0;
+    padding: 0;
     text-align: left;
 }
 
@@ -81,55 +84,54 @@ h6 {
 
 h1,
 .heading-ms4 {
-    $base-desktop: 4;
-    $base-mobile: 3;
-
-    @include font-size($base: $base-desktop);
-    @include max-width($base: $base-desktop);
-    margin-bottom: rus(calc($base-desktop - 1));
-    margin-top: rus($base-desktop);
+    @include element-padding($element: "h1");
+    @include font-size($base: $scale-desktop-h1);
+    @include max-width($base: $scale-desktop-h1);
 
     @media #{$tablet-large-and-down} {
-        @include font-size($base: $base-mobile);
-        @include max-width($base: $base-mobile);
-        margin-bottom: rus(calc($base-mobile - 1));
-        margin-top: rus($base-mobile);
+        @include font-size($base: $scale-mobile-h1);
+        @include max-width($base: $scale-mobile-h1);
+    }
+
+    + h2,
+    + .heading-ms3 {
+        padding-top: 0;
     }
 }
 
 h2,
 .heading-ms3 {
-    $base-desktop: 3;
-    $base-mobile: 2;
-
-    @include font-size($base: $base-desktop);
-    @include max-width($base: $base-desktop);
-    margin-bottom: rus(calc($base-desktop - 1));
-    margin-top: rus($base-desktop);
+    @include element-padding($element: "h2");
+    @include font-size($base: $scale-desktop-h2);
+    @include max-width($base: $scale-desktop-h2);
 
     @media #{$tablet-large-and-down} {
-        @include font-size($base: $base-mobile);
-        @include max-width($base: $base-mobile);
-        margin-bottom: rus(calc($base-mobile - 1));
-        margin-top: rus($base-mobile);
+        @include font-size($base: $scale-mobile-h2);
+        @include max-width($base: $scale-mobile-h2);
+    }
+
+    + h3,
+    + .heading-ms2 {
+        padding-top: 0;
     }
 }
 
 h3,
 .heading-ms2 {
-    $base-desktop: 2;
-    $base-mobile: 1;
-
-    @include font-size($base: $base-desktop);
-    @include max-width($base: $base-desktop);
-    margin-bottom: rus(calc($base-desktop - 1));
-    margin-top: rus($base-desktop);
+    @include element-padding($element: "h3");
+    @include font-size($base: $scale-desktop-h3);
+    @include max-width($base: $scale-desktop-h3);
 
     @media #{$tablet-large-and-down} {
-        @include font-size($base: $base-mobile);
-        @include max-width($base: $base-mobile);
-        margin-bottom: rus(0.5);
-        margin-top: rus($base-mobile);
+        @include font-size($base: $scale-mobile-h3);
+        @include max-width($base: $scale-mobile-h3);
+    }
+
+    + h4,
+    + h5,
+    + h6,
+    + .heading-ms1 {
+        padding-top: 0;
     }
 }
 
@@ -137,17 +139,20 @@ h4,
 h5,
 h6,
 .heading-ms1 {
-    $base-desktop: 1;
-    $base-mobile: 0;
-
-    @include font-size($base: $base-desktop);
-    @include max-width($base: $base-desktop);
-    margin-bottom: rus(0.5);
-    margin-top: rus($base-desktop);
+    @include element-padding($element: "h4");
+    @include font-size($base: $scale-desktop-h4);
+    @include max-width($base: $scale-desktop-h4);
 
     @media #{$tablet-large-and-down} {
-        @include font-size($base: $base-mobile);
-        @include max-width($base: $base-mobile);
+        @include font-size($base: $scale-mobile-h4);
+        @include max-width($base: $scale-mobile-h4);
+    }
+
+    + h4,
+    + h5,
+    + h6,
+    + .heading-ms1 {
+        padding-top: 0;
     }
 }
 
@@ -175,16 +180,14 @@ q,
 small,
 span,
 strong,
+summary,
 td,
 textarea,
 th,
 time,
 .body-ms0 {
-    $base-desktop: 0;
-    $base-mobile: 0;
-
-    @include font-size($base: $base-desktop);
-    @include max-width($base: $base-desktop);
+    @include font-size($base: $scale-desktop-base);
+    @include max-width($base: $scale-desktop-base);
     line-height: $base-line-height;
 }
 
@@ -273,7 +276,7 @@ q,
 // DOCS: paragraphindent
 
 p + p {
-    margin-bottom: 0;
+    padding-bottom: 0;
     text-indent: 1lh;
 }
 
@@ -286,6 +289,35 @@ small,
 
 strong {
     font-weight: map.get($weights, "semi-bold");
+}
+
+// DOCS: summary
+
+summary {
+
+    &:has(> h1) {
+        @include element-padding($element: "h1");
+    }
+
+    &:has(> h2) {
+        @include element-padding($element: "h2");
+    }
+
+    &:has(> h3) {
+        @include element-padding($element: "h3");
+    }
+
+    &:has(> h4) {
+        @include element-padding($element: "h4");
+    }
+
+    &:has(> h5) {
+        @include element-padding($element: "h5");
+    }
+
+    &:has(> h6) {
+        @include element-padding($element: "h6");
+    }
 }
 
 /*******************
