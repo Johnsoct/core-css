@@ -574,7 +574,7 @@ onMounted(() => {
 </style>
 
 <template>
-    <div class="Styleguide">
+    <main class="Styleguide">
         <div class="Styleguide__top">
             <a
                 class="Styleguide__link-go-back"
@@ -662,5 +662,5 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </template>
