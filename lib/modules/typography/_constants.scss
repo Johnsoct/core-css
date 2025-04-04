@@ -7,6 +7,22 @@ $heading-letter-spacing: calc($base-font-size * -0.03); // DOCS: letterspacing
 $heading-line-height: 1.25 !default; // DOCS: lineheight
 $perfect-fifth: 1.5;
 $ru: $base-font-size * $perfect-fifth;
+
+// Desktop and Mobile scales
+$scale-desktop-base: 0;
+$scale-desktop-h1: 4;
+$scale-desktop-h2: 3;
+$scale-desktop-h3: 2;
+$scale-desktop-h4: 1;
+$scale-desktop-h5: 1;
+$scale-desktop-h6: 1;
+$scale-mobile-base: 0;
+$scale-mobile-h1: 3;
+$scale-mobile-h2: 2;
+$scale-mobile-h3: 1;
+$scale-mobile-h4: 0;
+$scale-mobile-h5: 0;
+$scale-mobile-h6: 0;
 $weights: (
     "bold": 700,
     "medium": 500,
