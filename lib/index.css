@@ -982,6 +982,7 @@ label,
 legend,
 li,
 mark,
+ol,
 option,
 p,
 pre,
@@ -993,7 +994,8 @@ summary,
 td,
 textarea,
 th,
-time {
+time,
+ul {
   font-family: "Inter", sans-serif;
   font-kerning: auto;
   font-weight: 400;
@@ -1219,6 +1221,15 @@ cite {
   font-style: italic;
 }
 
+code {
+  padding: 1.5rem;
+  background-color: rgb(251.4, 252.4, 252.8);
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  box-shadow: inset 0 0 6px 0 rgb(166.6, 166.6, 166.6);
+  display: inline-block;
+}
+
 i {
   font-style: italic;
 }
@@ -1232,19 +1243,40 @@ mark,
 ol,
 ul,
 .list {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   list-style-position: outside;
-  padding-left: 0;
 }
 
+ol li {
+  list-style: auto;
+}
+
+ul li {
+  list-style: auto;
+}
+
+q,
+.inline-quote {
+  font-style: italic;
+}
 q::after, q::before,
 .inline-quote::after,
 .inline-quote::before {
   content: '"';
 }
 
-p + p {
+p {
+  padding-bottom: 0.75rem;
+}
+p:has(+ :is(h1, h2, h3, h4, h5, h6, ol, ul)) {
   padding-bottom: 0;
+}
+p + p {
   text-indent: 1lh;
+}
+p:last-child {
+  padding-bottom: 0;
 }
 
 small,
@@ -1256,45 +1288,45 @@ strong {
   font-weight: 600;
 }
 
-summary:has(> h1) {
+summary > h1 {
   padding-bottom: 4.5rem;
   padding-top: 6rem;
 }
 @media only screen and (max-width: 1024px) {
-  summary:has(> h1) {
+  summary > h1 {
     padding-bottom: 3rem;
     padding-top: 4.5rem;
   }
 }
-summary:has(> h2) {
+summary > h2 {
   padding-bottom: 3rem;
   padding-top: 4.5rem;
 }
 @media only screen and (max-width: 1024px) {
-  summary:has(> h2) {
+  summary > h2 {
     padding-bottom: 1.5rem;
     padding-top: 3rem;
   }
 }
-summary:has(> h3) {
+summary > h3 {
   padding-bottom: 1.5rem;
   padding-top: 3rem;
 }
 @media only screen and (max-width: 1024px) {
-  summary:has(> h3) {
+  summary > h3 {
     padding-bottom: 0.75rem;
     padding-top: 1.5rem;
   }
 }
-summary:has(> h4) {
+summary > h4 {
   padding-bottom: 0.75rem;
   padding-top: 1.5rem;
 }
-summary:has(> h5) {
+summary > h5 {
   padding-bottom: 0.75rem;
   padding-top: 1.5rem;
 }
-summary:has(> h6) {
+summary > h6 {
   padding-bottom: 0.75rem;
   padding-top: 1.5rem;
 }
