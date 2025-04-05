@@ -36,22 +36,78 @@ onMounted(() => {
 
 <template>
     <main class="Longform">
-        <h1>Longform Typography Examples</h1>
-        <h2>Core-CSS's default typography styles</h2>
-        <p>My goal is to demonstrate how well Core-CSS' redefined default styles for text-based HTML elements play together without needing to override specific styles, such as margins or line heights.</p>
-
-        <h2 class="Longform__heading-divider">Headers</h2>
+        <h1>Ode to the Taco: A Love Letter in Three Bites</h1>
+        <p>There are meals, and then there are tacos — proof that the universe wants us to be happy and well-fed. They are compact marvels of flavor, texture, and soul. Tacos don’t ask for attention. They command it.</p>
 
         <section>
-            <details>
-                <summary><h3 class="p-0">Headers with subheaders</h3></summary>
-                <headers-with-subheaders />
-            </details>
+            <h2>The Perfect Bite</h2>
+
+            <p>What makes a taco so endlessly lovable? It’s the balance. Each element plays its part:</p>
+            <ol>
+                <li>A soft, warm tortilla — the humble stage on which greatness is built.</li>
+            	<li>Fillings, from slow-braised birria to sweet, spicy roasted squash.</li>
+            	<li>Freshness from onion, cilantro, or a cool crema drizzle.</li>
+            	<li>Heat, always optional, but always respected.</li>
+            </ol>
+
+            <p>It’s not just food. It’s <strong>orchestration</strong> — handheld harmony.</p>
+
+            <blockquote>
+                A taco is what happens when flavor hugs itself.
+            </blockquote>
+
+            <p>And if you’re wondering whether tacos qualify as a complete meal:</p>
+            <code>calories + joy + crunch = dinner</code>
+
+            <h3>Subheading: The Taco Multiverse</h3>
+
+            <p>Tacos aren’t bound by borders or tradition. They evolve, adapt, surprise. You’ll find them:</p>
+            <ul>
+                <li>On smoky street corners in Mexico City.</li>
+                <li>In sleek fusion trucks in Los Angeles.</li>
+                <li>At 2AM in your own kitchen, when inspiration (and hunger) strike.</li>
+            </ul>
+
+            <p>Each taco is a new beginning. A customizable canvas. A warm envelope for whatever flavor needs expressing.</p>
+            <code>
+                // A rough approximation of dinner:
+                &nbsp;const taco = {
+                  shell: 'corn',
+                  protein: 'carne asada',
+                  toppings: ['onion', 'cilantro', 'salsa verde'],
+                };
+                eat(taco);
+            </code>
+
+            <h2>Ritual and Reverence</h2>
+
+            <p>To eat a taco is to participate in something ancient. Tear, fold, bite, nod. Add lime. Say mmm without meaning to. Pass the hot sauce like a sacred relic.</p>
 
             <details>
-                <summary><h3 class="p-0">Headers without subheaders</h3></summary>
-                <headers-without-subheaders />
+                <summary>What’s the best salsa?</summary>
+
+                <p>Depends who you ask. Salsa roja for heat. Salsa verde for tang. Pico de gallo when you want freshness. But really? The best salsa is the one that drips down your wrist and makes you chase it with your tongue.</p>
             </details>
+
+            <h3>Side Note: Things We Whisper to Our Tacos</h3>
+
+            <ul>
+                <li>You complete me.</li>
+                <li>Just one more, I swear.</li>
+                <li>I’m not crying, it’s the salsa.</li>
+            </ul>
+
+            <p><q>Tacos don’t judge. They just show up, ready to be loved.</q> — inline quote from a wise napkin</p>
+
+            <h2>Long May They Fold</h2>
+
+            <p>If this page looks beautiful — if the spacing feels calm, the line height generous, the headings bold and clear — it’s only fitting. Typography should rise to meet the taco’s level.</p>
+
+            <p>After all, <strong>what greater joy is there to style than praise for the greatest food of all time?</strong></p>
+            <p>So here’s to tacos.</p>
+            <p>May your shell never crack too soon.</p>
+            <p>May your filling be plentiful.</p>
+            <p>And may your napkin always be nearby.</p>
         </section>
     </main>
 </template>
