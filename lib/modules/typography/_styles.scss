@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "../color/colors.scss" as *;
 @use "../constants/breakpoints.scss" as *;
+@use "../constants/radii.scss" as *;
 @use "../utility/functions.scss" as *;
 @use "../layout/mixins.scss" as *;
 @use "./constants.scss" as *;
@@ -43,6 +44,7 @@ label,
 legend,
 li,
 mark,
+ol,
 option,
 p,
 pre,
@@ -54,13 +56,17 @@ summary,
 td,
 textarea,
 th,
-time {
+time,
+ul {
     @include font-family;
     font-kerning: auto;
     font-weight: map.get($weights, "normal");
     margin: 0;
     padding: 0;
     text-align: left;
+
+    // Testing purposes:
+    // border: 1px dashed red;
 }
 
 /****************************
@@ -239,6 +245,17 @@ cite {
     font-style: italic;
 }
 
+// DOCS: code
+
+code {
+    @include padding($base: 1);
+    background-color: map.get($base-color-shades, "tertiary", "100", "background");
+    border: 1px solid map.get($base-color, "border");
+    border-radius: $border-radius;
+    box-shadow: inset 0 0 6px 0 map.get($base-color-shades, "black", "100", "background");
+    display: inline-block;
+}
+
 // DOCS: i
 
 i {
@@ -258,14 +275,21 @@ mark,
 ol,
 ul,
 .list {
+    @include padding($base: 1, $top: true, $bottom: true, $left: false);
     list-style-position: outside;
-    padding-left: 0;
 }
 
-// DOCS: q
+ol li {
+    list-style: auto;
+}
+
+ul li {
+    list-style: auto;
+}
 
 q,
 .inline-quote {
+    font-style: italic;
 
     &::after,
     &::before {
@@ -273,11 +297,22 @@ q,
     }
 }
 
-// DOCS: paragraphindent
+p {
+    @include padding($base: 0.5, $bottom: true);
 
-p + p {
-    padding-bottom: 0;
-    text-indent: 1lh;
+    &:has(+ :is(h1, h2, h3, h4, h5, h6, ol, ul)) {
+        padding-bottom: 0;
+    }
+
+    // DOCS: paragraphindent
+
+    + p {
+        text-indent: 1lh;
+    }
+
+    &:last-child {
+        padding-bottom: 0;
+    }
 }
 
 // DOCS: small
@@ -295,27 +330,27 @@ strong {
 
 summary {
 
-    &:has(> h1) {
+    > h1 {
         @include element-padding($element: "h1");
     }
 
-    &:has(> h2) {
+    > h2 {
         @include element-padding($element: "h2");
     }
 
-    &:has(> h3) {
+    > h3 {
         @include element-padding($element: "h3");
     }
 
-    &:has(> h4) {
+    > h4 {
         @include element-padding($element: "h4");
     }
 
-    &:has(> h5) {
+    > h5 {
         @include element-padding($element: "h5");
     }
 
-    &:has(> h6) {
+    > h6 {
         @include element-padding($element: "h6");
     }
 }
