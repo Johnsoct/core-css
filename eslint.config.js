@@ -1,7 +1,8 @@
 import eslint from '@eslint/js'
 import globals from 'globals'
 import perfectionist from 'eslint-plugin-perfectionist'
-import stylistic from '@stylistic/eslint-plugin'
+import stylisticJs from '@stylistic/eslint-plugin-js'
+import stylisticTs from "@stylistic/eslint-plugin-ts"
 import typescript from 'typescript-eslint'
 import vue from 'eslint-plugin-vue'
 
@@ -98,37 +99,40 @@ const globalConfig = {
         sourceType: 'module',
     },
 };
-const tsConfig = {
-    ...eslint.configs.recommended,
+const tsConfig = [
+    eslint.configs.recommended,
     ...typescript.configs.recommended,
     ...vue.configs['flat/recommended'],
-   files: [ "**/*.{js,mjs,cjs,ts,vue" ],
-    ignores: [
-        "**/cypress",
-        '*.d.ts',
-        '**/coverage',
-        '**/dist',
-        '*.config.{js,ts}',
-    ],
-    languageOptions: {
-        ecmaVersion: 2022,
-        globals: globals.browser,
-        parserOptions: {
-            parser: typescript.parser,
+    {
+        files: [ "**/*.{js,mjs,cjs,ts,vue}" ],
+        ignores: [
+            "**/cypress",
+            '*.d.ts',
+            '**/coverage',
+            '**/dist',
+            '*.config.{js,ts}',
+        ],
+        languageOptions: {
+            ecmaVersion: 2022,
+            globals: globals.browser,
+            parserOptions: {
+                parser: typescript.parser,
+            },
+            sourceType: "module",
         },
-        sourceType: "module",
+        plugins: {
+            perfectionist,
+            '@stylistic/js': stylisticJs,
+            '@stylistic/ts': stylisticTs,
+        },
+         rules: {
+            ...tsRules,
+            ...vueRules,
+         },
     },
-    plugins: {
-        perfectionist,
-        '@stylistic': stylistic,
-    },
-    // rules: {
-    //    ...tsRules,
-    //    ...vueRules,
-    // },
-};
+];
 
 export default [
     globalConfig,
-    tsConfig,
+    ...tsConfig,
 ];

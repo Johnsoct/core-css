@@ -33,49 +33,49 @@
     }
 }
 
-@mixin element-padding($element) {
+@mixin element-margin($element) {
     @if $element == "h1" {
-        padding-bottom: rus(calc($scale-desktop-h1 - 1));
-        padding-top: rus($scale-desktop-h1);
+        margin-bottom: rus(calc($scale-desktop-h1 - 1));
+        margin-top: rus($scale-desktop-h1);
 
         @media #{$tablet-large-and-down} {
-            padding-bottom: rus(calc($scale-mobile-h1 - 1));
-            padding-top: rus($scale-mobile-h1);
+            margin-bottom: rus(calc($scale-mobile-h1 - 1));
+            margin-top: rus($scale-mobile-h1);
         }
     }
 
     @if $element == "h2" {
-        padding-bottom: rus(calc($scale-desktop-h2 - 1));
-        padding-top: rus($scale-desktop-h2);
+        margin-bottom: rus(calc($scale-desktop-h2 - 1));
+        margin-top: rus($scale-desktop-h2);
 
         @media #{$tablet-large-and-down} {
-            padding-bottom: rus(calc($scale-mobile-h2 - 1));
-            padding-top: rus($scale-mobile-h2);
+            margin-bottom: rus(calc($scale-mobile-h2 - 1));
+            margin-top: rus($scale-mobile-h2);
         }
     }
 
     @if $element == "h3" {
-        padding-bottom: rus(calc($scale-desktop-h3 - 1));
-        padding-top: rus($scale-desktop-h3);
+        margin-bottom: rus(calc($scale-desktop-h3 - 1));
+        margin-top: rus($scale-desktop-h3);
 
         @media #{$tablet-large-and-down} {
-            padding-bottom: rus(0.5);
-            padding-top: rus($scale-mobile-h3);
+            margin-bottom: rus(0.5);
+            margin-top: rus($scale-mobile-h3);
         }
     }
 
     @if $element == "h4" {
-        padding-bottom: rus(0.5);
-        padding-top: rus($scale-desktop-h4);
+        margin-bottom: rus(0.5);
+        margin-top: rus($scale-desktop-h4);
     }
 
     @if $element == "h5" {
-        padding-bottom: rus(0.5);
-        padding-top: rus($scale-desktop-h4);
+        margin-bottom: rus(0.5);
+        margin-top: rus($scale-desktop-h4);
     }
 
     @if $element == "h6" {
-        padding-bottom: rus(0.5);
-        padding-top: rus($scale-desktop-h4);
+        margin-bottom: rus(0.5);
+        margin-top: rus($scale-desktop-h4);
     }
 }
