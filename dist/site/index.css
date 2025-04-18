@@ -982,6 +982,7 @@ label,
 legend,
 li,
 mark,
+ol,
 option,
 p,
 pre,
@@ -989,13 +990,17 @@ q,
 small,
 span,
 strong,
+summary,
 td,
 textarea,
 th,
-time {
+time,
+ul {
   font-family: "Inter", sans-serif;
   font-kerning: auto;
   font-weight: 400;
+  margin: 0;
+  padding: 0;
   text-align: left;
 }
 
@@ -1019,63 +1024,100 @@ h6 {
 
 h1,
 .heading-ms4 {
-  font-size: 5.0625rem;
-  max-width: 63rem;
   margin-bottom: 4.5rem;
   margin-top: 6rem;
+  font-size: 5.0625rem;
+  max-width: unset;
+}
+@media only screen and (max-width: 1024px) {
+  h1,
+  .heading-ms4 {
+    margin-bottom: 3rem;
+    margin-top: 4.5rem;
+  }
 }
 @media only screen and (max-width: 1024px) {
   h1,
   .heading-ms4 {
     font-size: 3.375rem;
-    max-width: 55.5rem;
-    margin-bottom: 3rem;
-    margin-top: 4.5rem;
+    max-width: 63rem;
   }
+}
+h1 + h2,
+h1 + .heading-ms3,
+.heading-ms4 + h2,
+.heading-ms4 + .heading-ms3 {
+  margin-top: 0;
 }
 
 h2,
 .heading-ms3 {
-  font-size: 3.375rem;
-  max-width: 55.5rem;
   margin-bottom: 3rem;
   margin-top: 4.5rem;
+  font-size: 3.375rem;
+  max-width: 63rem;
+}
+@media only screen and (max-width: 1024px) {
+  h2,
+  .heading-ms3 {
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+  }
 }
 @media only screen and (max-width: 1024px) {
   h2,
   .heading-ms3 {
     font-size: 2.25rem;
-    max-width: 48rem;
-    margin-bottom: 1.5rem;
-    margin-top: 3rem;
+    max-width: 55.5rem;
   }
+}
+h2 + h3,
+h2 + .heading-ms2,
+.heading-ms3 + h3,
+.heading-ms3 + .heading-ms2 {
+  margin-top: 0;
 }
 
 h3,
 .heading-ms2 {
-  font-size: 2.25rem;
-  max-width: 48rem;
   margin-bottom: 1.5rem;
   margin-top: 3rem;
+  font-size: 2.25rem;
+  max-width: 55.5rem;
+}
+@media only screen and (max-width: 1024px) {
+  h3,
+  .heading-ms2 {
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+  }
 }
 @media only screen and (max-width: 1024px) {
   h3,
   .heading-ms2 {
     font-size: 1.5rem;
     max-width: 40.5rem;
-    margin-bottom: 0.75rem;
-    margin-top: 1.5rem;
   }
+}
+h3 + h4,
+h3 + h5,
+h3 + h6,
+h3 + .heading-ms1,
+.heading-ms2 + h4,
+.heading-ms2 + h5,
+.heading-ms2 + h6,
+.heading-ms2 + .heading-ms1 {
+  margin-top: 0;
 }
 
 h4,
 h5,
 h6,
 .heading-ms1 {
-  font-size: 1.5rem;
-  max-width: 40.5rem;
   margin-bottom: 0.75rem;
   margin-top: 1.5rem;
+  font-size: 1.5rem;
+  max-width: 40.5rem;
 }
 @media only screen and (max-width: 1024px) {
   h4,
@@ -1085,6 +1127,24 @@ h6,
     font-size: 1rem;
     max-width: 40.5rem;
   }
+}
+h4 + h4,
+h4 + h5,
+h4 + h6,
+h4 + .heading-ms1,
+h5 + h4,
+h5 + h5,
+h5 + h6,
+h5 + .heading-ms1,
+h6 + h4,
+h6 + h5,
+h6 + h6,
+h6 + .heading-ms1,
+.heading-ms1 + h4,
+.heading-ms1 + h5,
+.heading-ms1 + h6,
+.heading-ms1 + .heading-ms1 {
+  margin-top: 0;
 }
 
 a,
@@ -1111,6 +1171,7 @@ q,
 small,
 span,
 strong,
+summary,
 td,
 textarea,
 th,
@@ -1119,6 +1180,38 @@ time,
   font-size: 1rem;
   max-width: 40.5rem;
   line-height: 1.5;
+}
+a:last-child,
+abbr:last-child,
+blockquote:last-child,
+button:last-child,
+caption:last-child,
+cite:last-child,
+code:last-child,
+dd:last-child,
+dt:last-child,
+figcaption:last-child,
+hr:last-child,
+i:last-child,
+input:last-child,
+label:last-child,
+legend:last-child,
+li:last-child,
+mark:last-child,
+option:last-child,
+p:last-child,
+pre:last-child,
+q:last-child,
+small:last-child,
+span:last-child,
+strong:last-child,
+summary:last-child,
+td:last-child,
+textarea:last-child,
+th:last-child,
+time:last-child,
+.body-ms0:last-child {
+  margin-bottom: 0;
 }
 
 /****************************
@@ -1138,6 +1231,7 @@ a:hover, a:focus,
 blockquote,
 blockquote p,
 .blockquote {
+  margin: 1.5rem;
   padding: 1.5rem;
   border-left: #222222 0.3rem solid;
   margin-left: -1.8rem;
@@ -1160,6 +1254,16 @@ cite {
   font-style: italic;
 }
 
+code {
+  margin-bottom: 0.75rem;
+  padding: 1.5rem;
+  background-color: rgb(251.4, 252.4, 252.8);
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  box-shadow: inset 0 0 6px 0 rgb(166.6, 166.6, 166.6);
+  display: inline-block;
+}
+
 i {
   font-style: italic;
 }
@@ -1173,18 +1277,32 @@ mark,
 ol,
 ul,
 .list {
-  list-style-position: outside;
-  padding-left: 0;
+  margin-bottom: 0.75rem;
+  list-style-position: inside;
 }
 
+ol li {
+  list-style: auto;
+}
+
+ul li {
+  list-style: auto;
+}
+
+q,
+.inline-quote {
+  font-style: italic;
+}
 q::after, q::before,
 .inline-quote::after,
 .inline-quote::before {
   content: '"';
 }
 
+p {
+  margin-bottom: 0.75rem;
+}
 p + p {
-  margin-bottom: 0;
   text-indent: 1lh;
 }
 
@@ -1195,6 +1313,49 @@ small,
 
 strong {
   font-weight: 600;
+}
+
+summary > h1 {
+  margin-bottom: 4.5rem;
+  margin-top: 6rem;
+}
+@media only screen and (max-width: 1024px) {
+  summary > h1 {
+    margin-bottom: 3rem;
+    margin-top: 4.5rem;
+  }
+}
+summary > h2 {
+  margin-bottom: 3rem;
+  margin-top: 4.5rem;
+}
+@media only screen and (max-width: 1024px) {
+  summary > h2 {
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+  }
+}
+summary > h3 {
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+}
+@media only screen and (max-width: 1024px) {
+  summary > h3 {
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+  }
+}
+summary > h4 {
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+}
+summary > h5 {
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+}
+summary > h6 {
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
 }
 
 /*******************
@@ -1283,7 +1444,7 @@ WHOLE NUMBER SCALES
 }
 
 .p-0 {
-  margin: 0rem;
+  padding: 0rem;
 }
 
 .pb-0 {
@@ -1323,7 +1484,7 @@ WHOLE NUMBER SCALES
 }
 
 .p-1 {
-  margin: 1.5rem;
+  padding: 1.5rem;
 }
 
 .pb-1 {
@@ -1363,7 +1524,7 @@ WHOLE NUMBER SCALES
 }
 
 .p-2 {
-  margin: 3rem;
+  padding: 3rem;
 }
 
 .pb-2 {
@@ -1403,7 +1564,7 @@ WHOLE NUMBER SCALES
 }
 
 .p-3 {
-  margin: 4.5rem;
+  padding: 4.5rem;
 }
 
 .pb-3 {
@@ -1443,7 +1604,7 @@ WHOLE NUMBER SCALES
 }
 
 .p-4 {
-  margin: 6rem;
+  padding: 6rem;
 }
 
 .pb-4 {
@@ -1483,7 +1644,7 @@ WHOLE NUMBER SCALES
 }
 
 .p-5 {
-  margin: 7.5rem;
+  padding: 7.5rem;
 }
 
 .pb-5 {
@@ -1523,7 +1684,7 @@ WHOLE NUMBER SCALES
 }
 
 .p-6 {
-  margin: 9rem;
+  padding: 9rem;
 }
 
 .pb-6 {
@@ -1563,7 +1724,7 @@ WHOLE NUMBER SCALES
 }
 
 .p-7 {
-  margin: 10.5rem;
+  padding: 10.5rem;
 }
 
 .pb-7 {
