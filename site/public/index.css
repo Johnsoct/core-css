@@ -1197,6 +1197,10 @@ strong {
   font-weight: 600;
 }
 
+summary * {
+  display: inline-block;
+}
+
 /*******************
 FONT WEIGHTS
 *******************/
@@ -1240,7 +1244,7 @@ FONT MODIFIERS
 }
 
 .no-select {
-  user-select: none;
+  user-select: none !important;
 }
 
 .no-wrap {
@@ -1877,8 +1881,14 @@ caption {
   margin-bottom: 1.5rem;
 }
 
+table {
+  border-collapse: collapse;
+}
+
 table,
 tbody,
+td,
+th,
 thead {
   margin: 0;
 }
@@ -1887,7 +1897,6 @@ td,
 th {
   padding: 0.3rem;
   border-right: 1px solid #222222;
-  margin: 0;
 }
 td:last-child,
 th:last-child {
@@ -1908,10 +1917,7 @@ thead {
 }
 
 tr {
-  border-bottom: 1px solid #222222;
-}
-tr:last-child {
-  border-bottom: unset;
+  border: 1px solid #222222;
 }
 
 .width-100 {

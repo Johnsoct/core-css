@@ -27,6 +27,7 @@ import {
   readonly,
   ref,
   shallowReactive,
+  shallowReadonly,
   shallowRef,
   toRaw,
   toRef,
@@ -35,9 +36,9 @@ import {
   unref,
   watch,
   watchEffect
-} from "./chunk-LW4I4DCF.js";
+} from "./chunk-FA4MWVOB.js";
 
-// node_modules/vitepress/node_modules/@vueuse/shared/index.mjs
+// node_modules/@vueuse/shared/index.mjs
 function computedEager(fn, options) {
   var _a;
   const result = shallowRef();
@@ -138,7 +139,7 @@ var injectLocal = (...args) => {
     return localProvidedStateMap.get(instance)[key];
   return inject(...args);
 };
-var provideLocal = (key, value) => {
+function provideLocal(key, value) {
   var _a;
   const instance = (_a = getCurrentInstance()) == null ? void 0 : _a.proxy;
   if (instance == null)
@@ -147,8 +148,8 @@ var provideLocal = (key, value) => {
     localProvidedStateMap.set(instance, /* @__PURE__ */ Object.create(null));
   const localProvidedState = localProvidedStateMap.get(instance);
   localProvidedState[key] = value;
-  provide(key, value);
-};
+  return provide(key, value);
+}
 function createInjectionState(composable, options) {
   const key = (options == null ? void 0 : options.injectionKey) || Symbol(composable.name || "InjectionState");
   const defaultValue = options == null ? void 0 : options.defaultValue;
@@ -331,6 +332,43 @@ function getIsIOS() {
   var _a, _b;
   return isClient && ((_a = window == null ? void 0 : window.navigator) == null ? void 0 : _a.userAgent) && (/iP(?:ad|hone|od)/.test(window.navigator.userAgent) || ((_b = window == null ? void 0 : window.navigator) == null ? void 0 : _b.maxTouchPoints) > 2 && /iPad|Macintosh/.test(window == null ? void 0 : window.navigator.userAgent));
 }
+function toRef2(...args) {
+  if (args.length !== 1)
+    return toRef(...args);
+  const r = args[0];
+  return typeof r === "function" ? readonly(customRef(() => ({ get: r, set: noop }))) : ref(r);
+}
+var resolveRef = toRef2;
+function reactivePick(obj, ...keys2) {
+  const flatKeys = keys2.flat();
+  const predicate = flatKeys[0];
+  return reactiveComputed(() => typeof predicate === "function" ? Object.fromEntries(Object.entries(toRefs(obj)).filter(([k, v]) => predicate(toValue(v), k))) : Object.fromEntries(flatKeys.map((k) => [k, toRef2(obj, k)])));
+}
+function refAutoReset(defaultValue, afterMs = 1e4) {
+  return customRef((track, trigger) => {
+    let value = toValue(defaultValue);
+    let timer;
+    const resetAfter = () => setTimeout(() => {
+      value = toValue(defaultValue);
+      trigger();
+    }, toValue(afterMs));
+    tryOnScopeDispose(() => {
+      clearTimeout(timer);
+    });
+    return {
+      get() {
+        track();
+        return value;
+      },
+      set(newValue) {
+        value = newValue;
+        trigger();
+        clearTimeout(timer);
+        timer = resetAfter();
+      }
+    };
+  });
+}
 function createFilterWrapper(filter, fn) {
   function wrapper(...args) {
     return new Promise((resolve, reject) => {
@@ -456,19 +494,6 @@ function pausableFilter(extendFilter = bypassFilter, options = {}) {
   };
   return { isActive: readonly(isActive), pause, resume, eventFilter };
 }
-function cacheStringFunction(fn) {
-  const cache = /* @__PURE__ */ Object.create(null);
-  return (str) => {
-    const hit = cache[str];
-    return hit || (cache[str] = fn(str));
-  };
-}
-var hyphenateRE = /\B([A-Z])/g;
-var hyphenate = cacheStringFunction((str) => str.replace(hyphenateRE, "-$1").toLowerCase());
-var camelizeRE = /-(\w)/g;
-var camelize = cacheStringFunction((str) => {
-  return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : "");
-});
 function promiseTimeout(ms, throwOnTimeout = false, reason = "Timeout") {
   return new Promise((resolve, reject) => {
     if (throwOnTimeout)
@@ -532,48 +557,24 @@ function objectOmit(obj, keys2, omitUndefined = false) {
 function objectEntries(obj) {
   return Object.entries(obj);
 }
-function getLifeCycleTarget(target) {
-  return target || getCurrentInstance();
-}
 function toArray(value) {
   return Array.isArray(value) ? value : [value];
 }
-function toRef2(...args) {
-  if (args.length !== 1)
-    return toRef(...args);
-  const r = args[0];
-  return typeof r === "function" ? readonly(customRef(() => ({ get: r, set: noop }))) : ref(r);
+function cacheStringFunction(fn) {
+  const cache = /* @__PURE__ */ Object.create(null);
+  return (str) => {
+    const hit = cache[str];
+    return hit || (cache[str] = fn(str));
+  };
 }
-var resolveRef = toRef2;
-function reactivePick(obj, ...keys2) {
-  const flatKeys = keys2.flat();
-  const predicate = flatKeys[0];
-  return reactiveComputed(() => typeof predicate === "function" ? Object.fromEntries(Object.entries(toRefs(obj)).filter(([k, v]) => predicate(toValue(v), k))) : Object.fromEntries(flatKeys.map((k) => [k, toRef2(obj, k)])));
-}
-function refAutoReset(defaultValue, afterMs = 1e4) {
-  return customRef((track, trigger) => {
-    let value = toValue(defaultValue);
-    let timer;
-    const resetAfter = () => setTimeout(() => {
-      value = toValue(defaultValue);
-      trigger();
-    }, toValue(afterMs));
-    tryOnScopeDispose(() => {
-      clearTimeout(timer);
-    });
-    return {
-      get() {
-        track();
-        return value;
-      },
-      set(newValue) {
-        value = newValue;
-        trigger();
-        clearTimeout(timer);
-        timer = resetAfter();
-      }
-    };
-  });
+var hyphenateRE = /\B([A-Z])/g;
+var hyphenate = cacheStringFunction((str) => str.replace(hyphenateRE, "-$1").toLowerCase());
+var camelizeRE = /-(\w)/g;
+var camelize = cacheStringFunction((str) => {
+  return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : "");
+});
+function getLifeCycleTarget(target) {
+  return target || getCurrentInstance();
 }
 function useDebounceFn(fn, ms = 200, options = {}) {
   return createFilterWrapper(
@@ -582,12 +583,12 @@ function useDebounceFn(fn, ms = 200, options = {}) {
   );
 }
 function refDebounced(value, ms = 200, options = {}) {
-  const debounced = ref(value.value);
+  const debounced = ref(toValue(value));
   const updater = useDebounceFn(() => {
     debounced.value = value.value;
   }, ms, options);
   watch(value, () => updater());
-  return debounced;
+  return shallowReadonly(debounced);
 }
 function refDefault(source, defaultValue) {
   return computed({
@@ -609,7 +610,7 @@ function useThrottleFn(fn, ms = 200, trailing = false, leading = true, rejectOnC
 function refThrottled(value, delay = 200, trailing = true, leading = true) {
   if (delay <= 0)
     return value;
-  const throttled = ref(value.value);
+  const throttled = ref(toValue(value));
   const updater = useThrottleFn(() => {
     throttled.value = value.value;
   }, delay, trailing, leading);
@@ -806,7 +807,7 @@ function tryOnBeforeUnmount(fn, target) {
     onBeforeUnmount(fn, target);
 }
 function tryOnMounted(fn, sync = true, target) {
-  const instance = getLifeCycleTarget();
+  const instance = getLifeCycleTarget(target);
   if (instance)
     onMounted(fn, target);
   else if (sync)
@@ -1065,7 +1066,7 @@ function useCounter(initialValue = 0, options = {}) {
     _initialValue = val;
     return set2(val);
   };
-  return { count, inc, dec, get: get2, set: set2, reset };
+  return { count: shallowReadonly(count), inc, dec, get: get2, set: set2, reset };
 }
 var REGEX_PARSE = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[T\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/i;
 var REGEX_FORMAT = /[YMDHhms]o|\[([^\]]+)\]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a{1,2}|A{1,2}|m{1,2}|s{1,2}|Z{1,2}|z{1,4}|SSS/g;
@@ -1197,7 +1198,7 @@ function useIntervalFn(cb, interval = 1e3, options = {}) {
   }
   tryOnScopeDispose(pause);
   return {
-    isActive,
+    isActive: shallowReadonly(isActive),
     pause,
     resume
   };
@@ -1223,12 +1224,12 @@ function useInterval(interval = 1e3, options = {}) {
   );
   if (exposeControls) {
     return {
-      counter,
+      counter: shallowReadonly(counter),
       reset,
       ...controls
     };
   } else {
-    return counter;
+    return shallowReadonly(counter);
   }
 }
 function useLastChanged(source, options = {}) {
@@ -1239,7 +1240,7 @@ function useLastChanged(source, options = {}) {
     () => ms.value = timestamp(),
     options
   );
-  return ms;
+  return shallowReadonly(ms);
 }
 function useTimeoutFn(cb, interval, options = {}) {
   const {
@@ -1276,7 +1277,7 @@ function useTimeoutFn(cb, interval, options = {}) {
   }
   tryOnScopeDispose(stop);
   return {
-    isPending: readonly(isPending),
+    isPending: shallowReadonly(isPending),
     start,
     stop
   };
@@ -1489,11 +1490,14 @@ function watchImmediate(source, cb, options) {
   );
 }
 function watchOnce(source, cb, options) {
-  const stop = watch(source, (...args) => {
-    nextTick(() => stop());
-    return cb(...args);
-  }, options);
-  return stop;
+  return watch(
+    source,
+    cb,
+    {
+      ...options,
+      once: true
+    }
+  );
 }
 function watchThrottled(source, cb, options = {}) {
   const {
@@ -1569,7 +1573,7 @@ function whenever(source, cb, options) {
   return stop;
 }
 
-// node_modules/vitepress/node_modules/@vueuse/core/index.mjs
+// node_modules/@vueuse/core/index.mjs
 function computedAsync(evaluationCallback, initialState, optionsOrRef) {
   let options;
   if (isRef(optionsOrRef)) {
@@ -1581,6 +1585,7 @@ function computedAsync(evaluationCallback, initialState, optionsOrRef) {
   }
   const {
     lazy = false,
+    flush = "pre",
     evaluating = void 0,
     shallow = true,
     onError = noop
@@ -1617,7 +1622,7 @@ function computedAsync(evaluationCallback, initialState, optionsOrRef) {
         evaluating.value = false;
       hasFinished = true;
     }
-  });
+  }, { flush });
   if (lazy) {
     return computed(() => {
       started.value = true;
@@ -1798,8 +1803,8 @@ function onClickOutside(target, handler, options = {}) {
   if (isIOS && !_iOSWorkaround) {
     _iOSWorkaround = true;
     const listenerOptions = { passive: true };
-    Array.from(window2.document.body.children).forEach((el) => useEventListener(el, "click", noop, listenerOptions));
-    useEventListener(window2.document.documentElement, "click", noop, listenerOptions);
+    Array.from(window2.document.body.children).forEach((el) => el.addEventListener("click", noop, listenerOptions));
+    window2.document.documentElement.addEventListener("click", noop, listenerOptions);
   }
   let shouldListen = true;
   const shouldIgnore = (event) => {
@@ -3406,18 +3411,33 @@ function useStorage(key, defaults2, storage, options = {}) {
     { flush, deep, eventFilter }
   );
   watch(keyComputed, () => update(), { flush });
+  let firstMounted = false;
+  const onStorageEvent = (ev) => {
+    if (initOnMounted && !firstMounted) {
+      return;
+    }
+    update(ev);
+  };
+  const onStorageCustomEvent = (ev) => {
+    if (initOnMounted && !firstMounted) {
+      return;
+    }
+    updateFromCustomEvent(ev);
+  };
   if (window2 && listenToStorageChanges) {
-    tryOnMounted(() => {
-      if (storage instanceof Storage)
-        useEventListener(window2, "storage", update, { passive: true });
-      else
-        useEventListener(window2, customStorageEventName, updateFromCustomEvent);
-      if (initOnMounted)
-        update();
-    });
+    if (storage instanceof Storage)
+      useEventListener(window2, "storage", onStorageEvent, { passive: true });
+    else
+      useEventListener(window2, customStorageEventName, onStorageCustomEvent);
   }
-  if (!initOnMounted)
+  if (initOnMounted) {
+    tryOnMounted(() => {
+      firstMounted = true;
+      update();
+    });
+  } else {
     update();
+  }
   function dispatchWriteEvent(oldValue, newValue) {
     if (window2) {
       const payload = {
@@ -4957,7 +4977,7 @@ function createFetch(config = {}) {
   return useFactoryFetch;
 }
 function useFetch(url, ...args) {
-  var _a;
+  var _a, _b;
   const supportsAbort = typeof AbortController === "function";
   let fetchOptions = {};
   let options = {
@@ -4982,7 +5002,7 @@ function useFetch(url, ...args) {
       options = { ...options, ...args[1] };
   }
   const {
-    fetch = (_a = defaultWindow) == null ? void 0 : _a.fetch,
+    fetch = (_b = (_a = defaultWindow) == null ? void 0 : _a.fetch) != null ? _b : globalThis == null ? void 0 : globalThis.fetch,
     initialData,
     timeout
   } = options;
@@ -5018,7 +5038,7 @@ function useFetch(url, ...args) {
     timer = useTimeoutFn(abort, timeout, { immediate: false });
   let executeCounter = 0;
   const execute = async (throwOnFailed = false) => {
-    var _a2, _b;
+    var _a2, _b2;
     abort();
     loading(true);
     error.value = null;
@@ -5067,7 +5087,7 @@ function useFetch(url, ...args) {
         ...context.options,
         headers: {
           ...headersToObject(defaultFetchOptions.headers),
-          ...headersToObject((_b = context.options) == null ? void 0 : _b.headers)
+          ...headersToObject((_b2 = context.options) == null ? void 0 : _b2.headers)
         }
       }
     ).then(async (fetchResponse) => {
@@ -5242,7 +5262,7 @@ function useFileDialog(options = {}) {
   const { on: onCancel, trigger: cancelTrigger } = createEventHook();
   let input;
   if (document2) {
-    input = document2.createElement("input");
+    input = unrefElement(options.input) || document2.createElement("input");
     input.type = "file";
     input.onchange = (event) => {
       const result = event.target;
@@ -5557,6 +5577,7 @@ function useFullscreen(target, options = {}) {
   const listenerOptions = { capture: false, passive: true };
   useEventListener(document2, eventHandlers, handlerCallback, listenerOptions);
   useEventListener(() => unrefElement(targetRef), eventHandlers, handlerCallback, listenerOptions);
+  tryOnMounted(handlerCallback, false);
   if (autoExit)
     tryOnScopeDispose(exit);
   return {
@@ -6101,6 +6122,7 @@ function useMagicKeys(options = {}) {
   };
   const refs = useReactive ? reactive(obj) : obj;
   const metaDeps = /* @__PURE__ */ new Set();
+  const shiftDeps = /* @__PURE__ */ new Set();
   const usedKeys = /* @__PURE__ */ new Set();
   function setRefs(key, value) {
     if (key in refs) {
@@ -6129,6 +6151,15 @@ function useMagicKeys(options = {}) {
     for (const key2 of values) {
       usedKeys.add(key2);
       setRefs(key2, value);
+    }
+    if (key === "shift" && !value) {
+      shiftDeps.forEach((key2) => {
+        current.delete(key2);
+        setRefs(key2, false);
+      });
+      shiftDeps.clear();
+    } else if (typeof e.getModifierState === "function" && e.getModifierState("Shift") && value) {
+      [...current, ...values].forEach((key2) => shiftDeps.add(key2));
     }
     if (key === "meta" && !value) {
       metaDeps.forEach((key2) => {
@@ -6792,11 +6823,12 @@ function useNetwork(options = {}) {
 function useNow(options = {}) {
   const {
     controls: exposeControls = false,
-    interval = "requestAnimationFrame"
+    interval = "requestAnimationFrame",
+    immediate = true
   } = options;
   const now2 = ref(/* @__PURE__ */ new Date());
   const update = () => now2.value = /* @__PURE__ */ new Date();
-  const controls = interval === "requestAnimationFrame" ? useRafFn(update, { immediate: true }) : useIntervalFn(update, interval, { immediate: true });
+  const controls = interval === "requestAnimationFrame" ? useRafFn(update, { immediate }) : useIntervalFn(update, interval, { immediate });
   if (exposeControls) {
     return {
       now: now2,
@@ -7220,7 +7252,7 @@ function usePointerSwipe(target, options = {}) {
   ];
   tryOnMounted(() => {
     var _a, _b, _c, _d, _e, _f, _g, _h;
-    (_b = (_a = targetRef.value) == null ? void 0 : _a.style) == null ? void 0 : _b.setProperty("touch-action", "none");
+    (_b = (_a = targetRef.value) == null ? void 0 : _a.style) == null ? void 0 : _b.setProperty("touch-action", "pan-y");
     if (disableTextSelect) {
       (_d = (_c = targetRef.value) == null ? void 0 : _c.style) == null ? void 0 : _d.setProperty("-webkit-user-select", "none");
       (_f = (_e = targetRef.value) == null ? void 0 : _e.style) == null ? void 0 : _f.setProperty("-ms-user-select", "none");
@@ -7901,6 +7933,8 @@ function useStyleTag(css, options = {}) {
     const el = document2.getElementById(id) || document2.createElement("style");
     if (!el.isConnected) {
       el.id = id;
+      if (options.nonce)
+        el.nonce = options.nonce;
       if (options.media)
         el.media = options.media;
       document2.head.appendChild(el);
@@ -9728,4 +9762,4 @@ export {
   watchWithFilter,
   whenever
 };
-//# sourceMappingURL=vitepress___@vueuse_core.js.map
+//# sourceMappingURL=@vueuse_core.js.map
