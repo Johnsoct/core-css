@@ -263,7 +263,6 @@ ul,
 
 q,
 .inline-quote {
-
     &::after,
     &::before {
         content: '"';
@@ -286,6 +285,14 @@ small,
 
 strong {
     font-weight: map.get($weights, "semi-bold");
+}
+
+// DOCS: summary
+
+summary {
+    * {
+        display: inline-block;
+    }
 }
 
 /*******************
@@ -333,7 +340,7 @@ FONT MODIFIERS
 }
 
 .no-select {
-    user-select: none;
+    user-select: none !important;
 }
 
 .no-wrap {
