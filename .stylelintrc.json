@@ -2,35 +2,40 @@
     "cache": true,
     "defaultSeverity": "warning",
     "extends": [
-        "stylelint-config-standard",
-        "@stylistic/stylelint-config"
+        "stylelint-config-html",
+        "stylelint-config-recommended-vue",
+        "stylelint-config-standard"
     ],
     "fix": true,
-    "plugins": [
-        "@stylistic/stylelint-plugin"
-    ],
     "rules": {
         "color-function-notation": "modern",
         "color-hex-length": "long",
         "comment-whitespace-inside": "always",
         "custom-property-empty-line-before": "never",
         "declaration-block-no-redundant-longhand-properties": false,
+        "declaration-block-no-shorthand-property-overrides": true,
         "declaration-empty-line-before": "never",
         "declaration-property-unit-allowed-list": {
             "font-size": [
                 "px",
-                "rem"
+                "rem",
+                "vh",
+                "vw"
             ]
         },
         "font-family-name-quotes": "always-unless-keyword",
         "font-weight-notation": "numeric",
         "function-name-case": "lower",
         "function-url-quotes": "always",
-        "@stylistic/indentation": 4,
         "import-notation": "string",
         "max-nesting-depth": 2,
         "media-feature-range-notation": "prefix",
-        "rule-empty-line-before": "always",
+        "rule-empty-line-before": [
+            "always",
+            {
+                "except": "first-nested"
+            }
+        ],
         "selector-attribute-quotes": "always",
         "selector-class-pattern": null,
         "selector-max-compound-selectors": 3,
@@ -42,22 +47,17 @@
     "overrides": [
         {
             "files": [
-                "*.scss",
                 "**/*.scss"
             ],
             "extends": [
                 "stylelint-config-standard-scss"
             ],
             "rules": {
-                "scss/at-if-closing-brace-newline-after": null,
-                "scss/at-if-closing-brace-space-after": null,
-                "scss/at-else-closing-brace-newline-after": null,
-                "scss/at-else-closing-brace-space-after": null,
                 "scss/at-mixin-named-arguments": "always",
                 "scss/dollar-variable-empty-line-after": [
                     "always",
                     {
-                        "expect": [
+                        "except": [
                             "last-nested",
                             "before-dollar-variable"
                         ],
@@ -78,8 +78,7 @@
                         ]
                     }
                 ],
-                "scss/dollar-variable-no-missing-interpolation": true,
-                "scss/operator-no-unspaced": true
+                "scss/dollar-variable-no-missing-interpolation": true
             }
         }
     ]
