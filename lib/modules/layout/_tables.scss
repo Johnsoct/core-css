@@ -11,8 +11,14 @@ caption {
     @include margin($base: 1, $bottom: true);
 }
 
+table {
+    border-collapse: collapse;
+}
+
 table,
 tbody,
+td,
+th,
 thead {
     margin: 0;
 }
@@ -21,7 +27,6 @@ td,
 th {
     @include padding($base: 0.2);
     border-right: $border-thickness solid $border-color;
-    margin: 0;
 
     &:last-child {
         border-right: unset;
@@ -42,9 +47,5 @@ thead {
 }
 
 tr {
-    border-bottom: $border-thickness solid $border-color;
-
-    &:last-child {
-        border-bottom: unset;
-    }
+    border: $border-thickness solid $border-color;
 }
