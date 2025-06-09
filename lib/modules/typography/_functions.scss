@@ -4,7 +4,9 @@
 @use "../utility/functions.scss" as *;
 @use "./constants.scss" as *;
 
-// WARN: Should only be used to calculate font-size
+// WARN: `ms` should only be used to calculate font-size
+// WARN: `ms` should only be used to calculate font-size
+// WARN: `ms` should only be used to calculate font-size
 @function ms($power-of) {
     // https://www.modularscale.com/?16=&px=&1.5=
     // (scale^power) x base-font-size
