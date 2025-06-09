@@ -9,6 +9,11 @@
             </caption>
         </table>
     </div>
+    <div v-else-if="props.element === 'summary'">
+        <details>
+            <summary>{{ props.text.trim() }}</summary>
+        </details>
+    </div>
     <div v-else-if="props.element === 'td'">
         <table class="ElementTypography">
             <tbody>
@@ -29,15 +34,15 @@
     </div>
     <div v-else-if="props.textLocation === 'placeholder'">
         <component
-            disabled
             :is="props.element"
+            disabled
             :placeholder="props.text.trim()"
         />
     </div>
     <div v-else>
         <component
-            disabled
             :is="props.element"
+            disabled
         >
             {{ props.text.trim() }}
         </component>

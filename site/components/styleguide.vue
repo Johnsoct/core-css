@@ -1,3 +1,95 @@
+<template>
+    <div class="Styleguide">
+        <div class="Styleguide__top">
+            <a
+                class="Styleguide__link-go-back"
+                href="/core-css/"
+            >
+                Go Back
+            </a>
+
+            <base-select
+                v-if="refCaptions"
+                @select="scrollTo($event)"
+                :options="Array.from(refCaptions)"
+                :placeholder="`Search for an element (${keyMeta}K)`"
+            />
+        </div>
+
+        <div class="Styleguide__section">
+            <h1>Typography</h1>
+            <p>The following displayed elements strictly focus on the text attributes of said elements (i.e. the button element is unstyled to purposefully demonstrate the specific styles applied to the button's basic text).</p>
+
+            <div class="Styleguide__section-content">
+                <div
+                    v-for="(type, index) in types"
+                    class="Styleguide__type-container"
+                    :key="index"
+                >
+                    <table class="mb-1">
+                        <caption
+                            class="captions"
+                            ref="captions"
+                        >
+                            {{ type.name }}
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Property</th>
+                                <th scope="col">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-if="type.utilityClasses">
+                                <td>Utility Classes</td>
+                                <td>
+                                    <code>{{ type.utilityClasses.join(', ') }}</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Line-height</td>
+                                <td>{{ type.lineHeight }}</td>
+                            </tr>
+                            <tr>
+                                <td>Max-width</td>
+                                <td>
+                                    <label>Desktop: {{ convertMSToMaxWidth(type.maxWidth[0]) }}px / {{ convertPixelsToRems(convertMSToMaxWidth(type.maxWidth[0])) }}rems</label>
+                                    <label>Mobile: {{ convertMSToMaxWidth(type.maxWidth[1]) }}px / {{ convertPixelsToRems(convertMSToMaxWidth(type.maxWidth[1])) }}rems</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Size</td>
+                                <td>
+                                    <label>{{ displaySize(type, 0) }}</label>
+                                    <label>{{ displaySize(type, 1) }}</label>
+                                </td>
+                            </tr>
+                            <tr v-if="type.tracking">
+                                <td>Tracking</td>
+                                <td>{{ type.tracking }}%</td>
+                            </tr>
+                            <tr>
+                                <td>Weight</td>
+                                <td>{{ type.weight }}</td>
+                            </tr>
+                            <tr v-if="type.miscellaneous">
+                                <td>Miscellaneous</td>
+                                <td>{{ type.miscellaneous }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <element-typography
+                        :element="type.name"
+                        :text="type.text"
+                        :text-location="type.textLocation"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
 <script lang="ts" setup>
 // Imports
 import {
@@ -295,6 +387,17 @@ const typesMisc: typographyData[] = [
         utilityClasses: [ 'body-ms0' ],
         lineHeight: baseBodyLineHeight,
         maxWidth: [0, 0],
+        miscellaneous: 'All elements within <summary> are `display: inline-block;`',
+        name: 'summary',
+        size: [0, 0],
+        text: 'Types of Taco',
+        textLocation: 'textContent',
+        weight: 400,
+    },
+    {
+        utilityClasses: [ 'body-ms0' ],
+        lineHeight: baseBodyLineHeight,
+        maxWidth: [0, 0],
         name: 'time',
         size: [0, 0],
         text: 'TA:CO',
@@ -469,7 +572,7 @@ const displaySize = (el: typographyData, index = 0): string => {
 }
 const getScrollYPosition = (el: HTMLTableCaptionElement): number => {
     if (!el.offsetParent) {
-       return 0;
+        return 0;
     }
 
     return (el.offsetParent as HTMLTableElement).offsetTop;
@@ -572,95 +675,3 @@ onMounted(() => {
     }
 }
 </style>
-
-<template>
-    <div class="Styleguide">
-        <div class="Styleguide__top">
-            <a
-                class="Styleguide__link-go-back"
-                href="/core-css/"
-            >
-                Go Back
-            </a>
-
-            <base-select
-                v-if="refCaptions"
-                @select="scrollTo($event)"
-                :options="Array.from(refCaptions)"
-                :placeholder="`Search for an element (${keyMeta}K)`"
-            />
-        </div>
-
-        <div class="Styleguide__section">
-            <h1>Typography</h1>
-            <p>The following displayed elements strictly focus on the text attributes of said elements (i.e. the button element is unstyled to purposefully demonstrate the specific styles applied to the button's basic text).</p>
-
-            <div class="Styleguide__section-content">
-                <div
-                    v-for="(type, index) in types"
-                    :key="index"
-                    class="Styleguide__type-container"
-                >
-                    <table class="mb-1">
-                        <caption
-                            class="captions"
-                            ref="captions"
-                        >
-                            {{ type.name }}
-                        </caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Property</th>
-                                <th scope="col">Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-if="type.utilityClasses">
-                                <td>Utility Classes</td>
-                                <td>
-                                    <code>{{ type.utilityClasses.join(', ') }}</code>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Line-height</td>
-                                <td>{{ type.lineHeight }}</td>
-                            </tr>
-                            <tr>
-                                <td>Max-width</td>
-                                <td>
-                                    <label>Desktop: {{ convertMSToMaxWidth(type.maxWidth[0]) }}px / {{ convertPixelsToRems(convertMSToMaxWidth(type.maxWidth[0])) }}rems</label>
-                                    <label>Mobile: {{ convertMSToMaxWidth(type.maxWidth[1]) }}px / {{ convertPixelsToRems(convertMSToMaxWidth(type.maxWidth[1])) }}rems</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Size</td>
-                                <td>
-                                    <label>{{ displaySize(type, 0) }}</label>
-                                    <label>{{ displaySize(type, 1) }}</label>
-                                </td>
-                            </tr>
-                            <tr v-if="type.tracking">
-                                <td>Tracking</td>
-                                <td>{{ type.tracking }}%</td>
-                            </tr>
-                            <tr>
-                                <td>Weight</td>
-                                <td>{{ type.weight }}</td>
-                            </tr>
-                            <tr v-if="type.miscellaneous">
-                                <td>Miscellaneous</td>
-                                <td>{{ type.miscellaneous }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <element-typography
-                        :element="type.name"
-                        :text="type.text"
-                        :text-location="type.textLocation"
-                    />
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
